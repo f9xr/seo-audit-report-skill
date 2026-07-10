@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://f9xr.github.io/seo-audit-report-skill/sitemap.xml
