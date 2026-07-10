@@ -113,7 +113,8 @@ nav .container{width:100%;display:flex;align-items:center;justify-content:space-
 .nav-links a{color:var(--ink-muted);font-size:0.875rem;transition:color 0.15s}
 .nav-links a:hover{color:var(--ink)}
 .nav-ctas{display:flex;align-items:center;gap:var(--spacing-sm)}
-.nav-toggle{display:none;background:none;border:none;color:var(--ink);cursor:pointer;padding:var(--spacing-xs)}
+.nav-toggle{background:none;border:none;color:var(--ink);cursor:pointer;padding:var(--spacing-xs)}
+.nav-toggle.btn-icon{display:none}
 
 /* ========================================
    BUTTONS
@@ -291,7 +292,7 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
 @media(max-width:768px){
   .nav-links{display:none}
   .nav-links.open{display:flex;flex-direction:column;position:absolute;top:var(--nav-height);left:0;right:0;background:var(--surface-1);border-bottom:1px solid var(--hairline);padding:var(--spacing-md);gap:var(--spacing-sm);z-index:99;animation:navFadeIn 0.2s ease}
-  .nav-toggle{display:block}
+  .nav-toggle.btn-icon{display:inline-flex}
   .nav-ctas .btn-secondary,.nav-byline{display:none}
   .pillar-grid{grid-template-columns:1fr}
   .process-grid{grid-template-columns:1fr;gap:var(--spacing-sm)}
@@ -358,7 +359,7 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
         CodeBase Auditor
       </a>
-      <span class="nav-byline">made by <a href="https://f9xr.github.io" target="_blank" rel="noopener noreferrer">F9XR Team</a></span>
+      <span class="nav-byline"> by <a href="https://f9xr.github.io" target="_blank" rel="noopener noreferrer">F9XR Team</a></span>
     </div>
     <div class="nav-links" id="navLinks">
       <a href="#pillars">Pillars</a>
@@ -385,7 +386,7 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
     <div class="hero-grid">
       <div class="hero-content">
         <div class="eyebrow">F9XR's SEO CodeBase Auditor SKILL</div>
-        <h1 class="display-xl">24 Pillars.<br>One Command.</h1>
+        <h1 class="display-xl">24 SEO Pillars.<br>One Command.</h1>
         <p class="subhead">Drop a single file into any codebase, run one prompt, and get a production-ready SEO audit across 24 pillars - from technical crawlability to semantic entity analysis to YouTube SEO. Every finding includes the exact fix.</p>
         <div class="hero-ctas">
           <a href="https://github.com/f9xr/seo-audit-report-skill/blob/main/SKILL.md" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Download SKILL.md</a>
@@ -825,6 +826,7 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
         <div class="footer-col-title">Company</div>
         <a href="https://f9xr.github.io" target="_blank" rel="noopener noreferrer">F9XR Team</a>
         <a href="https://github.com/f9xr/seo-audit-report-skill" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://inakm.github.io/" target="_blank" rel="noopener noreferrer">Anjani Kumar Mishra (Dev)</a>
       </div>
     </div>
     <div class="footer-bottom">
