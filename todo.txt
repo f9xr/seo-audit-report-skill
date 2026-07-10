@@ -1,8 +1,1 @@
-add back to top button
-
-make the Download SKILL.md linked to https://github.com/f9xr/seo-audit-report-skill/blob/main/SKILL.md
-
-change the name of the site in @index.html file to F9XR's SEO CodeBase Auditor SKILL 
-
-add README.me file, add llms.txt, llms-full.txt, opensearch.xml, ai.txt, gpc.txt, dublin.rdf files, 404.html, SECURITY.md
 
