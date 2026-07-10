@@ -1,0 +1,75 @@
+# F9XR's SEO CodeBase Auditor SKILL - Full Reference
+
+## Project Overview
+
+F9XR's SEO CodeBase Auditor SKILL is an enterprise-grade SEO auditing tool designed as a single SKILL.md file. Drop it into any static code repository, run a single prompt in an AI chat interface, and receive production-ready SEO fixes across 24 specialized pillars.
+
+## 24 Audit Pillars
+
+### Technical Foundation
+1. **On-Page SEO** - Title tags, meta descriptions, heading hierarchy, anchor text, SERP snippets, viewport, charset, language, table optimization, external link quality
+2. **Technical SEO** - Indexability matrix, crawl budget, structured data validation, redirect chains, soft 404s, compression, caching, CDN, server response, duplicate detection
+3. **Performance (CWV)** - LCP, FCP, CLS, INP, TTFB scored against Google thresholds with mobile/desktop splits
+4. **URL Structure & Architecture** - Hierarchy, slug format, trailing slash consistency, pagination, silo architecture, orphan detection
+5. **Mobile SEO** - Viewport configuration, responsive design, touch target sizing, font legibility, mobile-first structured data, interstitial detection
+6. **Image SEO** - Alt text, WebP/AVIF format, responsive images, lazy loading, file name SEO, image sitemap, dimension attributes for CLS prevention
+9. **XML Sitemap & Robots.txt** - Sitemap structure & coverage, robots.txt validation, IndexNow protocol setup
+
+### Content & Authority
+7. **Semantic SEO & Content** - Search intent mapping, keyword density calculation, entity salience, knowledge graph alignment, passage optimization, topic clustering
+8. **Internal Linking & Equity** - Orphan detection, link depth, breadcrumb schema, link equity silos, anchor text diversity, navigation structure audit
+14. **Blog & Content SEO** - Article schema, author attribution, pagination, related content, category SEO, reading time, content freshness
+16. **E-E-A-T Signals** - Experience assessment, author transparency, About/Contact pages, external citations, content credibility, YMYL compliance
+17. **Rich Results Eligibility** - Opportunity map for 16+ rich result types, required field validation, publisher logo, carousel eligibility
+18. **AI / SGE / Voice Search** - AI overview extraction readiness, conversational keyword coverage, featured snippet targeting, voice search optimization
+
+### Platform & Process
+13. **E-Commerce SEO** - Product/Review schema, availability status, price format, category pages, faceted navigation, breadcrumb, product image SEO
+15. **JavaScript Framework SEO** - Next.js/Nuxt/Astro/SPA-specific checks: SSR vs CSR, dynamic metadata, image/link components, hydration strategy
+19. **CI/CD & Automation** - Pre-commit hooks, GitHub Actions workflow, GitLab CI template, lighthouse-ci, scheduled audits, Slack alerts
+20. **Migration SEO** - URL mapping verification, redirect chain depth, canonical conflicts, domain change checklist, post-migration validation
+21. **Content Pruning** - Thin/duplicate/orphan detection, consolidation strategy, crawl budget recovery, redirect cleanup, index bloat assessment
+22. **Third-Party Script Audit** - Script inventory, critical path impact, tag manager audit, chat/ad widget analysis, consent mode, waterfall analysis
+
+### Specialized
+10. **Social & Regional SEO** - Open Graph, Twitter Cards, hreflang, local business schema, NAP consistency, geo-targeting, GBP recommendations
+11. **Security SEO** - HTTPS enforcement, mixed content detection, HSTS recommendation, form security, external link security
+12. **Accessibility SEO** - ARIA landmarks, form labels, focus order, color contrast, skip navigation, video captions, empty interactive elements
+23. **Competitor Analysis** - Content depth comparison, keyword gap analysis, entity coverage, SERP feature ownership, schema adoption, technical benchmarking
+24. **Video & YouTube SEO** - VideoObject schema, embed best practices, transcript SEO, thumbnail optimization, video sitemap, rich result eligibility
+
+## 5-Pass Audit Workflow
+
+1. **Discover** - Map file tree, scan config files, detect routing framework, discover all URLs, build indexability matrix
+2. **Analyze** - Evaluate every file against relevant pillars, suppress irrelevant checks
+3. **Prioritize** - Sort findings by severity then traffic impact, cap Priority Fix Matrix at 20 items
+4. **Report** - Generate seo_audit_report.md with executive summary, priority matrix, pillar evaluations, and fix blocks
+5. **Critique** - Review as a competitor's SEO lead, verify every severity label and root cause
+
+## Output Files
+
+- `seo_audit_report.md` - Comprehensive markdown report with Priority Fix Matrix, per-pillar evaluations, and concrete code snippets
+- `seo_audit_report.csv` - Spreadsheet-ready issue tracker with pillar, issue, priority, impact, effort, and fix summary columns
+
+## Example Prompts
+
+- `@SKILL.md Run a comprehensive full-stack SEO audit across all files in this workspace. Generate seo_audit_report.md and seo_audit_report.csv with all 24 pillars evaluated.`
+- `@SKILL.md Run a Core Web Vitals audit across LCP, FCP, CLS, INP, and TTFB. Split findings by mobile vs desktop.`
+- `@SKILL.md Run a competitive SEO gap analysis against [competitor1.com, competitor2.com].`
+- `@SKILL.md Run a migration SEO readiness check. Assume we are migrating from [old-domain] to [new-domain].`
+
+## Project Files
+
+- index.html: Landing page with full documentation, pillar list, and prompt templates
+- DESIGN.md: Design system tokens (colors, typography, spacing, breakpoints)
+- Frontend-Design.md: Design principles and visual approach
+- prompts.txt: Raw prompt collection for reference
+- robots.txt: Crawl instructions for search engines
+- sitemap.xml: XML sitemap for search engine discovery
+- seo_audit_report.md: Generated audit report (created per run)
+- seo_audit_report.csv: Generated audit spreadsheet (created per run)
+
+## Credits
+
+Built by F9XR Team - Website development, redesign, local SEO & digital presence solutions.
+https://f9xr.github.io

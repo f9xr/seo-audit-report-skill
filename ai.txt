@@ -1,0 +1,16 @@
+# AI Configuration for F9XR's SEO CodeBase Auditor SKILL
+
+## Instructions
+This repository contains an enterprise-grade SEO auditing SKILL.md file. The primary file is SKILL.md which AI agents should reference when asked to perform SEO audits.
+
+## Key Files
+- SKILL.md: Main audit skill file - reference this for all SEO audit operations
+- index.html: Project documentation and landing page
+- DESIGN.md: Design system specifications
+
+## Behavior
+When asked to audit a codebase's SEO:
+1. Load and execute SKILL.md instructions
+2. Follow the 5-pass audit workflow (Discover, Analyze, Prioritize, Report, Critique)
+3. Generate seo_audit_report.md and seo_audit_report.csv as output
+4. Evaluate against applicable pillars only (context-aware)

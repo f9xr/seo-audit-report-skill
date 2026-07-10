@@ -1,0 +1,29 @@
+# F9XR's SEO CodeBase Auditor SKILL
+
+> Enterprise-grade SEO auditing for static code repositories. 24 pillars, one file, production-ready fix blocks.
+
+## Key Files
+
+- SKILL.md: The audit skill file - drop into any project root and run with @SKILL.md
+- index.html: Project landing page with documentation and prompt templates
+- DESIGN.md: Design system tokens, typography, spacing, and component specifications
+- Frontend-Design.md: Design philosophy and visual principles
+- prompts.txt: Collection of SEO audit prompts for various use cases
+
+## Core Features
+
+- 24-pillar SEO audit coverage
+- 5-pass audit workflow (Discover, Analyze, Prioritize, Report, Critique)
+- Priority Fix Matrix capped at 20 items
+- Per-pillar evaluations with current code and fix blocks
+- CSV export for spreadsheet integration
+- Context-aware pillar selection (suppresses irrelevant checks)
+
+## Reference URLs
+
+- Project: https://github.com/f9xr/seo-audit-report-skill
+- Organization: https://f9xr.github.io
+- Google Search Central: https://developers.google.com/search/docs
+- Schema.org: https://schema.org/
+- Core Web Vitals: https://web.dev/vitals/
+- IndexNow Protocol: https://www.bing.com/IndexNow

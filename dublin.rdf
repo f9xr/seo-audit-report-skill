@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:dcterms="http://purl.org/dc/terms/">
+  <rdf:Description rdf:about="https://f9xr.github.io/seo-audit-report-skill/">
+    <dc:title>F9XR's SEO CodeBase Auditor SKILL</dc:title>
+    <dc:creator>F9XR Team</dc:creator>
+    <dc:subject>SEO audit, codebase analysis, static HTML, technical SEO, schema markup</dc:subject>
+    <dc:description>Enterprise-grade SEO auditing for static code repositories. 24 pillars, one file, production-ready fix blocks.</dc:description>
+    <dc:publisher>F9XR Team</dc:publisher>
+    <dc:contributor>F9XR Team</dc:contributor>
+    <dc:date>2026-07-10</dc:date>
+    <dc:type>Software</dc:type>
+    <dc:format>text/html</dc:format>
+    <dc:identifier>https://f9xr.github.io/seo-audit-report-skill/</dc:identifier>
+    <dc:language>en</dc:language>
+    <dc:rights>Copyright 2026 F9XR Team</dc:rights>
+    <dcterms:license>https://github.com/f9xr/seo-audit-report-skill/blob/main/LICENSE</dcterms:license>
+    <dcterms:isPartOf rdf:resource="https://f9xr.github.io/"/>
+  </rdf:Description>
+</rdf:RDF>

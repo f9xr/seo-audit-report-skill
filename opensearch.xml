@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>CodeBase Auditor</ShortName>
+  <Description>F9XR's SEO CodeBase Auditor SKILL - Enterprise-grade SEO auditing for static code repositories</Description>
+  <Tags>SEO audit codebase static HTML skill</Tags>
+  <Contact>https://f9xr.github.io</Contact>
+  <Url type="text/html" template="https://github.com/f9xr/seo-audit-report-skill/search?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://f9xr.github.io/seo-audit-report-skill/opensearch.xml"/>
+  <LongName>F9XR's SEO CodeBase Auditor SKILL</LongName>
+  <Developer>F9XR Team</Developer>
+  <Attribution>Copyright 2026 F9XR Team</Attribution>
+  <SyndicationRight>open</SyndicationRight>
+  <AdultContent>false</AdultContent>
+  <Language>en</Language>
+  <OutputEncoding>UTF-8</OutputEncoding>
+  <InputEncoding>UTF-8</InputEncoding>
+</OpenSearchDescription>

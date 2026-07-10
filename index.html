@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="SEO Codebase Audit - 24-pillar enterprise-grade SEO auditing for static code repositories. Drop in SKILL.md, run one command, get production-ready fixes.">
-<title>SEO Codebase Audit - 24 Pillars. One Command.</title>
+<meta name="description" content="F9XR's SEO CodeBase Auditor SKILL - Enterprise-grade SEO auditing for static code repositories. Drop in SKILL.md, run one command, get production-ready fixes.">
+<title>F9XR's SEO CodeBase Auditor SKILL - 24 Pillars. One Command.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<meta property="og:title" content="SEO Codebase Audit - 24 Pillars. One Command.">
+<meta property="og:title" content="F9XR's SEO CodeBase Auditor SKILL - 24 Pillars. One Command.">
 <meta property="og:description" content="Enterprise-grade SEO auditing for static code repositories. Drop in SKILL.md, run one command, get production-ready fixes.">
 <meta property="og:image" content="https://f9xr.github.io/og-image.png">
 <meta property="og:url" content="https://f9xr.github.io/seo-audit-report-skill/">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="SEO Codebase Audit">
+<meta property="og:site_name" content="F9XR's SEO CodeBase Auditor SKILL">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SEO Codebase Audit - 24 Pillars. One Command.">
+<meta name="twitter:title" content="F9XR's SEO CodeBase Auditor SKILL - 24 Pillars. One Command.">
 <meta name="twitter:description" content="Enterprise-grade SEO auditing for static code repositories. Drop in SKILL.md, run one command, get production-ready fixes.">
 <meta name="twitter:image" content="https://f9xr.github.io/og-image.png">
 <style>
@@ -229,6 +229,15 @@ nav .container{width:100%;display:flex;align-items:center;justify-content:space-
 .prompt-block .prompt-cmd{color:var(--success);font-weight:500}
 
 /* ========================================
+   BACK TO TOP
+   ======================================== */
+.back-to-top{position:fixed;bottom:24px;right:24px;z-index:1000;width:44px;height:44px;border-radius:50%;background:var(--primary);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s,background 0.15s;box-shadow:0 4px 12px rgba(0,0,0,0.3)}
+.back-to-top.visible{opacity:1;visibility:visible}
+.back-to-top:hover{background:var(--primary-hover)}
+.back-to-top:focus-visible{outline:2px solid var(--primary-focus);outline-offset:2px}
+.back-to-top svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ========================================
    CTA BANNER
    ======================================== */
 .cta-banner{background:var(--surface-1);border:1px solid var(--hairline);border-radius:var(--rounded-lg);padding:var(--spacing-xxl);text-align:center;position:relative;overflow:hidden}
@@ -311,7 +320,7 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
       "@type": "WebSite",
       "@id": "https://f9xr.github.io/seo-audit-report-skill/#website",
       "url": "https://f9xr.github.io/seo-audit-report-skill/",
-      "name": "SEO Codebase Audit",
+      "name": "F9XR's SEO CodeBase Auditor SKILL",
       "description": "Enterprise-grade SEO auditing for static code repositories. 24 pillars, one file, production-ready fix blocks.",
       "publisher": { "@id": "https://f9xr.github.io/#organization" },
       "potentialAction": {
@@ -336,7 +345,7 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
   <div class="container">
     <a href="#" class="nav-brand">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-      SEO Audit
+      CodeBase Auditor
     </a>
     <div class="nav-links" id="navLinks">
       <a href="#pillars">Pillars</a>
@@ -345,7 +354,7 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
       <a href="#templates">Templates</a>
     </div>
     <div class="nav-ctas">
-      <a href="SKILL.md" class="btn btn-secondary" download>Download SKILL.md</a>
+      <a href="https://github.com/f9xr/seo-audit-report-skill/blob/main/SKILL.md" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Download SKILL.md</a>
       <a href="https://github.com/f9xr/seo-audit-report-skill" class="btn btn-primary" target="_blank" rel="noopener noreferrer">GitHub</a>
       <button class="nav-toggle btn-icon btn-tertiary" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Toggle navigation">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
@@ -362,11 +371,11 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
   <div class="container">
     <div class="hero-grid">
       <div class="hero-content">
-        <div class="eyebrow">Enterprise SEO Audit Skill</div>
+        <div class="eyebrow">F9XR's SEO CodeBase Auditor SKILL</div>
         <h1 class="display-xl">24 Pillars.<br>One Command.</h1>
         <p class="subhead">Drop a single file into any codebase, run one prompt, and get a production-ready SEO audit across 24 pillars - from technical crawlability to semantic entity analysis to YouTube SEO. Every finding includes the exact fix.</p>
         <div class="hero-ctas">
-          <a href="SKILL.md" class="btn btn-primary btn-lg" download>Download SKILL.md</a>
+          <a href="https://github.com/f9xr/seo-audit-report-skill/blob/main/SKILL.md" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Download SKILL.md</a>
           <a href="https://github.com/f9xr/seo-audit-report-skill" class="btn btn-secondary btn-lg" target="_blank" rel="noopener noreferrer">View on GitHub</a>
         </div>
       </div>
@@ -675,7 +684,7 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
     <div class="section-header fade-in">
       <div class="eyebrow">Quick Start</div>
       <h2 class="display-lg">One-Liner Prompts</h2>
-      <p class="subhead">Drop F9XR Team's Local SEO Codebase Auditor (SKILL.md) into any project root, then run any of these prompts in Cursor, Copilot, Claude, or any AI chat interface.</p>
+      <p class="subhead">Drop F9XR's SEO CodeBase Auditor SKILL into any project root, then run any of these prompts in Cursor, Copilot, Claude, or any AI chat interface.</p>
     </div>
     <div class="prompt-toolbar">
       <button class="btn btn-secondary" onclick="copyAllPrompts()" id="copyAllBtn">Copy All</button>
@@ -763,9 +772,9 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
     <div class="cta-banner fade-in">
       <div class="eyebrow">Get Started</div>
       <h2 class="headline">Ready to ship SEO-safe code?</h2>
-      <p class="body-sm">Download SKILL.md, drop it in your project root, and run one prompt. No setup, no config, no subscriptions.</p>
+      <p class="body-sm">Download F9XR's SEO CodeBase Auditor SKILL, drop it in your project root, and run one prompt. No setup, no config, no subscriptions.</p>
       <div style="display:flex;gap:var(--spacing-sm);justify-content:center;flex-wrap:wrap;position:relative;z-index:1">
-        <a href="SKILL.md" class="btn btn-primary btn-lg" download>Download SKILL.md</a>
+        <a href="https://github.com/f9xr/seo-audit-report-skill/blob/main/SKILL.md" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Download SKILL.md</a>
         <a href="https://github.com/f9xr/seo-audit-report-skill" class="btn btn-secondary btn-lg" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
       </div>
     </div>
@@ -781,13 +790,13 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
       <div class="footer-brand">
         <a href="#" class="nav-brand" style="margin-bottom:var(--spacing-sm);display:inline-flex">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          SEO Audit
+          CodeBase Auditor
         </a>
         <p class="body-sm">Enterprise-grade SEO auditing for static code repositories. 24 pillars, one file, production-ready fix blocks.</p>
       </div>
       <div class="footer-col">
         <div class="footer-col-title">Product</div>
-        <a href="SKILL.md" download>Download SKILL.md</a>
+        <a href="https://github.com/f9xr/seo-audit-report-skill/blob/main/SKILL.md" target="_blank" rel="noopener noreferrer">Download SKILL.md</a>
         <a href="#pillars">Pillars</a>
         <a href="#output">Output</a>
         <a href="#templates">Templates</a>
@@ -806,7 +815,7 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="caption">SEO Codebase Audit - Open source skill file</span>
+      <span class="caption">F9XR's SEO CodeBase Auditor SKILL - Open source skill file</span>
       <span class="caption">Built by <a href="https://f9xr.github.io" target="_blank" rel="noopener noreferrer">F9XR Team</a> - Website development, redesign, local SEO &amp; digital presence solutions.</span>
     </div>
   </div>
@@ -827,6 +836,16 @@ document.addEventListener('DOMContentLoaded',function(){
   },{threshold:0.1});
   els.forEach(function(el){obs.observe(el)});
 });
+
+// Back to top
+(function(){
+  var btn=document.getElementById('backToTop');
+  if(!btn)return;
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>300){btn.classList.add('visible')}else{btn.classList.remove('visible')}
+  });
+  btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+})();
 
 function copyPrompt(btn){
   var code=btn.closest('.prompt-block').querySelector('code');
@@ -852,6 +871,10 @@ function copyAllPrompts(){
   });
 }
 </script>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
 
 </body>
 </html>
