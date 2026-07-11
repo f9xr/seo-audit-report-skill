@@ -223,6 +223,7 @@ Consider removing one finding before delivering. If you have 15 findings, ask wh
 - **Hreflang Tags:** For multilingual/international sites, verify `<link rel="alternate" hreflang="...">` tags. Flag missing self-referencing hreflang, missing x-default, and contradictory language targets.
 - **Geo-Targeting Signals:** Check for country-specific top-level domains, localized content, local phone numbers, and local address signals.
 - **Google Business Profile Recommendations:** If local business signals are found, recommend GBP setup and optimization steps.
+- **Social Share Buttons:** Check for social media share links or buttons on content pages. Flag missing share functionality. Recommend at minimum X/Twitter, LinkedIn, and Facebook share links with pre-filled text and URL parameters.
 
 ### 11. Security SEO
 - **HTTPS Enforcement:** Verify all internal links, canonical URLs, and OG URLs use `https://`. Flag mixed content (HTTP resources loaded on HTTPS pages).
@@ -331,6 +332,7 @@ Consider removing one finding before delivering. If you have 15 findings, ask wh
 
 ### 18. AI / SGE / LLM / Voice Search Optimization
 - **AI Overview Extraction Readiness:** Evaluate if content is structured for AI-generated overview extraction. Flag content without clear, concise answers to common questions early in the article.
+- **llms.txt Check:** Verify the site publishes a `llms.txt` file at the root — a machine-readable summary of the site for LLM discoverability. Flag missing `llms.txt`. Recommend including: site name, description, key pages list, preferred citation format, and content licensing info.
 - **Conversational Keyword Coverage:** Analyze content for natural language / long-tail question phrases that match voice search and AI chat patterns (who, what, where, when, why, how queries). Flag missing conversational coverage.
 - **Definitional Content:** Check for clear, paragraph-length definitions of key concepts early in the content. AI overviews often pull from the first authoritative definition they encounter.
 - **Structured Q&A Content:** Detect presence of FAQ sections, "What is X" headings, or definition blocks. Flag missing FAQPage schema for Q&A content. Recommend explicit question-answer formatting for AI extraction.

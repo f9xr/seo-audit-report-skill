@@ -3,12 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="F9XR's SEO CodeBase Auditor SKILL - Enterprise-grade SEO auditing for static code repositories. Drop in SKILL.md, run one command, get production-ready fixes.">
+<meta name="description" content="SEO CodeBase Auditor SKILL - Enterprise-grade SEO auditing for static repos. Drop in SKILL.md, run one command, get fixes.">
+<link rel="canonical" href="https://f9xr.github.io/seo-audit-report-skill/">
+<link rel="icon" type="image/x-icon" href="https://f9xr.github.io/assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="https://f9xr.github.io/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://f9xr.github.io/assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://f9xr.github.io/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://f9xr.github.io/assets/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="https://f9xr.github.io/assets/android-chrome-512x512.png">
+<link rel="manifest" href="https://f9xr.github.io/assets/site.webmanifest">
+<meta name="theme-color" content="#3b82f6">
 <title>F9XR's SEO CodeBase Auditor SKILL - 24 Pillars. One Command.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" media="print" onload="this.media='all'">
 <meta property="og:title" content="F9XR's SEO CodeBase Auditor SKILL - 24 Pillars. One Command.">
 <meta property="og:description" content="Enterprise-grade SEO auditing for static code repositories. Drop in SKILL.md, run one command, get production-ready fixes.">
 <meta property="og:image" content="https://f9xr.github.io/og-image.png">
@@ -20,24 +29,22 @@
 <meta name="twitter:description" content="Enterprise-grade SEO auditing for static code repositories. Drop in SKILL.md, run one command, get production-ready fixes.">
 <meta name="twitter:image" content="https://f9xr.github.io/og-image.png">
 <style>
-/* ========================================
-   DESIGN TOKENS (from DESIGN.md)
-   ======================================== */
+
 :root {
-  --primary: #5e6ad2;
-  --primary-hover: #828fff;
-  --primary-focus: #5e69d1;
-  --ink: #f7f8f8;
-  --ink-muted: #d0d6e0;
-  --ink-subtle: #8a8f98;
-  --ink-tertiary: #62666d;
-  --canvas: #010102;
-  --surface-1: #0f1011;
-  --surface-2: #141516;
-  --surface-3: #18191a;
-  --surface-4: #191a1b;
-  --hairline: #23252a;
-  --hairline-strong: #34343a;
+  --primary: #3b82f6;
+  --primary-hover: #60a5fa;
+  --primary-focus: #2563eb;
+  --ink: #f8f9fa;
+  --ink-muted: #e9ecef;
+  --ink-subtle: #adb5bd;
+  --ink-tertiary: #6c757d;
+  --canvas: #212529;
+  --surface-1: #343a40;
+  --surface-2: #3a4047;
+  --surface-3: #40474f;
+  --surface-4: #454c55;
+  --hairline: #495057;
+  --hairline-strong: #6c757d;
   --success: #27a644;
   --critical: #e5484d;
   --high: #f5a623;
@@ -59,12 +66,9 @@
   --nav-height: 56px;
 }
 
-/* ========================================
-   RESET & BASE
-   ======================================== */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;scroll-behavior:smooth}
-body{background:var(--canvas);color:var(--ink);font-family:'Inter',-apple-system,system-ui,'Segoe UI',Roboto,sans-serif;font-weight:400;line-height:1.5;letter-spacing:-0.05px;min-height:100vh}
+body{background:var(--canvas);color:var(--ink);font-family:'Inter',-apple-system,system-ui,'Segoe UI',Roboto,sans-serif;font-weight:400;line-height:1.5;letter-spacing:-0.05px;min-height:100vh;padding-top:var(--nav-height)}
 img{max-width:100%;height:auto;display:block}
 a{color:var(--primary);text-decoration:none;transition:color 0.15s}
 a:hover,a:focus{color:var(--primary-hover)}
@@ -72,9 +76,6 @@ a:focus-visible{outline:2px solid var(--primary-focus);outline-offset:2px;border
 code,pre{font-family:'JetBrains Mono','SF Mono','Menlo',monospace;font-size:0.8125rem}
 ::selection{background:var(--primary);color:var(--canvas)}
 
-/* ========================================
-   TYPOGRAPHY
-   ======================================== */
 .display-xl{font-size:clamp(2.25rem,5.5vw,5rem);font-weight:600;line-height:1.05;letter-spacing:-0.03em}
 .display-lg{font-size:clamp(2rem,3.5vw,3.5rem);font-weight:600;line-height:1.10;letter-spacing:-0.02em}
 .display-md{font-size:clamp(1.5rem,2.5vw,2.5rem);font-weight:600;line-height:1.15;letter-spacing:-0.015em}
@@ -89,19 +90,13 @@ code,pre{font-family:'JetBrains Mono','SF Mono','Menlo',monospace;font-size:0.81
 .eyebrow{font-size:0.8125rem;font-weight:500;line-height:1.30;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:var(--spacing-sm)}
 .mono{font-family:'JetBrains Mono','SF Mono','Menlo',monospace;font-size:0.8125rem;font-weight:400;line-height:1.50}
 
-/* ========================================
-   LAYOUT
-   ======================================== */
 .container{max-width:var(--max-width);margin:0 auto;padding:0 var(--spacing-lg)}
 .section{padding:var(--spacing-section) 0}
 .section-header{text-align:center;margin-bottom:var(--spacing-xxl)}
 .section-header .display-lg{margin-bottom:var(--spacing-md)}
 .section-header .subhead{color:var(--ink-muted);max-width:640px;margin:0 auto}
 
-/* ========================================
-   NAV
-   ======================================== */
-nav{position:sticky;top:0;z-index:100;background:var(--canvas);height:var(--nav-height);border-bottom:1px solid var(--hairline);display:flex;align-items:center}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--canvas);height:var(--nav-height);border-bottom:1px solid var(--hairline);display:flex;align-items:center;transform:translateY(0);transition:transform 0.3s ease}
 nav .container{width:100%;display:flex;align-items:center;justify-content:space-between}
 .nav-brand{display:flex;align-items:center;gap:var(--spacing-sm);font-weight:500;font-size:0.9375rem;color:var(--ink);text-decoration:none}
 .nav-brand svg{flex-shrink:0}
@@ -115,10 +110,8 @@ nav .container{width:100%;display:flex;align-items:center;justify-content:space-
 .nav-ctas{display:flex;align-items:center;gap:var(--spacing-sm)}
 .nav-toggle{background:none;border:none;color:var(--ink);cursor:pointer;padding:var(--spacing-xs)}
 .nav-toggle.btn-icon{display:none}
+nav.hidden{transform:translateY(-100%)}
 
-/* ========================================
-   BUTTONS
-   ======================================== */
 .btn{display:inline-flex;align-items:center;gap:var(--spacing-xs);padding:8px 14px;border-radius:var(--rounded-md);font-size:0.875rem;font-weight:500;line-height:1.20;border:none;cursor:pointer;transition:background 0.15s,border-color 0.15s;text-decoration:none;white-space:nowrap}
 .btn:focus-visible{outline:2px solid var(--primary-focus);outline-offset:2px}
 .btn-primary{background:var(--primary);color:#fff}
@@ -132,26 +125,19 @@ nav .container{width:100%;display:flex;align-items:center;justify-content:space-
 .btn-icon svg{width:18px;height:18px}
 .btn-icon i{font-size:18px}
 
-/* ========================================
-   SEVERITY BADGES
-   ======================================== */
 .badge{display:inline-block;padding:2px 8px;border-radius:var(--rounded-pill);font-size:0.75rem;font-weight:500;line-height:1.30}
 .badge-critical{background:rgba(229,72,77,0.15);color:var(--critical)}
 .badge-high{background:rgba(245,166,35,0.15);color:var(--high)}
-.badge-medium{background:rgba(94,106,210,0.15);color:var(--primary)}
+.badge-medium{background:rgba(59,130,246,0.15);color:var(--primary)}
 .badge-passed{background:rgba(39,166,68,0.15);color:var(--success)}
 
-/* ========================================
-   HERO
-   ======================================== */
 .hero{padding:clamp(3rem,8vw,6rem) 0 clamp(2rem,5vw,4rem);position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(94,106,210,0.06),transparent);pointer-events:none}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(59,130,246,0.06),transparent);pointer-events:none}
 .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-xxl);align-items:center}
 .hero-content .display-xl{margin-bottom:var(--spacing-lg)}
 .hero-content .subhead{color:var(--ink-muted);margin-bottom:var(--spacing-xl);max-width:520px}
 .hero-ctas{display:flex;gap:var(--spacing-sm);flex-wrap:wrap}
 
-/* Hero report preview panel */
 .hero-preview{background:var(--surface-1);border:1px solid var(--hairline);border-radius:var(--rounded-xl);padding:var(--spacing-lg);overflow:hidden}
 .hero-preview-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--spacing-md);padding-bottom:var(--spacing-md);border-bottom:1px solid var(--hairline)}
 .hero-preview-title{font-size:0.8125rem;font-weight:500;color:var(--ink-muted);display:flex;align-items:center;gap:var(--spacing-xs)}
@@ -168,9 +154,6 @@ nav .container{width:100%;display:flex;align-items:center;justify-content:space-
 .hero-preview-code .hl{color:var(--success)}
 .hero-preview-code .hl-kw{color:var(--primary)}
 
-/* ========================================
-   PILLARS
-   ======================================== */
 .pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--spacing-md)}
 .pillar-card{background:var(--surface-1);border:1px solid var(--hairline);border-radius:var(--rounded-lg);padding:var(--spacing-lg);transition:border-color 0.2s,background 0.2s}
 .pillar-card:hover{border-color:var(--hairline-strong);background:var(--surface-2)}
@@ -183,19 +166,13 @@ nav .container{width:100%;display:flex;align-items:center;justify-content:space-
 .pillar-group-header{margin-bottom:var(--spacing-md)}
 .pillar-group-header .eyebrow{margin-bottom:0}
 
-/* ========================================
-   PROCESS
-   ======================================== */
 .process-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--spacing-md)}
 .process-step{text-align:center;padding:var(--spacing-lg);background:var(--surface-1);border:1px solid var(--hairline);border-radius:var(--rounded-lg);position:relative}
-.process-step-num{width:40px;height:40px;border-radius:50%;background:rgba(94,106,210,0.12);color:var(--primary);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:600;margin:0 auto var(--spacing-md)}
+.process-step-num{width:40px;height:40px;border-radius:50%;background:rgba(59,130,246,0.12);color:var(--primary);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:600;margin:0 auto var(--spacing-md)}
 .process-step-title{font-size:0.9375rem;font-weight:500;color:var(--ink);margin-bottom:var(--spacing-xs)}
 .process-step-desc{font-size:0.8125rem;color:var(--ink-subtle);line-height:1.40}
 .process-arrow{display:none}
 
-/* ========================================
-   OUTPUT PREVIEW (Signature element)
-   ======================================== */
 .output-panel{background:var(--surface-1);border:1px solid var(--hairline);border-radius:var(--rounded-xl);padding:var(--spacing-xxl);position:relative}
 .output-panel::before{content:'seo_audit_report.md';position:absolute;top:0;left:0;right:0;padding:var(--spacing-sm) var(--spacing-lg);font-size:0.75rem;font-weight:500;color:var(--ink-subtle);background:var(--surface-2);border-radius:var(--rounded-xl) var(--rounded-xl) 0 0;border-bottom:1px solid var(--hairline)}
 .output-panel-inner{padding-top:var(--spacing-xl)}
@@ -209,20 +186,14 @@ nav .container{width:100%;display:flex;align-items:center;justify-content:space-
 .output-fix-block .code-line.del{color:var(--critical)}
 .output-fix-block .code-line.ins{color:var(--success)}
 
-/* ========================================
-   DIFFERENTIATORS
-   ======================================== */
 .diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--spacing-md)}
 .diff-card{background:var(--surface-1);border:1px solid var(--hairline);border-radius:var(--rounded-lg);padding:var(--spacing-xl)}
-.diff-card-icon{width:40px;height:40px;border-radius:var(--rounded-md);display:flex;align-items:center;justify-content:center;margin-bottom:var(--spacing-md);background:rgba(94,106,210,0.1);color:var(--primary)}
+.diff-card-icon{width:40px;height:40px;border-radius:var(--rounded-md);display:flex;align-items:center;justify-content:center;margin-bottom:var(--spacing-md);background:rgba(59,130,246,0.1);color:var(--primary)}
 .diff-card-icon svg{width:20px;height:20px}
 .diff-card-icon i{font-size:20px}
 .diff-card-title{font-size:1rem;font-weight:500;color:var(--ink);margin-bottom:var(--spacing-xs)}
 .diff-card-desc{font-size:0.875rem;color:var(--ink-subtle);line-height:1.45}
 
-/* ========================================
-   PROMPT CODE
-   ======================================== */
 .prompt-toolbar{display:flex;justify-content:flex-end;margin-bottom:var(--spacing-md)}
 .prompt-block{background:var(--surface-1);border:1px solid var(--hairline);border-radius:var(--rounded-lg);padding:var(--spacing-md);margin-bottom:var(--spacing-sm);transition:border-color 0.2s}
 .prompt-block:hover{border-color:var(--hairline-strong)}
@@ -237,9 +208,6 @@ nav .container{width:100%;display:flex;align-items:center;justify-content:space-
 .prompt-block code{display:block;font-size:0.8125rem;color:var(--ink-muted);white-space:pre-wrap;word-break:break-word;padding-right:4px;line-height:1.55}
 .prompt-block .prompt-cmd{color:var(--success);font-weight:500}
 
-/* ========================================
-   BACK TO TOP
-   ======================================== */
 .back-to-top{position:fixed;bottom:24px;right:24px;z-index:1000;width:44px;height:44px;border-radius:50%;background:var(--primary);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s,background 0.15s;box-shadow:0 4px 12px rgba(0,0,0,0.3)}
 .back-to-top.visible{opacity:1;visibility:visible}
 .back-to-top:hover{background:var(--primary-hover)}
@@ -247,18 +215,12 @@ nav .container{width:100%;display:flex;align-items:center;justify-content:space-
 .back-to-top svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .back-to-top i{font-size:20px}
 
-/* ========================================
-   CTA BANNER
-   ======================================== */
 .cta-banner{background:var(--surface-1);border:1px solid var(--hairline);border-radius:var(--rounded-lg);padding:var(--spacing-xxl);text-align:center;position:relative;overflow:hidden}
-.cta-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(94,106,210,0.05),transparent);pointer-events:none}
+.cta-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(59,130,246,0.05),transparent);pointer-events:none}
 .cta-banner .headline{margin-bottom:var(--spacing-md)}
 .cta-banner .body-sm{color:var(--ink-subtle);max-width:480px;margin:0 auto var(--spacing-lg)}
 
-/* ========================================
-   FOOTER
-   ======================================== */
-footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var(--spacing-xxl) 0}
+footer{background:#0a0a0a;border-top:1px solid var(--hairline);padding:var(--spacing-xxl) 0}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:var(--spacing-xxl)}
 .footer-brand .body-sm{color:var(--ink-subtle);margin-top:var(--spacing-sm);max-width:300px}
 .footer-col-title{font-size:0.8125rem;font-weight:500;color:var(--ink-muted);margin-bottom:var(--spacing-md)}
@@ -266,19 +228,21 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
 .footer-col a:hover{color:var(--ink)}
 .footer-bottom{margin-top:var(--spacing-xxl);padding-top:var(--spacing-md);border-top:1px solid var(--hairline);display:flex;justify-content:space-between;align-items:center}
 .footer-bottom .caption{color:var(--ink-tertiary)}
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--spacing-sm)}
+.tools-card{background:var(--surface-1);border:1px solid var(--hairline);border-radius:var(--rounded-md);padding:var(--spacing-sm) var(--spacing-md);transition:border-color 0.2s,transform 0.2s;display:flex;flex-direction:column;text-decoration:none;cursor:pointer}
+.tools-card:hover{border-color:var(--primary);transform:translateY(-1px)}
+.tools-card-num{font-size:0.625rem;font-weight:600;color:var(--ink-subtle);letter-spacing:0.05em;font-family:'JetBrains Mono',monospace;margin-bottom:2px}
+.tools-card-title{font-size:0.875rem;font-weight:500;color:var(--ink);line-height:1.3}
+.tools-card-link{margin-left:auto;font-size:0.875rem;color:var(--primary);opacity:0;transition:opacity 0.15s,transform 0.15s;transform:translateX(-4px)}
+.tools-card:hover .tools-card-link{opacity:1;transform:translateX(0)}
+.tools-loading{color:var(--ink-tertiary);font-size:0.875rem;text-align:center;padding:var(--spacing-xl) 0}
 
-/* ========================================
-   TIMELINE ANIMATION
-   ======================================== */
 @media (prefers-reduced-motion:no-preference){
   .fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
   .fade-in.visible{opacity:1;transform:translateY(0)}
 }
 @keyframes navFadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 
-/* ========================================
-   RESPONSIVE
-   ======================================== */
 @media(max-width:1024px){
   .hero-grid{grid-template-columns:1fr;gap:var(--spacing-xl)}
   .hero-preview{order:-1}
@@ -291,7 +255,7 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
 
 @media(max-width:768px){
   .nav-links{display:none}
-  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:var(--nav-height);left:0;right:0;background:var(--surface-1);border-bottom:1px solid var(--hairline);padding:var(--spacing-md);gap:var(--spacing-sm);z-index:99;animation:navFadeIn 0.2s ease}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:var(--nav-height);left:0;right:0;background:#0a0a0a;border-bottom:1px solid var(--hairline);padding:var(--spacing-md);gap:var(--spacing-sm);z-index:99;animation:navFadeIn 0.2s ease}
   .nav-toggle.btn-icon{display:inline-flex}
   .nav-ctas .btn-secondary,.nav-byline{display:none}
   .pillar-grid{grid-template-columns:1fr}
@@ -301,6 +265,7 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
   .diff-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr;gap:var(--spacing-lg)}
   .footer-bottom{flex-direction:column;gap:var(--spacing-sm);text-align:center}
+  .tools-grid{grid-template-columns:repeat(2,1fr);gap:var(--spacing-xs)}
   .output-matrix{font-size:0.6875rem}
   .output-matrix th,.output-matrix td{padding:5px 6px}
 }
@@ -314,6 +279,7 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
   .output-panel{padding:var(--spacing-md)}
   .output-panel-inner{padding-top:var(--spacing-lg)}
   .cta-banner{padding:var(--spacing-lg)}
+  .tools-grid{grid-template-columns:1fr;gap:var(--spacing-xs)}
 }
 </style>
 <script type="application/ld+json">
@@ -333,6 +299,8 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
       "url": "https://f9xr.github.io/seo-audit-report-skill/",
       "name": "F9XR's SEO CodeBase Auditor SKILL",
       "description": "Enterprise-grade SEO auditing for static code repositories. 24 pillars, one file, production-ready fix blocks.",
+      "datePublished": "2025-01-01",
+      "dateModified": "2026-07-11",
       "publisher": { "@id": "https://f9xr.github.io/#organization" },
       "potentialAction": {
         "@type": "SearchAction",
@@ -343,14 +311,12 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
   ]
 }
 </script>
+<link rel="alternate" type="text/markdown" href="https://f9xr.github.io/seo-audit-report-skill/llms.txt" title="LLM-readable site description">
 </head>
 <body>
 <a href="#pillars" class="skip-link" style="position:absolute;top:-100px;left:0;background:var(--primary);color:#fff;padding:8px 16px;z-index:10000;transition:top 0.2s">Skip to main content</a>
 <style>.skip-link:focus{top:0}</style>
 
-<!-- ========================================
-     NAV
-     ======================================== -->
 <header>
 <nav>
   <div class="container">
@@ -378,9 +344,6 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
 </nav>
 </header>
 
-<!-- ========================================
-     HERO
-     ======================================== -->
 <section class="hero">
   <div class="container">
     <div class="hero-grid">
@@ -424,9 +387,6 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
   </div>
 </section>
 
-<!-- ========================================
-     PILLARS
-     ======================================== -->
 <section class="section" id="pillars">
   <div class="container">
     <div class="section-header fade-in">
@@ -488,7 +448,7 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
         <div class="pillar-card"><div class="pillar-card-num">12</div><div class="pillar-card-title">Accessibility SEO</div><div class="pillar-card-desc">ARIA landmarks, form labels, focus order, color contrast, skip navigation, video captions, empty interactive elements.</div></div>
         <div class="pillar-card"><div class="pillar-card-num">23</div><div class="pillar-card-title">Competitor Analysis</div><div class="pillar-card-desc">Content depth comparison, keyword gap analysis, entity coverage, SERP feature ownership, schema adoption, technical benchmarking, strategic recommendations.</div></div>
         <div class="pillar-card"><div class="pillar-card-num">24</div><div class="pillar-card-title">Video &amp; YouTube SEO</div><div class="pillar-card-desc">VideoObject schema, embed best practices, transcript SEO, thumbnail optimization, video sitemap, rich result eligibility, performance impact.</div></div>
-        <div class="pillar-card" style="border-color:var(--primary);background:rgba(94,106,210,0.04)">
+        <div class="pillar-card" style="border-color:var(--primary);background:rgba(59,130,246,0.04)">
           <div class="pillar-card-num" style="color:var(--success)">+</div>
           <div class="pillar-card-title">IndexNow Protocol</div>
           <div class="pillar-card-desc">Built into Pillar 9 - key file hosting, HTTP POST submission via api.indexnow.org, curl test command, rapid indexation setup.</div>
@@ -498,9 +458,6 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
   </div>
 </section>
 
-<!-- ========================================
-     HOW IT WORKS (5-Pass Process)
-     ======================================== -->
 <section class="section" id="how-it-works" style="background:var(--surface-1);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)">
   <div class="container">
     <div class="section-header fade-in">
@@ -548,9 +505,6 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
   </div>
 </section>
 
-<!-- ========================================
-     OUTPUT BLUEPRINT PREVIEW (Signature)
-     ======================================== -->
 <section class="section" id="output">
   <div class="container">
     <div class="section-header fade-in">
@@ -654,9 +608,6 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
   </div>
 </section>
 
-<!-- ========================================
-     DIFFERENTIATORS
-     ======================================== -->
 <section class="section" id="why" style="background:var(--surface-1);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)">
   <div class="container">
     <div class="section-header fade-in">
@@ -690,9 +641,6 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
   </div>
 </section>
 
-<!-- ========================================
-     PROMPT TEMPLATES
-     ======================================== -->
 <section class="section" id="templates">
   <div class="container">
     <div class="section-header fade-in">
@@ -742,7 +690,7 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
             <span>Copy</span>
           </button>
         </div>
-        <code><span class="prompt-cmd">@SKILL.md</span> Run a competitive SEO gap analysis against [competitor1.com, competitor2.com]. Compare content depth, entity coverage, schema adoption, and keyword positioning.</code>
+        <code><span class="prompt-cmd">@SKILL.md</span> Run a competitive SEO gap analysis against [competitor1.com, competitor2.com, competitor3.com]. Compare content depth, entity coverage, schema adoption, and keyword positioning.</code>
       </div>
       <div class="prompt-block">
         <div class="prompt-block-head">
@@ -778,9 +726,18 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
   </div>
 </section>
 
-<!-- ========================================
-     CTA BANNER
-     ======================================== -->
+<section class="section" id="seo-tools" style="background:var(--surface-1);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2 class="display-lg">More SEO Tools</h2>
+      <p class="subhead">Free SEO tools from our network to help you rank higher and grow online.</p>
+    </div>
+    <div class="tools-grid fade-in" id="seoToolsGrid">
+      <div class="tools-loading" id="seoToolsLoading">Loading tools...</div>
+    </div>
+  </div>
+</section>
+
 <section class="section">
   <div class="container">
     <div class="cta-banner fade-in">
@@ -795,9 +752,6 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
   </div>
 </section>
 
-<!-- ========================================
-     FOOTER
-     ======================================== -->
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -824,21 +778,21 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
       </div>
       <div class="footer-col">
         <div class="footer-col-title">Company</div>
-        <a href="https://f9xr.github.io" target="_blank" rel="noopener noreferrer">F9XR Team</a>
-        <a href="https://github.com/f9xr/seo-audit-report-skill" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://inakm.github.io/" target="_blank" rel="noopener noreferrer">Anjani Kumar Mishra (Dev)</a>
+        <a href="https://f9xr.github.io/pages/about.html" target="_blank" rel="noopener noreferrer">About</a>
+        <a href="https://f9xr.github.io/pages/contact.html" target="_blank" rel="noopener noreferrer">Contact</a>
+        <a href="https://f9xr.github.io/pages/sitemap.html" target="_blank" rel="noopener noreferrer">Sitemap</a>
+        <a href="https://f9xr.github.io/legals/terms.html" target="_blank" rel="noopener noreferrer">Terms</a>
+        <a href="https://f9xr.github.io/legals/privacy.html" target="_blank" rel="noopener noreferrer">Privacy</a>
       </div>
     </div>
     <div class="footer-bottom">
       <span class="caption">F9XR's SEO CodeBase Auditor SKILL - Open source skill file</span>
+      <span class="caption">Powered by <a href="https://tontuftools.blogspot.com/" target="_blank" rel="noopener noreferrer">TONTUFTools</a></span>
       <span class="caption">Built by <a href="https://f9xr.github.io" target="_blank" rel="noopener noreferrer">F9XR Team</a> - Website development, redesign, local SEO &amp; digital presence solutions.</span>
     </div>
   </div>
 </footer>
 
-<!-- ========================================
-     INTERSECTION OBSERVER
-     ======================================== -->
 <button id="backToTop" class="back-to-top" aria-label="Back to top">
   <i class="fas fa-chevron-up"></i>
 </button>
@@ -846,6 +800,14 @@ footer{background:var(--canvas);border-top:1px solid var(--hairline);padding:var
 <script>
 document.addEventListener('DOMContentLoaded',function(){
   if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var nav=document.querySelector('nav');
+  var lastScroll=0;
+  window.addEventListener('scroll',function(){
+    var cur=window.scrollY;
+    if(cur>lastScroll&&cur>100){nav.classList.add('hidden')}
+    else{nav.classList.remove('hidden')}
+    lastScroll=cur;
+  });
   var els=document.querySelectorAll('.fade-in');
   if(els.length===0)return;
   var obs=new IntersectionObserver(function(entries){
@@ -855,7 +817,6 @@ document.addEventListener('DOMContentLoaded',function(){
   },{threshold:0.1});
   els.forEach(function(el){obs.observe(el)});
 
-  // Mobile nav toggle
   var navToggle=document.getElementById('navToggle');
   var navLinks=document.getElementById('navLinks');
   if(navToggle&&navLinks){
@@ -864,7 +825,6 @@ document.addEventListener('DOMContentLoaded',function(){
     document.addEventListener('click',function(e){if(!navLinks.contains(e.target)&&!navToggle.contains(e.target))navLinks.classList.remove('open')});
   }
 
-  // Back to top
   var btt=document.getElementById('backToTop');
   if(btt){
     window.addEventListener('scroll',function(){if(window.scrollY>300)btt.classList.add('visible');else btt.classList.remove('visible')});
@@ -895,7 +855,33 @@ function copyAllPrompts(){
     setTimeout(function(){btn.textContent='Copy All';},2000);
   });
  }
+
+function showrecentposts(json){
+  var grid=document.getElementById('seoToolsGrid');
+  var loading=document.getElementById('seoToolsLoading');
+  if(loading)loading.remove();
+  if(!json||!json.feed||!json.feed.entry)return;
+  var entries=json.feed.entry;
+  for(var i=0;i<entries.length;i++){
+    var entry=entries[i];
+    var title=entry.title?entry.title.$t:'';
+    var link='#';
+    if(entry.link){
+      for(var j=0;j<entry.link.length;j++){
+        if(entry.link[j].rel==='alternate'){link=entry.link[j].href;break}
+      }
+    }
+    var card=document.createElement('a');
+    card.href=link;
+    card.target='_blank';
+    card.rel='noopener noreferrer';
+    card.className='tools-card';
+    card.innerHTML='<div class="tools-card-num">'+String(i+1).padStart(2,'0')+'</div><div style="display:flex;align-items:center;justify-content:space-between;gap:var(--spacing-sm)"><div class="tools-card-title">'+title+'</div><div class="tools-card-link">\u2192</div></div>';
+    grid.appendChild(card);
+  }
+ }
 </script>
+<script src="https://tontuftools.blogspot.com/feeds/posts/default/-/SEO?orderby=published&alt=json-in-script&callback=showrecentposts&max-results=10"></script>
 
 </body>
 </html>
