@@ -2,6 +2,18 @@
 
 > Enterprise-grade SEO auditing for static code repositories. 24 pillars, one file, production-ready fix blocks.
 
+## License
+
+MIT License - see LICENSE.txt for full terms.
+
+## Content Types
+
+- Developer tool landing page (single-page HTML)
+- SEO audit skill file (SKILL.md)
+- Design system documentation (DESIGN.md)
+- Prompt templates (prompts.txt)
+- Audit report examples (seo_audit_report.md, seo_audit_report.csv)
+
 ## Key Files
 
 - SKILL.md: The audit skill file - drop into any project root and run with @SKILL.md

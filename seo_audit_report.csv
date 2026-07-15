@@ -1,10 +1,13 @@
-Pillar,Detected Issue,Priority,Impact,Development Effort,Target File Path(s),Fix Summary
-Social SEO,Missing Open Graph tags (og:title og:description og:image og:url),MEDIUM,HIGH,LOW,index.html,Add <meta property="og:*"> tags to <head>
-Social SEO,Missing Twitter Card tags (twitter:card twitter:title twitter:description twitter:image),MEDIUM,HIGH,LOW,index.html,Add <meta name="twitter:*"> tags to <head>
-Rich Results,Missing JSON-LD Organization schema,MEDIUM,HIGH,LOW,index.html,Add @type Organization schema block to <head>
-Rich Results,Missing JSON-LD WebSite schema with SearchAction,MEDIUM,HIGH,LOW,index.html,Add @type WebSite schema block to <head>
-Security SEO,External target="_blank" links omit rel="noreferrer",LOW,MEDIUM,LOW,index.html (lines 654 682-685 689-690 695),Replace rel="noopener" with rel="noopener noreferrer"
-Technical SEO,No robots.txt at project root,LOW,LOW,LOW,project root,Create robots.txt file allowing all crawlers
-Technical SEO,No sitemap.xml at project root,LOW,LOW,LOW,project root,Create sitemap.xml with single page URL
-Accessibility SEO,No skip-to-content link,LOW,LOW,LOW,index.html,Add skip link as first focusable element after <body>
-Accessibility SEO,<nav> not wrapped in <header> landmark,LOW,LOW,LOW,index.html,Wrap <nav> in <header> element
+#,Pillar,Detected Issue,Severity,Target File(s),Effort,Est. Traffic Impact,Time to Impact,Business Value
+1,Video SEO,YouTube embed uses standard URL not privacy-enhanced mode,High,index.html:930,S (<4hr),+2-5% page speed,Immediate,Traffic
+2,Video SEO,Missing VideoObject schema for YouTube embed,High,index.html:930,S (<4hr),+2-5% rich results,1-4 weeks,Traffic
+3,Video SEO,Missing VideoObject schema for SlideShare embed,High,index.html:856,S (<4hr),+1-3% rich results,1-4 weeks,Traffic
+4,Technical SEO,Sitemap.xml missing 404.html entry,Medium,sitemap.xml,S (<4hr),+1% crawl coverage,1-4 weeks,Compliance
+5,Technical SEO,Sitemap.xml lastmod date is static,Medium,sitemap.xml,S (<4hr),+1% freshness signal,Immediate,Compliance
+6,Schema,WebSite schema missing dateModified field,Medium,index.html,S (<4hr),+1-2% entity signals,1-4 weeks,Brand
+7,Video SEO,YouTube embed iframe missing loading="lazy",Medium,index.html:930,S (<4hr),+1-2% CLS/perf,Immediate,Traffic
+8,Accessibility,FAQ accordion lacks ARIA roles for screen readers,Medium,index.html,S (<4hr),N/A (a11y),Immediate,Compliance
+9,Technical SEO,opensearch.xml search URL points to GitHub not site,Low,opensearch.xml,S (<4hr),N/A,N/A,Compliance
+10,Content,llms.txt missing license and content sections,Low,llms.txt,S (<4hr),N/A,N/A,Brand
+11,Content,404.html missing header landmark and nav,Low,404.html,S (<4hr),N/A,N/A,Compliance
+12,Social SEO,og:image referenced without verifying existence,Low,index.html,S (<4hr),+1-3% social CTR,Immediate,Brand
