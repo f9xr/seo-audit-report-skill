@@ -237,6 +237,80 @@ footer{background:#0a0a0a;border-top:1px solid var(--hairline);padding:var(--spa
 .tools-card:hover .tools-card-link{opacity:1;transform:translateX(0)}
 .tools-loading{color:var(--ink-tertiary);font-size:0.875rem;text-align:center;padding:var(--spacing-xl) 0}
 
+.ss-showcase{padding:var(--spacing-section) 0;position:relative;overflow:hidden}
+.ss-showcase::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 30%,rgba(59,130,246,0.06),transparent);pointer-events:none}
+.ss-showcase .container{max-width:1400px}
+.ss-wrapper{max-width:960px;margin:0 auto;position:relative;perspective:1400px}
+.ss-frame{position:relative;background:var(--surface-1);border:1px solid var(--hairline);border-radius:var(--rounded-xl);padding:16px;transform:rotateX(2deg) rotateY(-1deg);transform-style:preserve-3d;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94),box-shadow 0.5s ease;box-shadow:0 2px 4px rgba(0,0,0,0.2),0 8px 24px rgba(0,0,0,0.25),0 24px 48px rgba(0,0,0,0.2),0 0 0 1px rgba(255,255,255,0.04)}
+.ss-frame:hover{transform:rotateX(0deg) rotateY(0deg) scale(1.01);box-shadow:0 4px 8px rgba(0,0,0,0.25),0 16px 32px rgba(0,0,0,0.3),0 32px 64px rgba(0,0,0,0.25),0 0 0 1px rgba(255,255,255,0.06),0 0 100px rgba(59,130,246,0.06)}
+.ss-frame-inner{border-radius:var(--rounded-lg);overflow:hidden;background:#0a0a0a;position:relative}
+.ss-frame-inner iframe{width:100%;min-height:460px;border:0;display:block}
+.ss-frame-glow{position:absolute;inset:-1px;border-radius:var(--rounded-xl);background:linear-gradient(135deg,rgba(59,130,246,0.08),transparent 40%,transparent 60%,rgba(59,130,246,0.05));pointer-events:none;z-index:1}
+.ss-shadow{position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);width:70%;height:30px;background:radial-gradient(ellipse at center,rgba(0,0,0,0.3),transparent 70%);filter:blur(12px);z-index:-1}
+.ss-label{text-align:center;margin-top:var(--spacing-xl)}
+.ss-label .eyebrow{margin-bottom:var(--spacing-xs)}
+.ss-label .subhead{color:var(--ink-muted);max-width:520px;margin:0 auto}
+.ss-platform-badge{display:inline-flex;align-items:center;gap:6px;margin-top:var(--spacing-md);padding:6px 14px;background:var(--surface-1);border:1px solid var(--hairline);border-radius:var(--rounded-pill);font-size:0.8125rem;color:var(--ink-subtle)}
+.ss-platform-badge i{color:var(--primary)}
+@media(max-width:768px){
+  .ss-frame{transform:none;padding:10px}
+  .ss-frame:hover{transform:scale(1.005)}
+  .ss-frame-inner iframe{min-height:320px}
+}
+@media(max-width:480px){
+  .ss-frame{padding:8px;border-radius:var(--rounded-lg)}
+  .ss-frame-inner{border-radius:var(--rounded-md)}
+  .ss-frame-inner iframe{min-height:260px}
+}
+
+.faq-section{padding:var(--spacing-section) 0;position:relative}
+.faq-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 20%,rgba(59,130,246,0.04),transparent);pointer-events:none}
+.faq-grid{max-width:768px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--hairline)}
+.faq-item:first-child{border-top:1px solid var(--hairline)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;width:100%;padding:var(--spacing-lg) 0;background:none;border:none;color:var(--ink);font-size:1rem;font-weight:500;font-family:inherit;text-align:left;cursor:pointer;transition:color 0.15s;gap:var(--spacing-md)}
+.faq-q:hover{color:var(--primary)}
+.faq-q:focus-visible{outline:2px solid var(--primary-focus);outline-offset:2px;border-radius:var(--rounded-xs)}
+.faq-icon{width:24px;height:24px;border-radius:50%;background:var(--surface-1);border:1px solid var(--hairline);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform 0.3s ease,background 0.2s,color 0.2s}
+.faq-icon i{font-size:12px;color:var(--ink-subtle);transition:transform 0.3s ease}
+.faq-item.open .faq-icon{background:rgba(59,130,246,0.12);border-color:rgba(59,130,246,0.3)}
+.faq-item.open .faq-icon i{color:var(--primary);transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s cubic-bezier(0.25,0.46,0.45,0.94),padding 0.35s ease;padding:0 0}
+.faq-item.open .faq-a{max-height:300px;padding:0 0 var(--spacing-lg)}
+.faq-a p{font-size:0.9375rem;color:var(--ink-subtle);line-height:1.60}
+.faq-a p a{color:var(--primary);text-decoration:underline;text-underline-offset:2px}
+
+.tv-showcase{padding:var(--spacing-section) 0;position:relative}
+.tv-showcase::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 50%,rgba(59,130,246,0.04),transparent);pointer-events:none}
+.tv-wrapper{max-width:900px;margin:0 auto;position:relative}
+.tv-screen{position:relative;background:#0a0a0a;border-radius:var(--rounded-xl);padding:12px;box-shadow:0 2px 4px rgba(0,0,0,0.3),0 8px 16px rgba(0,0,0,0.3),0 24px 48px rgba(0,0,0,0.25),0 0 0 1px rgba(255,255,255,0.05);transform:perspective(1200px) rotateX(1deg);transition:transform 0.4s ease,box-shadow 0.4s ease}
+.tv-screen:hover{transform:perspective(1200px) rotateX(0deg) scale(1.005);box-shadow:0 2px 4px rgba(0,0,0,0.3),0 8px 16px rgba(0,0,0,0.3),0 32px 64px rgba(0,0,0,0.3),0 0 0 1px rgba(255,255,255,0.08),0 0 80px rgba(59,130,246,0.08)}
+.tv-bezel{background:#1a1a1a;border-radius:var(--rounded-lg);padding:6px;position:relative}
+.tv-bezel::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:6px;height:6px;border-radius:50%;background:rgba(59,130,246,0.6);box-shadow:0 0 6px rgba(59,130,246,0.4)}
+.tv-inner{position:relative;border-radius:var(--rounded-md);overflow:hidden;aspect-ratio:16/9;background:#000}
+.tv-inner iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+.tv-stand{display:flex;justify-content:center;align-items:flex-start;gap:0}
+.tv-neck{width:80px;height:28px;background:linear-gradient(180deg,#1a1a1a,#252525);border-radius:0 0 4px 4px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.05)}
+.tv-base{width:200px;height:10px;background:linear-gradient(180deg,#252525,#1a1a1a);border-radius:0 0 8px 8px;box-shadow:0 4px 12px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.05)}
+.tv-shadow{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);width:60%;height:20px;background:radial-gradient(ellipse at center,rgba(0,0,0,0.35),transparent 70%);filter:blur(8px)}
+.tv-label{text-align:center;margin-top:var(--spacing-lg)}
+.tv-label .eyebrow{margin-bottom:var(--spacing-xs)}
+.tv-label .subhead{color:var(--ink-muted);max-width:480px;margin:0 auto}
+
+@media(max-width:768px){
+  .tv-screen{padding:8px;transform:none}
+  .tv-screen:hover{transform:scale(1.005)}
+  .tv-neck{width:60px;height:20px}
+  .tv-base{width:140px;height:8px}
+}
+@media(max-width:480px){
+  .tv-screen{padding:6px;border-radius:var(--rounded-lg)}
+  .tv-bezel{border-radius:var(--rounded-md);padding:4px}
+  .tv-inner{border-radius:var(--rounded-sm)}
+  .tv-neck{width:50px;height:16px}
+  .tv-base{width:110px;height:6px}
+}
+
 @media (prefers-reduced-motion:no-preference){
   .fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
   .fade-in.visible{opacity:1;transform:translateY(0)}
@@ -311,6 +385,70 @@ footer{background:#0a0a0a;border-top:1px solid var(--hairline);padding:var(--spa
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the SEO CodeBase Auditor SKILL?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It's a single SKILL.md file you drop into any codebase root. When invoked with @SKILL.md in an AI coding assistant (Cursor, Copilot, Claude, etc.), it runs a comprehensive 24-pillar SEO audit and generates a production-ready report with exact fix blocks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI tools are compatible?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Any AI chat or coding assistant that supports file references works. That includes Cursor, GitHub Copilot, Claude, ChatGPT, and others. No plugins, extensions, or API keys required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the audit report include?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each run produces seo_audit_report.md and seo_audit_report.csv containing: an executive summary, a Priority Fix Matrix capped at 20 items, granular per-pillar evaluations with current code and fix blocks, revenue impact estimates, and an effort rating for every finding."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this different from Screaming Frog or Ahrefs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Traditional tools crawl live URLs and check server responses. The SKILL audits your source code directly - before you deploy. It catches missing schema, broken metadata, performance anti-patterns, and accessibility issues at the code level, providing paste-and-deploy fix blocks instead of just diagnostic lists."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it work with any programming language or framework?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. It's designed for static code repositories across any stack - HTML, React, Next.js, Vue, Nuxt, Astro, and more. The 24 pillars are context-aware: irrelevant checks are automatically suppressed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Completely free and open source. Download SKILL.md from GitHub, drop it in your project, and run. No subscriptions, no accounts, no tracking."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the 24 audit pillars?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The pillars span four categories: Technical Foundation (On-Page, Technical SEO, Performance/CWV, URL Architecture, Mobile, Image SEO, XML Sitemap & Robots.txt), Content & Authority (Semantic SEO, Internal Linking, Blog SEO, E-E-A-T, Rich Results, AI/SGE/Voice), Platform & Process (E-Commerce, JavaScript Frameworks, CI/CD, Migration, Content Pruning, Third-Party Scripts), and Specialized (Social & Regional, Security, Accessibility, Competitor Analysis, Video & YouTube SEO, IndexNow Protocol)."
+      }
+    }
+  ]
+}
+</script>
 <link rel="alternate" type="text/markdown" href="https://f9xr.github.io/seo-audit-report-skill/llms.txt" title="LLM-readable site description">
 </head>
 <body>
@@ -331,7 +469,9 @@ footer{background:#0a0a0a;border-top:1px solid var(--hairline);padding:var(--spa
       <a href="#pillars">Pillars</a>
       <a href="#how-it-works">Process</a>
       <a href="#output">Output</a>
+      <a href="#video">Video</a>
       <a href="#templates">Templates</a>
+      <a href="https://tontuftools.blogspot.com/2026/07/seo-audit-report-md-prompt-generator.html" target="_blank" rel="noopener noreferrer">Prompt Generator</a>
     </div>
     <div class="nav-ctas">
       <a href="https://github.com/f9xr/seo-audit-report-skill/blob/main/SKILL.md" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Download SKILL.md</a>
@@ -354,6 +494,7 @@ footer{background:#0a0a0a;border-top:1px solid var(--hairline);padding:var(--spa
         <div class="hero-ctas">
           <a href="https://github.com/f9xr/seo-audit-report-skill/blob/main/SKILL.md" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Download SKILL.md</a>
           <a href="https://github.com/f9xr/seo-audit-report-skill" class="btn btn-secondary btn-lg" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+          <a href="https://tontuftools.blogspot.com/2026/07/seo-audit-report-md-prompt-generator.html" class="btn btn-tertiary btn-lg" target="_blank" rel="noopener noreferrer"><i class="fas fa-wand-magic-sparkles" style="font-size:14px"></i> Prompt Generator</a>
         </div>
       </div>
       <div class="hero-preview fade-in">
@@ -641,12 +782,45 @@ footer{background:#0a0a0a;border-top:1px solid var(--hairline);padding:var(--spa
   </div>
 </section>
 
+<section class="ss-showcase">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="eyebrow">Deep Dive</div>
+      <h2 class="display-lg">F9XR Team Launches AI-Powered SEO Codebase Auditor Skill</h2>
+      <p class="subhead">See how the 24-pillar audit framework was designed and why it outperforms traditional SEO auditing workflows.</p>
+    </div>
+    <div class="ss-wrapper fade-in">
+      <div class="ss-frame">
+        <div class="ss-frame-glow"></div>
+        <div class="ss-frame-inner">
+          <iframe src="https://www.slideshare.net/slideshow/embed_code/key/js9UrUMwD7TK3T" width="610" height="515" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="ss-shadow"></div>
+    </div>
+    <div class="ss-label fade-in">
+      <p class="subhead">From the F9XR Team - the engineers behind 24-pillar SEO auditing for static codebases.</p>
+      <div class="ss-platform-badge"><i class="fab fa-slideshare"></i> Hosted on SlideShare</div>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="templates">
   <div class="container">
     <div class="section-header fade-in">
       <div class="eyebrow">Quick Start</div>
       <h2 class="display-lg">One-Liner Prompts</h2>
       <p class="subhead">Drop F9XR's SEO CodeBase Auditor SKILL into any project root, then run any of these prompts in Cursor, Copilot, Claude, or any AI chat interface. See the <a href="seo_audit_report.md" style="color:var(--primary);text-decoration:underline;text-underline-offset:2px">demo audit report</a> for a sample output.</p>
+    </div>
+    <div class="fade-in" style="max-width:720px;margin:0 auto var(--spacing-xl);background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.2);border-radius:var(--rounded-lg);padding:var(--spacing-md) var(--spacing-lg);display:flex;align-items:center;justify-content:space-between;gap:var(--spacing-md);flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:var(--spacing-sm)">
+        <i class="fas fa-wand-magic-sparkles" style="color:var(--primary);font-size:18px"></i>
+        <div>
+          <div style="font-weight:500;font-size:0.9375rem;color:var(--ink)">AI SEO Audit MD Report Prompt Generator</div>
+          <div style="font-size:0.8125rem;color:var(--ink-subtle)">Generate custom audit prompts for any project type</div>
+        </div>
+      </div>
+      <a href="https://tontuftools.blogspot.com/2026/07/seo-audit-report-md-prompt-generator.html" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Try it Free <i class="fas fa-arrow-right" style="font-size:12px"></i></a>
     </div>
     <div class="prompt-toolbar">
       <button class="btn btn-secondary" onclick="copyAllPrompts()" id="copyAllBtn">Copy All</button>
@@ -738,6 +912,72 @@ footer{background:#0a0a0a;border-top:1px solid var(--hairline);padding:var(--spa
   </div>
 </section>
 
+<section class="tv-showcase" id="video">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="eyebrow">Watch</div>
+      <h2 class="display-lg">See It In Action</h2>
+      <p class="subhead">Watch how F9XR's SEO CodeBase Auditor SKILL delivers production-ready audits across 24 pillars.</p>
+    </div>
+    <div class="tv-wrapper fade-in">
+      <div class="tv-screen">
+        <div class="tv-bezel">
+          <div class="tv-inner">
+            <iframe src="https://www.youtube.com/embed/05cr4W9uyAA" title="F9XR SEO CodeBase Auditor SKILL" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="tv-stand">
+        <div class="tv-neck"></div>
+      </div>
+      <div class="tv-stand">
+        <div class="tv-base"></div>
+      </div>
+      <div class="tv-shadow"></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="eyebrow">FAQ</div>
+      <h2 class="display-lg">Frequently Asked Questions</h2>
+      <p class="subhead">Everything you need to know about F9XR's SEO CodeBase Auditor SKILL.</p>
+    </div>
+    <div class="faq-grid fade-in">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What is the SEO CodeBase Auditor SKILL?<span class="faq-icon"><i class="fas fa-plus"></i></span></button>
+        <div class="faq-a" role="region"><p>It's a single <code>SKILL.md</code> file you drop into any codebase root. When invoked with <code>@SKILL.md</code> in an AI coding assistant (Cursor, Copilot, Claude, etc.), it runs a comprehensive 24-pillar SEO audit and generates a production-ready report with exact fix blocks.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Which AI tools are compatible?<span class="faq-icon"><i class="fas fa-plus"></i></span></button>
+        <div class="faq-a" role="region"><p>Any AI chat or coding assistant that supports file references works. That includes <a href="https://cursor.sh" target="_blank" rel="noopener noreferrer">Cursor</a>, <a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer">GitHub Copilot</a>, <a href="https://claude.ai" target="_blank" rel="noopener noreferrer">Claude</a>, <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer">ChatGPT</a>, and others. No plugins, extensions, or API keys required.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What does the audit report include?<span class="faq-icon"><i class="fas fa-plus"></i></span></button>
+        <div class="faq-a" role="region"><p>Each run produces <code>seo_audit_report.md</code> and <code>seo_audit_report.csv</code> containing: an executive summary, a Priority Fix Matrix capped at 20 items, granular per-pillar evaluations with current code and fix blocks, revenue impact estimates, and an effort rating for every finding.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">How is this different from Screaming Frog or Ahrefs?<span class="faq-icon"><i class="fas fa-plus"></i></span></button>
+        <div class="faq-a" role="region"><p>Traditional tools crawl live URLs and check server responses. The SKILL audits your source code directly - before you deploy. It catches missing schema, broken metadata, performance anti-patterns, and accessibility issues at the code level, providing paste-and-deploy fix blocks instead of just diagnostic lists.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Does it work with any programming language or framework?<span class="faq-icon"><i class="fas fa-plus"></i></span></button>
+        <div class="faq-a" role="region"><p>Yes. It's designed for static code repositories across any stack - HTML, React, Next.js, Vue, Nuxt, Astro, and more. The 24 pillars are context-aware: irrelevant checks are automatically suppressed (e.g., no JavaScript Framework SEO for plain HTML sites).</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Is it free to use?<span class="faq-icon"><i class="fas fa-plus"></i></span></button>
+        <div class="faq-a" role="region"><p>Completely free and open source. Download <code>SKILL.md</code> from <a href="https://github.com/f9xr/seo-audit-report-skill" target="_blank" rel="noopener noreferrer">GitHub</a>, drop it in your project, and run. No subscriptions, no accounts, no tracking.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What are the 24 audit pillars?<span class="faq-icon"><i class="fas fa-plus"></i></span></button>
+        <div class="faq-a" role="region"><p>The pillars span four categories: Technical Foundation (On-Page, Technical SEO, Performance/CWV, URL Architecture, Mobile, Image SEO, XML Sitemap &amp; Robots.txt), Content &amp; Authority (Semantic SEO, Internal Linking, Blog SEO, E-E-A-T, Rich Results, AI/SGE/Voice), Platform &amp; Process (E-Commerce, JavaScript Frameworks, CI/CD, Migration, Content Pruning, Third-Party Scripts), and Specialized (Social &amp; Regional, Security, Accessibility, Competitor Analysis, Video &amp; YouTube SEO, IndexNow Protocol).</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section">
   <div class="container">
     <div class="cta-banner fade-in">
@@ -765,6 +1005,7 @@ footer{background:#0a0a0a;border-top:1px solid var(--hairline);padding:var(--spa
       <div class="footer-col">
         <div class="footer-col-title">Product</div>
         <a href="https://github.com/f9xr/seo-audit-report-skill/blob/main/SKILL.md" target="_blank" rel="noopener noreferrer">Download SKILL.md</a>
+        <a href="https://tontuftools.blogspot.com/2026/07/seo-audit-report-md-prompt-generator.html" target="_blank" rel="noopener noreferrer">Prompt Generator</a>
         <a href="#pillars">Pillars</a>
         <a href="#output">Output</a>
         <a href="#templates">Templates</a>
@@ -830,6 +1071,21 @@ document.addEventListener('DOMContentLoaded',function(){
     window.addEventListener('scroll',function(){if(window.scrollY>300)btt.classList.add('visible');else btt.classList.remove('visible')});
     btt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
   }
+
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var item=btn.closest('.faq-item');
+      var isOpen=item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(openItem){
+        openItem.classList.remove('open');
+        openItem.querySelector('.faq-q').setAttribute('aria-expanded','false');
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded','true');
+      }
+    });
+  });
 });
 
 function copyPrompt(btn){
