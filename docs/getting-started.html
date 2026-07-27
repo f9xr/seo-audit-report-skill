@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Step-by-step guide to running your first SEO audit with SEO CodeBase Auditor. Install SKILL.md, run one prompt, get production-ready fixes.">
+<link rel="canonical" href="https://f9xr.github.io/seo-audit-report-skill/docs/getting-started.html">
+<meta property="og:title" content="Getting Started — SEO CodeBase Auditor">
+<meta property="og:description" content="Step-by-step guide to running your first SEO audit with SEO CodeBase Auditor. Install SKILL.md, run one prompt, get production-ready fixes.">
+<meta property="og:image" content="https://f9xr.github.io/og-image.png">
+<meta property="og:url" content="https://f9xr.github.io/seo-audit-report-skill/docs/getting-started.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="F9XR's SEO CodeBase Auditor SKILL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Getting Started — SEO CodeBase Auditor">
+<meta name="twitter:description" content="Step-by-step guide to running your first SEO audit with SEO CodeBase Auditor. Install SKILL.md, run one prompt, get production-ready fixes.">
+<meta name="twitter:image" content="https://f9xr.github.io/og-image.png">
+<title>Getting Started — SEO CodeBase Auditor</title>
+<link rel="icon" type="image/png" sizes="32x32" href="https://f9xr.github.io/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://f9xr.github.io/assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://f9xr.github.io/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "Getting Started — SEO CodeBase Auditor",
+      "description": "Step-by-step guide to running your first SEO audit with SEO CodeBase Auditor.",
+      "url": "https://f9xr.github.io/seo-audit-report-skill/docs/getting-started.html",
+      "isPartOf": { "@type": "WebSite", "name": "F9XR's SEO CodeBase Auditor SKILL", "url": "https://f9xr.github.io/seo-audit-report-skill/" },
+      "publisher": { "@type": "Organization", "name": "F9XR Team", "url": "https://f9xr.github.io" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Documentation", "item": "https://f9xr.github.io/seo-audit-report-skill/docs/index.html" },
+        { "@type": "ListItem", "position": 2, "name": "Home", "item": "https://f9xr.github.io/seo-audit-report-skill/docs/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "Getting Started" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="gl-header">
+  <a href="index.html" class="logo">
+    <img src="https://f9xr.github.io/logo.webp" alt="F9XR" height="28" style="border-radius:4px">
+    SEO CodeBase Auditor
+  </a>
+  <nav>
+    <a href="https://github.com/f9xr/seo-audit-report-skill">GitHub</a>
+    <a href="https://f9xr.github.io">F9XR Team</a>
+  </nav>
+</header>
+
+<div class="gl-layout">
+  <aside class="gl-sidebar">
+    <h3>Documentation</h3>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="getting-started.html" class="active">Getting Started</a></li>
+      <li><a href="audit-pillars.html">Audit Pillars</a></li>
+      <li><a href="prompt-templates.html">Prompt Templates</a></li>
+      <li><a href="output-format.html">Output Format</a></li>
+      <li><a href="version-history.html">Version History</a></li>
+    </ul>
+    <h3>Resources</h3>
+    <ul>
+      <li><a href="https://search.google.com/search-console/about" target="_blank">Google Search Console</a></li>
+      <li><a href="https://developers.google.com/search/docs" target="_blank">Google Search Central</a></li>
+      <li><a href="https://schema.org/" target="_blank">Schema.org</a></li>
+      <li><a href="https://web.dev/vitals/" target="_blank">Core Web Vitals</a></li>
+    </ul>
+  </aside>
+
+  <main class="gl-main">
+    <div class="gl-breadcrumb">Documentation <span>›</span> <a href="index.html">Home</a> <span>›</span> Getting Started</div>
+
+    <h1>Getting Started</h1>
+    <p>Step-by-step guide to running your first SEO audit with SEO CodeBase Auditor.</p>
+
+    <h2>Prerequisites</h2>
+    <ul>
+      <li>A static codebase (HTML, Markdown, Astro, Hugo, 11ty, Next.js, etc.)</li>
+      <li>An AI coding assistant (Cursor, Copilot, Claude, ChatGPT, or any LLM that supports file context)</li>
+      <li><code>SKILL.md</code> downloaded into your project root</li>
+    </ul>
+
+    <h2>Installation</h2>
+    <p><strong>1. Clone or download</strong> the skill file:</p>
+    <pre><code>git clone https://github.com/f9xr/seo-audit-report-skill.git
+cp seo-audit-report-skill/SKILL.md /path/to/your/project/</code></pre>
+    <p>Or simply <a href="https://raw.githubusercontent.com/f9xr/seo-audit-report-skill/main/SKILL.md">download SKILL.md</a> and place it in your project root.</p>
+
+    <p><strong>2. Verify placement</strong> — <code>SKILL.md</code> should sit alongside your <code>index.html</code>, <code>package.json</code>, or equivalent entry point:</p>
+    <pre><code>your-project/
+├── SKILL.md          ← here
+├── index.html
+├── about.html
+├── blog/
+│   └── post-1.html
+└── assets/
+    └── styles.css</code></pre>
+
+    <h2>Running Your First Audit</h2>
+
+    <h3>Full Audit (Recommended)</h3>
+    <p>In your AI tool, type:</p>
+    <pre><code>@SKILL.md Run a comprehensive full-stack SEO audit across all files in this workspace. Generate seo_audit_report.md and seo_audit_report.csv with all applicable pillars evaluated.</code></pre>
+
+    <h3>Targeted Audit</h3>
+    <p>Focus on specific areas:</p>
+    <pre><code>@SKILL.md Run a Core Web Vitals audit across LCP, FCP, CLS, INP, and TTFB. Split findings by mobile vs desktop.</code></pre>
+    <pre><code>@SKILL.md Run an E-E-A-T deep audit. Evaluate trust page existence, author attribution, and YMYL compliance.</code></pre>
+    <pre><code>@SKILL.md Run a competitive SEO gap analysis against [competitor1.com, competitor2.com].</code></pre>
+    <p>See <a href="prompt-templates.html">Prompt Templates</a> for all 22 templates.</p>
+
+    <h2>What You Get</h2>
+    <p>After running the audit, two files appear in your project root:</p>
+
+    <h3><code>seo_audit_report.md</code></h3>
+    <p>The full audit report containing:</p>
+    <ol>
+      <li><strong>Executive Summary</strong> — Site health overview in 3 sentences</li>
+      <li><strong>Priority Fix Matrix</strong> — Top 20 issues sorted by severity and impact</li>
+      <li><strong>Quick Wins</strong> — Fixes you can implement in under 30 minutes</li>
+      <li><strong>Medium-Term Improvements</strong> — 1-4 week sprint items</li>
+      <li><strong>Long-Term Strategic Initiatives</strong> — 1-3 month foundational work</li>
+      <li><strong>Revenue &amp; Traffic Opportunities</strong> — Highest-impact growth levers</li>
+      <li><strong>Granular Pillar Evaluations</strong> — Per-pillar findings with exact fix blocks</li>
+      <li><strong>CSV Export Reference</strong> — Spreadsheet companion note</li>
+    </ol>
+
+    <h3><code>seo_audit_report.csv</code></h3>
+    <table>
+      <thead><tr><th>Column</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>#</td><td>Priority rank</td></tr>
+        <tr><td>Pillar</td><td>Which of the 24 pillars</td></tr>
+        <tr><td>Issue</td><td>Detected problem</td></tr>
+        <tr><td>Severity</td><td>Critical / High / Medium / Low</td></tr>
+        <tr><td>File(s)</td><td>Target file path(s)</td></tr>
+        <tr><td>Effort</td><td>S (&lt;4hr) / M (1-3d) / L (1-2wk) / XL (2+wk)</td></tr>
+        <tr><td>Traffic Impact</td><td>Estimated organic traffic change</td></tr>
+        <tr><td>Revenue Impact</td><td>Estimated revenue effect</td></tr>
+        <tr><td>Time to Impact</td><td>How quickly results appear</td></tr>
+        <tr><td>Business Value</td><td>Traffic / Revenue / Brand / Risk / Compliance</td></tr>
+      </tbody>
+    </table>
+
+    <h2>How the Audit Works</h2>
+    <p>The skill operates in <strong>5 distinct passes</strong>:</p>
+
+    <h3>Pass 1 — Workspace Discovery</h3>
+    <p>Maps the entire file tree, identifies project type (portfolio, e-commerce, SaaS, blog), discovers all URLs, builds an indexability matrix, and traces link graphs.</p>
+
+    <h3>Pass 2 — Pillar Analysis</h3>
+    <p>Evaluates every file against the 24 audit pillars. Irrelevant pillars are suppressed (e.g., no E-Commerce checks for a portfolio site).</p>
+
+    <h3>Pass 3 — Prioritization</h3>
+    <p>Sorts findings by severity, then by estimated traffic impact. Consolidates duplicate issues. Caps the Priority Fix Matrix at 20 items.</p>
+
+    <h3>Pass 4 — Report Writing</h3>
+    <p>Generates <code>seo_audit_report.md</code> with Evidence / Impact / Fix three-part finding format. Every fix block is production-ready code.</p>
+
+    <h3>Pass 5 — Self-Critique</h3>
+    <p>Reviews every finding against peer-review standards. Drops false positives. Verifies severity labels. Ensures every fix is deployable.</p>
+
+    <h2>Supported Project Types</h2>
+    <table>
+      <thead><tr><th>Project Type</th><th>Tailored Checks</th></tr></thead>
+      <tbody>
+        <tr><td>Portfolio / Personal Site</td><td>Author schema, E-E-A-T, social cards, image SEO</td></tr>
+        <tr><td>E-Commerce</td><td>Product schema, review schema, faceted nav, category SEO</td></tr>
+        <tr><td>SaaS Landing Page</td><td>CTA optimization, conversion paths, structured data</td></tr>
+        <tr><td>Blog / Content Site</td><td>Article schema, content depth, freshness, reading time</td></tr>
+        <tr><td>Local Business</td><td>LocalBusiness schema, NAP consistency, GBP signals</td></tr>
+        <tr><td>Static Site Generator</td><td>Framework-specific checks (Astro, Hugo, 11ty, Next.js)</td></tr>
+        <tr><td>SPA / Client-Rendered</td><td>JS rendering, CSR detection, hydration audit</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Supported AI Tools</h2>
+    <table>
+      <thead><tr><th>Tool</th><th>How to Reference</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Cursor</strong></td><td><code>@SKILL.md run a full audit</code></td></tr>
+        <tr><td><strong>GitHub Copilot</strong></td><td>Attach <code>SKILL.md</code> to chat, then prompt</td></tr>
+        <tr><td><strong>Claude</strong></td><td>Paste prompt with <code>SKILL.md</code> context</td></tr>
+        <tr><td><strong>ChatGPT</strong></td><td>Upload <code>SKILL.md</code> as file context</td></tr>
+        <tr><td><strong>Windsurf / Codeium</strong></td><td>Reference <code>SKILL.md</code> in chat</td></tr>
+        <tr><td><strong>Any LLM</strong></td><td>Provide <code>SKILL.md</code> content in context window</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Tips</h2>
+    <div class="gl-alert info">
+      <ol>
+        <li><strong>Start with a full audit</strong> — Let the skill identify which pillars are relevant before running targeted checks.</li>
+        <li><strong>Fix Quick Wins first</strong> — These are low-effort, high-impact items that can be deployed immediately.</li>
+        <li><strong>Run audits regularly</strong> — SEO drift is real. Schedule monthly or pre-deployment audits.</li>
+        <li><strong>Use the CSV</strong> — Import into Google Sheets or Excel for team tracking and sprint planning.</li>
+        <li><strong>Reference Google's docs</strong> — Every finding links to the relevant Google guideline for verification.</li>
+      </ol>
+    </div>
+
+    <h2>Next Steps</h2>
+    <ul>
+      <li><a href="audit-pillars.html">All 24 Audit Pillars</a> — Understand what each pillar checks</li>
+      <li><a href="prompt-templates.html">Prompt Templates</a> — 22 templates for targeted audits</li>
+      <li><a href="output-format.html">Output Format</a> — Report structure and finding format</li>
+    </ul>
+  </main>
+</div>
+
+<footer class="gl-footer">
+  <div class="gl-footer-inner">
+    <div class="gl-footer-col">
+      <h4>SEO CodeBase Auditor</h4>
+      <p style="color:#999">Enterprise-grade SEO auditing for code.</p>
+    </div>
+    <div class="gl-footer-col">
+      <h4>Documentation</h4>
+      <ul>
+        <li><a href="getting-started.html">Getting Started</a></li>
+        <li><a href="audit-pillars.html">Audit Pillars</a></li>
+        <li><a href="prompt-templates.html">Prompt Templates</a></li>
+      </ul>
+    </div>
+    <div class="gl-footer-col">
+      <h4>Community</h4>
+      <ul>
+        <li><a href="https://github.com/f9xr/seo-audit-report-skill">GitHub</a></li>
+        <li><a href="https://f9xr.github.io">F9XR Team</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

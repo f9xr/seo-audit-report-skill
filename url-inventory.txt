@@ -1,0 +1,15 @@
+URL Inventory
+https://f9xr.github.io/seo-audit-report-skill/
+Generated: 2026-07-27
+
+Root Pages:
+  https://f9xr.github.io/seo-audit-report-skill/
+  https://f9xr.github.io/seo-audit-report-skill/404.html
+
+Docs:
+  https://f9xr.github.io/seo-audit-report-skill/docs/index.html
+  https://f9xr.github.io/seo-audit-report-skill/docs/getting-started.html
+  https://f9xr.github.io/seo-audit-report-skill/docs/audit-pillars.html
+  https://f9xr.github.io/seo-audit-report-skill/docs/output-format.html
+  https://f9xr.github.io/seo-audit-report-skill/docs/prompt-templates.html
+  https://f9xr.github.io/seo-audit-report-skill/docs/version-history.html

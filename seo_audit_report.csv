@@ -1,13 +1,11 @@
-#,Pillar,Detected Issue,Severity,Target File(s),Effort,Est. Traffic Impact,Time to Impact,Business Value
-1,Video SEO,YouTube embed uses standard URL not privacy-enhanced mode,High,index.html:930,S (<4hr),+2-5% page speed,Immediate,Traffic
-2,Video SEO,Missing VideoObject schema for YouTube embed,High,index.html:930,S (<4hr),+2-5% rich results,1-4 weeks,Traffic
-3,Video SEO,Missing VideoObject schema for SlideShare embed,High,index.html:856,S (<4hr),+1-3% rich results,1-4 weeks,Traffic
-4,Technical SEO,Sitemap.xml missing 404.html entry,Medium,sitemap.xml,S (<4hr),+1% crawl coverage,1-4 weeks,Compliance
-5,Technical SEO,Sitemap.xml lastmod date is static,Medium,sitemap.xml,S (<4hr),+1% freshness signal,Immediate,Compliance
-6,Schema,WebSite schema missing dateModified field,Medium,index.html,S (<4hr),+1-2% entity signals,1-4 weeks,Brand
-7,Video SEO,YouTube embed iframe missing loading="lazy",Medium,index.html:930,S (<4hr),+1-2% CLS/perf,Immediate,Traffic
-8,Accessibility,FAQ accordion lacks ARIA roles for screen readers,Medium,index.html,S (<4hr),N/A (a11y),Immediate,Compliance
-9,Technical SEO,opensearch.xml search URL points to GitHub not site,Low,opensearch.xml,S (<4hr),N/A,N/A,Compliance
-10,Content,llms.txt missing license and content sections,Low,llms.txt,S (<4hr),N/A,N/A,Brand
-11,Content,404.html missing header landmark and nav,Low,404.html,S (<4hr),N/A,N/A,Compliance
-12,Social SEO,og:image referenced without verifying existence,Low,index.html,S (<4hr),+1-3% social CTR,Immediate,Brand
+#,Pillar,Issue,Severity,File(s),Effort,Traffic Impact,Revenue Impact,Time to Impact,Business Value
+1,Technical,Missing canonical tags on all 6 docs pages,Critical,"docs/index.html, docs/getting-started.html, docs/audit-pillars.html, docs/output-format.html, docs/prompt-templates.html, docs/version-history.html",S (<4hr),Prevents duplicate indexing,High,Immediate,Risk
+2,On-Page,Missing meta descriptions on all 6 docs pages,Critical,"docs/index.html, docs/getting-started.html, docs/audit-pillars.html, docs/output-format.html, docs/prompt-templates.html, docs/version-history.html",S (<4hr),+5-15% organic CTR,Medium,Immediate,Traffic
+3,Technical,Broken site.webmanifest reference (404),High,"index.html, 404.html, docs/index.html, docs/getting-started.html, docs/audit-pillars.html, docs/output-format.html, docs/prompt-templates.html, docs/version-history.html",S (<4hr),Minor crawl waste,Low,Immediate,Risk
+4,Social,Missing OG/Twitter tags on all 6 docs pages,High,"docs/index.html, docs/getting-started.html, docs/audit-pillars.html, docs/output-format.html, docs/prompt-templates.html, docs/version-history.html",S (<4hr),Social share visibility,Medium,Immediate,Brand
+5,On-Page,Root meta description too short (114 chars),Medium,index.html:6,S (<4hr),+2-5% organic CTR,Low,Immediate,Traffic
+6,Technical,Missing structured data on all 6 docs pages,Medium,"docs/index.html, docs/getting-started.html, docs/audit-pillars.html, docs/output-format.html, docs/prompt-templates.html, docs/version-history.html",M (1-3d),Rich result eligibility,Low,1-4 weeks,Traffic
+7,Technical,Missing BreadcrumbList schema on docs pages,Medium,"docs/index.html, docs/getting-started.html, docs/audit-pillars.html, docs/output-format.html, docs/prompt-templates.html, docs/version-history.html",S (<4hr),Breadcrumb rich results,Low,1-4 weeks,Traffic
+8,Technical,Stale uploadDate in VideoObject schema (2025),Medium,index.html:390,S (<4hr),Freshness signal,Low,Immediate,Risk
+9,Accessibility,Skip link lacks role and aria-label,Low,index.html:475,S (<4hr),Accessibility compliance,Low,Immediate,Compliance
+10,Accessibility,header missing role=banner,Low,index.html:478,S (<4hr),Accessibility compliance,Low,Immediate,Compliance

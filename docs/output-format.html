@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Report structure, mandatory Evidence/Impact/Fix finding format, Priority Fix Matrix specification, and CSV export format for SEO CodeBase Auditor.">
+<link rel="canonical" href="https://f9xr.github.io/seo-audit-report-skill/docs/output-format.html">
+<meta property="og:title" content="Output Format — SEO CodeBase Auditor">
+<meta property="og:description" content="Report structure, mandatory Evidence/Impact/Fix finding format, Priority Fix Matrix specification, and CSV export format for SEO CodeBase Auditor.">
+<meta property="og:image" content="https://f9xr.github.io/og-image.png">
+<meta property="og:url" content="https://f9xr.github.io/seo-audit-report-skill/docs/output-format.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="F9XR's SEO CodeBase Auditor SKILL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Output Format — SEO CodeBase Auditor">
+<meta name="twitter:description" content="Report structure, mandatory Evidence/Impact/Fix finding format, Priority Fix Matrix specification, and CSV export format for SEO CodeBase Auditor.">
+<meta name="twitter:image" content="https://f9xr.github.io/og-image.png">
+<title>Output Format — SEO CodeBase Auditor</title>
+<link rel="icon" type="image/png" sizes="32x32" href="https://f9xr.github.io/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://f9xr.github.io/assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://f9xr.github.io/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "Output Format — SEO CodeBase Auditor",
+      "description": "Report structure, finding format, and CSV export specification.",
+      "url": "https://f9xr.github.io/seo-audit-report-skill/docs/output-format.html",
+      "isPartOf": { "@type": "WebSite", "name": "F9XR's SEO CodeBase Auditor SKILL", "url": "https://f9xr.github.io/seo-audit-report-skill/" },
+      "publisher": { "@type": "Organization", "name": "F9XR Team", "url": "https://f9xr.github.io" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Documentation", "item": "https://f9xr.github.io/seo-audit-report-skill/docs/index.html" },
+        { "@type": "ListItem", "position": 2, "name": "Home", "item": "https://f9xr.github.io/seo-audit-report-skill/docs/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "Output Format" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="gl-header">
+  <a href="index.html" class="logo">
+    <img src="https://f9xr.github.io/logo.webp" alt="F9XR" height="28" style="border-radius:4px">
+    SEO CodeBase Auditor
+  </a>
+  <nav>
+    <a href="https://github.com/f9xr/seo-audit-report-skill">GitHub</a>
+    <a href="https://f9xr.github.io">F9XR Team</a>
+  </nav>
+</header>
+
+<div class="gl-layout">
+  <aside class="gl-sidebar">
+    <h3>Documentation</h3>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="getting-started.html">Getting Started</a></li>
+      <li><a href="audit-pillars.html">Audit Pillars</a></li>
+      <li><a href="prompt-templates.html">Prompt Templates</a></li>
+      <li><a href="output-format.html" class="active">Output Format</a></li>
+      <li><a href="version-history.html">Version History</a></li>
+    </ul>
+    <h3>Resources</h3>
+    <ul>
+      <li><a href="https://search.google.com/search-console/about" target="_blank">Google Search Console</a></li>
+      <li><a href="https://developers.google.com/search/docs" target="_blank">Google Search Central</a></li>
+      <li><a href="https://schema.org/" target="_blank">Schema.org</a></li>
+    </ul>
+    <h3>On This Page</h3>
+    <ul>
+      <li><a href="#files">Files Generated</a></li>
+      <li><a href="#structure">Report Structure</a></li>
+      <li><a href="#finding">Mandatory Finding Format</a></li>
+      <li><a href="#matrix">Priority Fix Matrix</a></li>
+      <li><a href="#csv">CSV Export</a></li>
+      <li><a href="#rules">Report Writing Rules</a></li>
+      <li><a href="#customization">Report Customization</a></li>
+    </ul>
+  </aside>
+
+  <main class="gl-main">
+    <div class="gl-breadcrumb">Documentation <span>›</span> <a href="index.html">Home</a> <span>›</span> Output Format</div>
+
+    <h1>Output Format</h1>
+    <p>Report structure, finding format, and CSV export specification for SEO CodeBase Auditor.</p>
+
+    <h2 id="files">Files Generated</h2>
+    <table>
+      <thead><tr><th>File</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td><code>seo_audit_report.md</code></td><td>Full audit report with executive summary, fix matrix, and per-pillar findings</td></tr>
+        <tr><td><code>seo_audit_report.csv</code></td><td>Spreadsheet-ready Priority Fix Matrix</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="structure">Report Structure (<code>seo_audit_report.md</code>)</h2>
+    <pre><code># STRATEGIC SEO AUDIT REPORT
+**Generated by:** [Team Name — URL]
+**Generated on:** [Date]
+**Audit Scope:** Local Repository Codebase
+
+## Project Overview
+[Site type, page count, primary target keywords, target audience, target geography]
+
+## Executive Summary
+[3-sentence assessment: How bad is it? What's the single most important action?]
+
+## Priority Fix Matrix
+[Table — top 20 issues sorted by severity and impact]
+
+## Quick Wins
+[Items implementable in &lt;30 minutes]
+
+## Medium-Term Improvements
+[1-4 week sprint items]
+
+## Long-Term Strategic Initiatives
+[1-3 month foundational work]
+
+## Revenue Impact Opportunities
+[Fixes affecting conversion paths]
+
+## Traffic Growth Opportunities
+[Fixes affecting organic visibility]
+
+## Granular Pillar Evaluations
+### [Pillar Name]
+- Files Audited
+- Passed Checks
+- Issues Found (Evidence / Impact / Fix format)
+
+## CSV Export Reference
+[Note about companion CSV]
+
+## Recommended Technical Implementation
+[Numbered implementation steps]
+
+## Resources &amp; References
+[Linked reference documentation]</code></pre>
+
+    <h2 id="finding">Mandatory Finding Format</h2>
+    <p>Every finding must follow the <strong>Evidence / Impact / Fix</strong> three-part structure:</p>
+
+    <h3>1. Evidence</h3>
+    <p>Cite the specific file, line number, and code snippet that proves the issue exists.</p>
+    <pre><code>- **Location:** `index.html:12`
+- **Problem:** Title tag is missing entirely — the `&lt;head&gt;` section contains no `&lt;title&gt;` element.
+- **Current Code:**
+  ```html
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;!-- No &lt;title&gt; tag present --&gt;
+  &lt;/head&gt;
+  ```</code></pre>
+
+    <h3>2. Impact</h3>
+    <p>State the ranking, traffic, or user-experience consequence. Quantify where possible.</p>
+    <pre><code>- **Ranking Impact:** Pages without a title tag lose ~35-40% of organic CTR based on Backlinko/Moz CTR studies.
+- **Root Cause:** The HTML file was created without a `&lt;title&gt;` element in the `&lt;head&gt;` section.</code></pre>
+
+    <h3>3. Fix</h3>
+    <p>Provide the exact production-ready code replacement.</p>
+    <pre><code>- **Fix:**
+  ```html
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;SEO CodeBase Auditor — AI-Powered SEO Audit Tool | F9XR&lt;/title&gt;
+  &lt;/head&gt;
+  ```
+- **Implementation Guidance:** Open `index.html`, locate the `&lt;head&gt;` tag, add the `&lt;title&gt;` element as the first child.
+- **Fix Type:** metadata
+- **Verification:** Re-run audit; confirm title tag appears in Priority Fix Matrix as resolved.</code></pre>
+
+    <h2 id="matrix">Priority Fix Matrix Format</h2>
+    <table>
+      <thead>
+        <tr><th>#</th><th>Pillar</th><th>Detected Issue</th><th>Severity</th><th>Target File(s)</th><th>Effort</th><th>Est. Traffic Impact</th><th>Est. Revenue Impact</th><th>Time to Impact</th><th>Business Value</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>On-Page</td><td>Missing unique H1 tag</td><td>High</td><td>/about.html</td><td>S (&lt;4hr)</td><td>+5-10% organic</td><td>Medium</td><td>Immediate</td><td>Traffic</td></tr>
+        <tr><td>2</td><td>Perf.</td><td>Images missing dimensions</td><td>High</td><td>/index.html:45</td><td>M (1-3d)</td><td>+3-8% organic</td><td>Low</td><td>1-4 weeks</td><td>Traffic</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Severity Definitions</h3>
+    <table>
+      <thead><tr><th>Severity</th><th>Definition</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Critical</strong></td><td>Directly blocks indexation, causes ranking penalty, or breaks core functionality</td></tr>
+        <tr><td><strong>High</strong></td><td>Significantly weakens ranking potential or user experience</td></tr>
+        <tr><td><strong>Medium</strong></td><td>Suboptimal but not immediately penalizing</td></tr>
+        <tr><td><strong>Low</strong></td><td>Best-practice improvements with marginal direct impact</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Effort Scale</h3>
+    <table>
+      <thead><tr><th>Label</th><th>Timeframe</th></tr></thead>
+      <tbody>
+        <tr><td><strong>S</strong></td><td>&lt;4 hours</td></tr>
+        <tr><td><strong>M</strong></td><td>1-3 days</td></tr>
+        <tr><td><strong>L</strong></td><td>1-2 weeks</td></tr>
+        <tr><td><strong>XL</strong></td><td>2+ weeks</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Business Value Categories</h3>
+    <ul>
+      <li><strong>Traffic</strong> — Direct organic visibility improvement</li>
+      <li><strong>Revenue</strong> — Direct conversion/revenue impact</li>
+      <li><strong>Brand</strong> — Brand authority and recognition</li>
+      <li><strong>Risk</strong> — Penalty or deindexing risk reduction</li>
+      <li><strong>Compliance</strong> — Accessibility, legal, or policy compliance</li>
+    </ul>
+
+    <h2 id="csv">CSV Export Format</h2>
+    <pre><code>#  ,Pillar       ,Issue                     ,Severity ,File(s)                      ,Effort     ,Traffic Impact     ,Revenue Impact ,Time to Impact ,Business Value
+1  ,On-Page      ,Missing unique H1 tag     ,High     ,/about.html                  ,S (&lt;4hr)   ,+5-10% organic     ,Medium         ,Immediate      ,Traffic
+2  ,Performance  ,Images missing dimensions ,High     ,"/index.html:45, /gallery.html:12" ,M (1-3d) ,+3-8% organic     ,Low            ,1-4 weeks      ,Traffic
+3  ,Technical    ,Missing canonical tag     ,Critical ,/index.html                  ,S (&lt;4hr)   ,Prevents indexation ,High           ,Immediate      ,Risk</code></pre>
+
+    <h2 id="rules">Report Writing Rules</h2>
+    <ol class="gl-rules">
+      <li><strong>Never write vague findings.</strong> "SEO could be improved" is not a finding. "The <code>&lt;title&gt;</code> tag on <code>/about.html</code> is 12 characters" is a finding.</li>
+      <li><strong>Write findings that survive peer review.</strong> Another SEO professional should agree with severity, evidence, and fix.</li>
+      <li><strong>Include the "so what?" for every finding.</strong> Why does this matter to the business?</li>
+      <li><strong>File-level specificity.</strong> Never say "some pages." List every affected file path.</li>
+      <li><strong>Show before/after for every fix.</strong> Current Code block → Fix block.</li>
+      <li><strong>Group related findings.</strong> Three pages with the same issue = one finding with three locations.</li>
+      <li><strong>Use active voice for fixes.</strong> "Add <code>&lt;meta name="viewport"&gt;</code> to <code>index.html:5</code>" — not "The viewport tag should be considered."</li>
+      <li><strong>Link to Google resources.</strong> Every Google Search Central, schema.org, or W3C reference should be clickable.</li>
+      <li><strong>End with the user's next action.</strong> The final line should be a command, not a summary.</li>
+    </ol>
+
+    <h2 id="customization">Report Customization</h2>
+    <ul>
+      <li><strong>Emoji markers</strong> (🎯, 🔍, 🛠️, 💻) can be used in headings for stakeholder readability</li>
+      <li><strong>Attribution line</strong> should appear at the top or bottom: "Generated by [Team Name] — [URL]"</li>
+      <li><strong>Grouping</strong> can be pillar-based (default) or fix-type-based (schema fixes, metadata fixes, content fixes, performance fixes) depending on engineering team preference</li>
+    </ul>
+
+  </main>
+</div>
+
+<footer class="gl-footer">
+  <div class="gl-footer-inner">
+    <div class="gl-footer-col">
+      <h4>SEO CodeBase Auditor</h4>
+      <p style="color:#999">Enterprise-grade SEO auditing for code.</p>
+    </div>
+    <div class="gl-footer-col">
+      <h4>Documentation</h4>
+      <ul>
+        <li><a href="getting-started.html">Getting Started</a></li>
+        <li><a href="audit-pillars.html">Audit Pillars</a></li>
+        <li><a href="prompt-templates.html">Prompt Templates</a></li>
+      </ul>
+    </div>
+    <div class="gl-footer-col">
+      <h4>Community</h4>
+      <ul>
+        <li><a href="https://github.com/f9xr/seo-audit-report-skill">GitHub</a></li>
+        <li><a href="https://f9xr.github.io">F9XR Team</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
