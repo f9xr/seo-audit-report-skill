@@ -26,12 +26,10 @@ SEO CodeBase Auditor analyzes your codebase for 24 critical SEO factors and prov
 
 SEO CodeBase Auditor covers 24 critical SEO pillars including:
 
-- Technical SEO (crawlability, indexability, site speed)
-- On-page SEO (meta tags, headings, content structure)
-- Off-page SEO (backlinks, social signals)
-- Local SEO (Google Business Profile, NAP consistency)
-- E-commerce SEO (product pages, schema markup)
-- YouTube SEO (video optimization, channel structure)
+- **Technical Foundation:** On-Page SEO, Technical SEO, Performance (Core Web Vitals), URL Structure & Architecture, Mobile SEO, Image SEO, XML Sitemap & Robots.txt
+- **Content & Authority:** Semantic SEO & Content, Internal Linking & Equity, Blog & Content SEO, E-E-A-T Signals, Rich Results Eligibility, AI / SGE / Voice Search
+- **Platform & Process:** E-Commerce SEO, JavaScript Framework SEO, CI/CD & Automation, Migration SEO, Content Pruning & Consolidation, Third-Party Script Audit
+- **Specialized:** Social & Regional SEO (including local SEO, NAP consistency, hreflang), Security SEO, Accessibility SEO, Competitor SEO Analysis, Video & YouTube SEO
 
 ## Documentation
 

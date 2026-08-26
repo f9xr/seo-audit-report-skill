@@ -28,8 +28,8 @@ Before inspecting a single file, establish the site's identity. Determine the pr
 
 **Be precise with severity labels:**
 - **Critical:** Directly blocks indexation, causes ranking penalty, or breaks core functionality (missing canonical, noindex on homepage, broken schema on product pages, CLS >0.25, missing title tag on any indexable page)
-- **High:** Significantly weakens ranking potential or user experience (thin content on key pages, missing meta descriptions, no alt text on product images, render-blocking resources above the fold)
-- **Medium:** Suboptimal but not immediately penalizing (missing og:image, pagination without rel=next/prev, unminified CSS)
+- **High:** Significantly weakens ranking potential or user experience (thin content on key pages, missing meta descriptions, no alt text on product images, render-blocking resources above the fold, CLS 0.1–0.25)
+- **Medium:** Suboptimal but not immediately penalizing (missing og:image, unminified CSS, pagination without a view-all strategy)
 - **Low:** Best-practice improvements with marginal direct impact (missing `dateModified` in Article schema, no `sitemap.xml` when only 3 pages exist)
 
 ## Process: scan, analyze, prioritize, report, critique
@@ -52,7 +52,7 @@ Then discover every discoverable URL: bootstrap from `sitemap.xml` if present, w
 
 The most common failure pattern in AI-generated SEO audits is false positives — flagging issues that aren't real problems in context. Before including a finding, ask yourself: would Google actually penalize or rank-lower this site for this specific issue? If the answer is "probably not at this site's scale/type," demote or drop the finding.
 
-Do not flag the same issue in every file as separate findings. If every page lacks a `lang` attribute, that is **one** finding — list the affected files in the location field. Duplicate entries waste the user's attention and dilute real priorities.
+Do not flag the same issue in every file as separate findings. If every page lacks a `lang` attribute, that is **one** finding — consolidate into a single entry and list all affected file paths in the Location field. Duplicate entries waste the user's attention and dilute real priorities.
 
 Beware of checklist-driven auditing where you mechanically tick boxes without considering whether the check matters. An `<h1>` that matches the `<title>` is not inherently problematic — it only matters when combined with thin content or keyword cannibalization. Always ask "so what?" before writing a finding.
 
@@ -62,12 +62,41 @@ Consider removing one finding before delivering. If you have 15 findings, ask wh
 
 ## SEO Audit Pillars & Inspection Criteria
 
+**Pillar Index** — 24 pillars organized by domain. Reference this table to quickly locate a pillar or determine which apply to a given project type.
+
+| # | Pillar | Domain | Skip if... |
+|---|--------|--------|------------|
+| 01 | On-Page SEO | Technical Foundation | Never |
+| 02 | Technical SEO | Technical Foundation | Never |
+| 03 | Performance (Core Web Vitals) | Technical Foundation | Never |
+| 04 | URL Structure & Architecture | Technical Foundation | Never |
+| 05 | Mobile SEO | Technical Foundation | Never |
+| 06 | Image SEO | Technical Foundation | No images on any page |
+| 07 | Semantic SEO & Content | Content & Authority | No indexable text content |
+| 08 | Internal Linking & Equity | Content & Authority | Single-page site |
+| 09 | XML Sitemap & Robots.txt | Technical Foundation | Never |
+| 10 | Social & Regional SEO | Specialized | No public-facing pages |
+| 11 | Security SEO | Specialized | Never |
+| 12 | Accessibility SEO | Specialized | Never |
+| 13 | E-Commerce SEO | Platform & Process | Not an e-commerce site |
+| 14 | Blog & Content SEO | Content & Authority | No blog or articles |
+| 15 | JavaScript Framework SEO | Platform & Process | Static HTML site |
+| 16 | E-E-A-T Signals | Content & Authority | Never |
+| 17 | Rich Results Eligibility | Content & Authority | Never |
+| 18 | AI / SGE / Voice Search | Content & Authority | Never |
+| 19 | CI/CD & Automation | Platform & Process | No CI/CD pipeline |
+| 20 | Migration SEO | Platform & Process | Not migrating |
+| 21 | Content Pruning & Consolidation | Platform & Process | Site has <10 pages |
+| 22 | Third-Party Script Audit | Platform & Process | No third-party scripts |
+| 23 | Competitor SEO Analysis | Specialized | User does not provide competitor URLs |
+| 24 | Video & YouTube SEO | Specialized | No video embeds |
+
 ### 1. On-Page SEO
 - **Title Elements:** Verify existence, 50-60 char length, front-loaded primary keyword, brand suffix (if appropriate), no keyword stuffing, and uniqueness across all pages.
 - **Missing Title Tag Detection:** Explicitly identify pages lacking a `<title>` element within `<head>`. This is a Critical finding — pages without a title tag have no primary ranking signal, display a blank/filename browser tab, and produce a bare URL as the social sharing headline. Provide a fix workflow: locate the HTML file, open in editor, add a descriptive `<title>` tag (50-60 chars, front-loaded keyword, brand suffix where appropriate) inside `<head>`.
 - **Short Title Tag Remediation:** Flag title tags under 40 characters as too short to convey sufficient SERP information. Provide a rewrite workflow: analyze page content, identify primary keyword and value proposition, craft a 50-60 character title with front-loaded keyword, emotional trigger or power word, and brand suffix.
-- **Meta Descriptions:** Verify existence, 150-160 char length, actionable copywriting, primary keyword inclusion, value proposition, and no duplicate descriptions across pages.
-- **Meta Description Optimization Workflow:** For each page with short (<120 chars), missing, or duplicate meta descriptions, provide a step-by-step fix: (1) review the page content and identify the primary value proposition, (2) analyze SERP intent and competitor descriptions, (3) craft a 150-160 character description with active voice, primary keyword, CTA, and unique differentiator, (4) update via CMS or edit `<meta name="description">` in the HTML `<head>`. **A/B Testing:** Recommend A/B testing different meta description variants for high-traffic pages (test angle variations: benefit-driven vs feature-driven vs question-based; test power words, length, CTAs). Compare CTR performance over 2-4 weeks per variant. **Bing Webmaster Tools Monitoring:** Recommend monitoring meta description performance (impressions, clicks, CTR) in Bing Webmaster Tools alongside Google Search Console — a description that drives low CTR in both engines needs rewriting. **Regular Review Cycle:** Recommend establishing a quarterly (or pre-seasonal) review of all meta descriptions to ensure they remain aligned with current content, target keywords, and search trends. Stale descriptions should be refreshed even if they passed the length check.
+- **Meta Descriptions:** Verify existence, 150-160 char length, actionable copywriting, primary keyword inclusion, value proposition, and no duplicate descriptions across pages. Flag descriptions <100 chars as too short to convey value in SERPs. Flag descriptions >155 chars as truncation risk on mobile (Google truncates at ~120 chars on mobile, ~155-160 on desktop).
+- **Meta Description Optimization Workflow:** For each page with short (<100 chars), missing, or duplicate meta descriptions, provide a step-by-step fix: (1) review the page content and identify the primary value proposition, (2) analyze SERP intent and competitor descriptions, (3) craft a 150-160 character description with active voice, primary keyword, CTA, and unique differentiator, (4) update via CMS or edit `<meta name="description">` in the HTML `<head>`. **A/B Testing:** Recommend A/B testing different meta description variants for high-traffic pages (test angle variations: benefit-driven vs feature-driven vs question-based; test power words, length, CTAs). Compare CTR performance over 2-4 weeks per variant. **Bing Webmaster Tools Monitoring:** Recommend monitoring meta description performance (impressions, clicks, CTR) in Bing Webmaster Tools alongside Google Search Console — a description that drives low CTR in both engines needs rewriting. **Regular Review Cycle:** Recommend establishing a quarterly (or pre-seasonal) review of all meta descriptions to ensure they remain aligned with current content, target keywords, and search trends. Stale descriptions should be refreshed even if they passed the length check.
 - **Heading Configuration:** Enforce exactly one `<h1>` per page. Verify sequential nesting (`<h2>` -> `<h3>` -> `<h4>`) with no skipped levels. Flag headings that are purely decorative or empty.
 - **Anchor Mechanics:** Flag non-descriptive text ("click here", "read more", "learn more", "this", "here"). Verify href destinations exist in the workspace. Flag javascript:void(0) links.
 - **Viewport Meta Tag:** Verify `<meta name="viewport">` exists with `width=device-width, initial-scale=1`.
@@ -144,7 +173,7 @@ Consider removing one finding before delivering. If you have 15 findings, ask wh
 - **Trailing Slash Consistency:** Enforce consistent trailing slash usage across the site.
 - **WWW vs Non-WWW Consistency:** Verify canonical URLs consistently use one or the other.
 - **Protocol Consistency:** Verify all internal links use `https://`, not `http://`.
-- **Pagination Handling:** Detect paginated content (`?page=2`, `/page/2/`). Verify `rel="next"` and `rel="prev"`, or a `view-all` page with canonical.
+- **Pagination Handling:** Detect paginated content (`?page=2`, `/page/2/`). Note: Google deprecated `rel="next"/"prev"` in March 2019 — Bing still respects it. Primary strategy: implement a `view-all` page with a self-referencing canonical, or give each paginated page a self-referencing canonical. If `rel="next"/"prev"` is already present, it is not harmful but is not a ranking signal for Google.
 - **Silo Architecture:** Evaluate topical clustering — do pages about related topics link to each other? Is there a pillar page that links to cluster content?
 - **Orphan Pages:** Check for HTML files not linked from any other page in the workspace. (Canonical definition in Pillar 8 — this check is architecture-level; Pillar 8 covers link equity impact.)
 - **Redirect Chains (Static Analysis):** Flag any `http-equiv="refresh"` based redirects. Flag `meta refresh` redirects with delay >0.
@@ -173,7 +202,7 @@ Consider removing one finding before delivering. If you have 15 findings, ask wh
 - **Content Depth:** Flag pages with fewer than 300 words of visible text (general thin content threshold). For e-commerce category pages, flag under 100 words. For blog posts, flag under 200 words. Flag pages with only images/embeds and no substantive text.
 - **Readability Score:** Flag content with long paragraphs (>5 sentences) or overly complex sentence structure. Recommend scannable formatting (bullet points, short paragraphs, bold key phrases). If tooling is available, reference Flesch-Kincaid grade level (target: grade 8-10 for general web content) or Gunning Fog Index (target: 12-14 for professional audiences).
 - **Keyword Stuffing:** Flag unnatural repetition of keywords in content, alt text, or meta tags.
-- **Keyword Density Calculation:** For each target keyword phrase, calculate density as `(keyword occurrences ÷ total word count) × 100`. Flag pages where density exceeds 3% (keyword stuffing risk) or falls below 0.5% (insufficient topical relevance). For multi-word phrases (e.g., "Financial Modeling", "PowerBI Dashboards"), count exact phrase matches, not individual word occurrences. Adjust thresholds by content length: shorter pages (<500 words) can tolerate higher density; longer pages (>2000 words) should have lower density.
+- **Keyword Density Calculation:** For each target keyword phrase, calculate density as `(keyword occurrences ÷ total word count) × 100`. Flag pages where density exceeds 3% (keyword stuffing risk) or falls below 0.5% (insufficient topical relevance). For multi-word phrases (e.g., "Financial Modeling", "PowerBI Dashboards"), count exact phrase matches, not individual word occurrences. Adjust thresholds by content length: shorter pages (<500 words) can tolerate higher density; longer pages (>2000 words) should have lower density. **Note:** Keyword density is a secondary heuristic. Modern semantic SEO prioritizes entity coverage, topical completeness, and co-occurrence patterns over raw density. If a page scores well on entity density and topical coverage but has low keyword density, do not flag it — the content is likely using natural language variations.
 - **Semantic Keyword Relationships / Co-Occurrence:** Check for presence of related entities and semantically connected terms alongside primary keywords. Identify co-occurrence gaps — terms that should naturally appear together given the topic (e.g., "vegan recipe" should co-occur with "plant-based," "dairy-free," "gluten-free"). Recommend adding missing semantically related terms.
 - **Entity & Topic Authority:** Identify what entities (people, places, things, brands, concepts) the content covers. Compare entity coverage against a target entity list for the topic. Flag missing entities that a comprehensive page should include. Score entity density (entities per 100 words).
 - **Entity Salience Analysis:** Evaluate whether the most important entities for the topic receive proportional content weight. The primary entity should appear early, be defined clearly, and have the highest frequency-weighted prominence. Flag pages where secondary entities overshadow the primary topic. This is an LLM judgment call — use semantic reasoning to assess whether the content's focus matches the intended primary topic.
@@ -532,117 +561,142 @@ A report is read by engineers who need to fix things and stakeholders who need t
 - **Provide file-level specificity.** Never say "some pages" or "multiple files." List every affected file path. If there are 50 files with the same issue, list all 50 in the Location field — do not summarize to "various files."
 - **Show before/after for every fix.** The Current Code block shows the problem; the Fix block shows the solution. If the fix is a new addition (e.g., adding a missing schema), show the full block to add with a comment indicating where it goes.
 - **Group related findings.** If three pages all have the same missing canonical issue, present it as one finding with three file locations — not three separate findings. Consolidate to keep the report actionable.
+- **Manage report length.** If the report exceeds 3,000 lines, consolidate findings and move detailed per-file breakdowns to an appendix. The Priority Fix Matrix should never exceed 20 items — anything beyond that is noise until critical items are resolved. Stakeholders read the Executive Summary and Priority Matrix; engineers read the Granular Pillar Evaluations. Optimize for both audiences without bloating either section.
 
 ---
 
 ## Prompt Templates for Quick Execution
 
+Each template activates specific pillars. The "Full Audit" template runs all applicable pillars; the others are scoped for targeted audits.
+
 ### Full Audit
+**Pillars:** All applicable (01-24, suppressed by project type)
 ```
 @SKILL.md Run a comprehensive full-stack SEO audit across all files in this workspace. Generate seo_audit_report.md and seo_audit_report.csv with all applicable pillars evaluated.
 ```
 
 ### Rich Results Opportunity Scan
+**Pillars:** 02 (Structured Data), 17 (Rich Results), 13 (E-Commerce if applicable), 14 (Blog if applicable)
 ```
 @SKILL.md Run a rich results eligibility audit. Check every page for structured data and identify all missing rich result opportunities based on content type. Generate a gap analysis table.
 ```
 
 ### AI Overview / SGE Readiness
+**Pillars:** 18 (AI/SGE/Voice), 07 (Semantic SEO)
 ```
 @SKILL.md Run an AI Overview (SGE) readiness audit. Evaluate content structure for LLM extraction, conversational keyword coverage, entity density, and definitional content. Provide a readiness score per page.
 ```
 
 ### Migration Pre-Flight
+**Pillars:** 20 (Migration), 02 (Technical SEO), 04 (URL Structure), 08 (Internal Linking)
 ```
 @SKILL.md Run a migration SEO readiness check. Assume we are migrating from [old-domain] to [new-domain]. Audit current URL structure, canonical setup, internal links, and structured data for migration readiness. Flag all items that will break post-migration.
 ```
 
 ### Content Pruning Recommendation
+**Pillars:** 21 (Content Pruning), 07 (Semantic SEO), 08 (Internal Linking), 02 (Technical SEO)
 ```
 @SKILL.md Run a content pruning audit. Identify all thin, duplicate, orphan, or low-value pages. For each, recommend Merge, Rewrite, Remove, or Noindex with estimated crawl budget recovery.
 ```
 
 ### CI/CD Pipeline Proposal
+**Pillars:** 19 (CI/CD)
 ```
 @SKILL.md Generate a CI/CD SEO pipeline configuration. Provide a ready-to-use GitHub Actions workflow and pre-commit hook that runs automated SEO checks on every PR and blocks Critical issues from merging.
 ```
 
 ### Framework-Specific Audit
+**Pillars:** 15 (JavaScript Framework SEO), 03 (Performance), 06 (Image SEO), 04 (URL Structure)
 ```
 @SKILL.md Run a [Next.js/Nuxt/Astro/React-SPA] SEO audit. Focus on framework-specific patterns — SSR configuration, meta management, image optimization, routing strategy, and hydration approach.
 ```
 
 ### EEAT Gap Analysis
+**Pillars:** 16 (E-E-A-T Signals), 14 (Blog if applicable), 17 (Rich Results)
 ```
 @SKILL.md Run an EEAT signals audit. Evaluate author attribution, schema coverage, trust signals, About/Contact pages, and YMYL compliance. Provide an authority score and prioritized fixes.
 ```
 
 ### Third-Party Script Triage
+**Pillars:** 22 (Third-Party Scripts), 03 (Performance)
 ```
 @SKILL.md Run a third-party script performance audit. Catalog all external scripts, assess their impact on LCP, CLS, and INP. Provide a prioritized removal or deferral plan with estimated performance gains.
 ```
 
 ### Competitor SEO Analysis
+**Pillars:** 23 (Competitor Analysis), 07 (Semantic SEO), 02 (Technical SEO), 17 (Rich Results)
 ```
 @SKILL.md Run a competitive SEO gap analysis against [competitor1.com, competitor2.com, competitor3.com]. Compare content depth, entity coverage, schema adoption, keyword positioning, and technical SEO. Generate a gap analysis table with strategic recommendations.
 ```
 
 ### Semantic SEO Deep Audit
+**Pillars:** 07 (Semantic SEO)
 ```
 @SKILL.md Run an advanced semantic SEO audit. Evaluate entity coverage, knowledge graph alignment, entity salience, passage optimization, topic clustering, co-occurrence coverage, taxonomy quality, and information gain per page. Provide a semantic completeness score and prioritized entity/topic additions.
 ```
 
 ### Full Technical SEO Deep Dive
+**Pillars:** 02 (Technical SEO), 09 (Sitemap & Robots.txt), 04 (URL Structure)
 ```
 @SKILL.md Run a comprehensive technical SEO audit covering indexability matrix, crawl budget, redirect health (chains + loops), soft 404s, parameterized URLs, crawl traps, compression, caching, CDN configuration, server response analysis, duplicate pages, and HTTP status code inventory.
 ```
 
 ### Performance & Core Web Vitals Audit
+**Pillars:** 03 (Performance), 05 (Mobile SEO), 06 (Image SEO)
 ```
 @SKILL.md Run a Core Web Vitals audit across LCP, FCP, CLS, INP, and TTFB. Split findings by mobile vs desktop. Score each metric against Google's Good/Needs Improvement/Poor thresholds. Provide CWV fix patterns for each metric that is not in the "Good" range.
 ```
 
 ### Video & YouTube SEO Audit
+**Pillars:** 24 (Video & YouTube SEO), 17 (Rich Results), 12 (Accessibility)
 ```
 @SKILL.md Run a Video & YouTube SEO audit. Catalog all video embeds, verify VideoObject schema, check YouTube embed best practices (privacy mode, lazy loading, CLS-safe iframes), evaluate transcript/caption coverage, and assess video rich result eligibility. Provide VideoObject schema corrections and embed optimization recommendations.
 ```
 
 ### Title & Meta Description Optimization Audit
+**Pillars:** 01 (On-Page SEO)
 ```
-@SKILL.md Run a title tag and meta description audit. Check every page for missing titles, short titles (<40 chars), short descriptions (<120 chars), and duplicate metadata. For each flagged page, provide the current vs recommended title/description. Group fixes by file path for CMS or HTML editing workflow. Include Bing Webmaster Tools monitoring recommendations for CTR tracking.
+@SKILL.md Run a title tag and meta description audit. Check every page for missing titles, short titles (<40 chars), short descriptions (<100 chars), and duplicate metadata. For each flagged page, provide the current vs recommended title/description. Group fixes by file path for CMS or HTML editing workflow. Include Bing Webmaster Tools monitoring recommendations for CTR tracking.
 ```
 
 ### IndexNow Setup Audit
+**Pillars:** 09 (Sitemap & Robots.txt — IndexNow section)
 ```
 @SKILL.md Run an IndexNow readiness audit. Check if IndexNow key file exists at the root, verify the HTTP POST submission format, and provide the exact curl command and JSON payload for bulk URL submission. Recommend IndexNow setup for rapid indexation.
 ```
 
 ### Voice Search Optimization Audit
+**Pillars:** 18 (AI/SGE/Voice — Voice Search section), 07 (Semantic SEO)
 ```
 @SKILL.md Run a Voice Search SEO audit. Evaluate content for conversational long-tail query coverage, featured snippet / position-zero targeting, QA fragment structuring, and voice-assistant pull-through readiness. Score each page for voice search readiness and provide rewrite recommendations.
 ```
 
 ### E-E-A-T & Trust Signal Deep Audit
+**Pillars:** 16 (E-E-A-T Signals — deep audit)
 ```
 @SKILL.md Run an E-E-A-T deep audit. Evaluate trust page existence AND reachability (two-layer verification), automated contact pathway detection, author attribution depth, experience signals in content, review/testimonial quality, and YMYL compliance. Provide an E-E-A-T score per page and prioritized trust-building recommendations.
 ```
 
 ### Staging / Dev Environment Audit
+**Pillars:** 02 (Technical SEO — staging detection), 11 (Security SEO)
 ```
 @SKILL.md Run a staging subdomain security and SEO leak audit. Scan the codebase for references to staging, dev, or pre-production subdomains. Check if staging environments are publicly accessible, blocked by robots.txt, or leaking via canonical tags, OG URLs, or JSON-LD. Flag all staging references and recommend auth-gating or noindex for non-production environments.
 ```
 
 ### URL Slug & Keyword Placement Audit
+**Pillars:** 04 (URL Structure — slug quality), 01 (On-Page SEO — keyword placement)
 ```
 @SKILL.md Run a URL slug quality and keyword placement audit. Evaluate every URL slug for keyword inclusion, stop word bloat, meaningfulness, and length. Score each page for keyword placement across the five highest-signal zones (title, H1, URL slug, first paragraph, H2). Flag pages with placement scores <3/5 and provide rewrite recommendations.
 ```
 
 ### Social SEO Quality Audit
+**Pillars:** 10 (Social & Regional SEO — OG/Twitter quality)
 ```
 @SKILL.md Run a Social SEO quality audit. Go beyond presence checks — evaluate og:image dimensions and file size, og:title vs title divergence, twitter:card type appropriateness, og:description quality, and cross-platform consistency. Flag field-level quality issues that reduce social share CTR.
 ```
 
 ### Sitemap URL Inventory Audit
+**Pillars:** 09 (Sitemap & Robots.txt — URL inventory), 21 (Content Pruning)
 ```
 @SKILL.md Run a sitemap URL inventory analysis. Categorize every URL in the sitemap by type (homepage, product, category, blog, tag, archive, utility). Detect low-value URL inflation, missing high-value pages, and sitemap bloat. Recommend sitemap cleanup to improve crawl priority distribution.
 ```
@@ -674,13 +728,13 @@ When executing an audit, you must generate a comprehensive file named `seo_audit
 
 ## Priority Fix Matrix
 
-| # | Pillar | Detected Issue | Severity | Target File(s) | Effort | Est. Traffic Impact | Est. Revenue Impact | Time to Impact | Business Value |
-|---|--------|---------------|----------|----------------|--------|---------------------|---------------------|----------------|----------------|
-| 1 | On-Page | Missing unique H1 tag | High | /about.html | S (<4hr) | +5-10% organic | Medium | Immediate | Traffic |
-| 2 | Perf. | Images missing dimensions | High | /index.html:45 | M (1-3d) | +3-8% organic | Low | 1-4 weeks | Traffic |
+| # | Pillar | Detected Issue | Severity | Target File(s) | Effort | Est. Traffic Impact | Fix Type |
+|---|--------|---------------|----------|----------------|--------|---------------------|----------|
+| 1 | On-Page | Missing unique H1 tag | High | /about.html | S (<4hr) | +5-10% organic | metadata |
+| 2 | Perf. | Images missing dimensions | High | /index.html:45 | M (1-3d) | +3-8% organic | performance |
 
 **Effort:** S = <4 hours, M = 1-3 days, L = 1-2 weeks, XL = 2+ weeks  
-**Business Value:** Traffic / Revenue / Brand / Risk / Compliance
+**Fix Type:** schema / metadata / content / linking / performance / config / structural
 
 ## Quick Wins (Can be implemented in <30 mins)
 
@@ -728,7 +782,7 @@ When executing an audit, you must generate a comprehensive file named `seo_audit
 
 ## CSV Export
 
-A companion `seo_audit_report.csv` has been generated with all Priority Fix Matrix data in sortable spreadsheet format (columns: #, Pillar, Issue, Severity, File, Effort, Traffic Impact, Revenue Impact, Time to Impact, Business Value).
+A companion `seo_audit_report.csv` has been generated with all Priority Fix Matrix data in sortable spreadsheet format (columns: #, Pillar, Issue, Severity, File, Effort, Traffic Impact, Fix Type).
 
 ## Recommended Technical Implementation
 
@@ -771,10 +825,11 @@ For teams that need hands-on execution support — website development, website 
 ---
 
 ## Version History
+- **v5.1** — Audit-driven corrections and structural improvements. Added Pillar Index table (24 pillars with domain grouping and skip-if conditions) for快速 reference. Fixed: `rel="next"/"prev"` deprecation note added (Google deprecated March 2019; Bing still respects it). Fixed: CLS severity thresholds aligned with Google's Good/Needs Improvement/Poor scale — CLS 0.1–0.25 now flagged as High, not just >0.25 as Critical. Fixed: Meta description "short" threshold updated from <120 chars to <100 chars; added >155 chars truncation risk flag. Fixed: Keyword density calculation now notes it is a secondary heuristic and defers to entity/topic coverage as primary signal. Fixed: "Some pages" wording clarified to explicitly state "consolidate into one finding; list all affected file paths in the Location field." Fixed: Output example table columns aligned with CSV export definition — removed Revenue Impact / Time to Impact / Business Value columns that weren't in the original CSV spec; standardized on Fix Type. Added report length management rule (cap at 3,000 lines; move per-file breakdowns to appendix). Added pillar mapping annotations to all 22 prompt templates. Updated README.md pillar descriptions to accurately reflect SKILL.md's 24 pillars (removed "Off-page SEO" and "Local SEO" as standalone claims; corrected pillar categorization). Updated Title & Meta Description Optimization template to use <100 chars threshold.
 - **v5.0** — Enhanced SKILL.md with improvements learned from competitive skill gap analysis. Added to Pillar 2: staging/dev subdomain detection (publicly accessible staging environments, leaked canonical/OG references, auth-gating recommendations). Added to Pillar 4: URL slug quality evaluation (keyword inclusion, stop word bloat, meaningfulness, length). Added to Pillar 9: sitemap URL inventory analysis (URL categorization by type, low-value inflation detection, sitemap cleanup). Added to Pillar 10: OG/Twitter quality review beyond presence checks (og:image dimensions, og:title divergence, twitter:card type appropriateness, og:description quality). Added to Pillar 16: two-layer trust page verification (Exists + Reachable), automated contact pathway detection (dedicated page → About → footer → social). Added to Pillar 1: keyword placement scoring across five highest-signal zones (title, H1, URL slug, first paragraph, H2). Added to Output Blueprint: mandatory Evidence/Impact/Fix three-part finding format. Added to report-writing section: 6 detailed report detail writing rules. Added 5 new prompt templates (E-E-A-T Deep Audit, Staging Environment Audit, URL Slug & Keyword Placement Audit, Social SEO Quality Audit, Sitemap URL Inventory Audit). Total prompt templates: 22.
 - **v4.2** — Added IndexNow protocol setup and submission guidance to Pillar 9 (key file hosting, HTTP POST to api.indexnow.org, response code reference, curl test command). Enhanced Pillar 1: missing title tag detection with fix workflow, short title remediation, meta description A/B testing framework, Bing Webmaster Tools monitoring recommendation, and quarterly review cycle guidance. Added 2 new prompt templates (Title & Meta Description Optimization, IndexNow Setup). Added Conclusion section with F9XR Team attribution.
 - **v4.1** — Extended from 23 to 24 pillars. Added Video & YouTube SEO pillar. Expanded Process first pass with detailed workspace exploration. Added Voice Search Optimization as explicit sub-discipline within Pillar 18. Added keyword density calculation methodology to Pillar 7. Added 2 new prompt templates. Updated output blueprint with attribution line support, emoji heading option, and fix-type grouping option.
-- **v4.0** — Extended from 22 to 23 pillars. Added enterprise task-force persona, crawl orchestration & discovery phase, Competitor SEO Analysis pillar, and Advanced Semantic SEO depth. Filled all remaining PROMPT gaps: FCP/TTFB in CWV pillar, mobile/desktop performance split, redirect loop detection, soft 404s, broken external links, parameterized URLs, infinite crawl traps, crawl budget analysis, CDN/compression/caching/server-response audits, duplicate page/metadata detection, CTR/SERP optimization checks, structured content layout, table optimization, Organization/Service/Person schema, E-E-A-T Experience signal, reputation audit, content credibility scoring, and unified trust signal audit. Added 4 new prompt templates. Expanded output blueprint with Revenue Impact, Time to Impact, Business Value columns, CSV export, per-finding Implementation Guidance + Fix Type fields, Medium-Term and Long-Term sections, and Revenue/Traffic Opportunity analysis sections.
+- **v4.0** — Extended from 22 to 23 pillars. Added enterprise task-force persona, crawl orchestration & discovery phase, Competitor SEO Analysis pillar, and Advanced Semantic SEO depth. Filled all remaining PROMPT gaps: FCP/TTFB in CWV pillar, mobile/desktop performance split, redirect loop detection, soft 404s, broken external links, parameterized URLs, infinite crawl traps, crawl budget analysis, CDN/compression/caching/server-response audits, duplicate page/metadata detection, CTR/SERP optimization checks, structured content layout, table optimization, Organization/Service/Person schema, E-E-A-T Experience signal, reputation audit, content credibility scoring, and unified trust signal audit. Added 4 new prompt templates. Expanded output blueprint with CSV export, per-finding Implementation Guidance + Fix Type fields, Medium-Term and Long-Term sections, and Revenue/Traffic Opportunity analysis sections.
 - **v3.0** — Extended from 14 to 22 pillars. Added auditor persona, core principles, 5-pass process workflow, restraint-and-critique section, and report-writing guidance. Added JavaScript Framework SEO (Next.js/Nuxt/Astro/SPA), EEAT Signals, Rich Results Eligibility map, AI/SGE/LLM Optimization, CI/CD & Automation pipeline, Migration SEO, Content Pruning & Consolidation, and Third-Party Script Audit. Added 7 new prompt templates.
 - **v2.0** — Extended from 5 to 14 pillars. Added Performance SEO (CWV), Mobile SEO, URL Architecture, Internal Linking, XML Sitemaps & Robots.txt, Security SEO, Accessibility SEO, E-Commerce SEO, Blog SEO, and enhanced cross-file analysis. Added prompt templates and Quick Wins section to output.
 - **v1.0** — Initial release with 5 core pillars.
