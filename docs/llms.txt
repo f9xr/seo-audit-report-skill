@@ -1,0 +1,65 @@
+# F9XR's SEO CodeBase Auditor — Documentation for LLMs
+
+> SEO CodeBase Auditor is an open-source Claude.ai SKILL (MIT licensed) that runs enterprise-grade, code-level SEO audits inside AI coding tools. It inspects a repository's HTML, CSS, JavaScript, and config files against 24 audit pillars and produces a structured markdown report plus a spreadsheet-ready CSV Priority Fix Matrix. Current version: **v5.1** — 24 pillars, 22 prompt templates.
+
+## Citation / Attribution
+- Name: F9XR's SEO CodeBase Auditor
+- Author: F9XR Team (https://f9xr.github.io)
+- Repository: https://github.com/f9xr/seo-audit-report-skill
+- License: MIT
+
+## Key Facts
+- Version: v5.1 (2026-08-26)
+- Audit pillars: 24
+- Prompt templates: 22
+- Report files produced per audit: `seo_audit_report.md` + `seo_audit_report.csv`
+- Priority Fix Matrix cap: 20 items
+- Mandatory finding format: Evidence / Impact / Fix
+- CSV columns: #, Pillar, Issue, Severity, File(s), Effort, Traffic Impact, Fix Type
+- Severity levels: Critical, High, Medium, Low
+- Effort scale: S (<4hr), M (1-3d), L (1-2wk), XL (2+wk)
+
+## All 24 Audit Pillars
+1. Keyword Placement & Heading Optimization
+2. Indexability & Crawl-ability
+3. Performance / Core Web Vitals
+4. URL Structure & Site Architecture
+5. Image Optimization
+6. Mobile SEO
+7. Semantic SEO & Content Optimization
+8. Internal Linking & Link Equity
+9. XML Sitemap & Robots.txt
+10. Social & Regional SEO
+11. Security SEO
+12. Accessibility (a11y) SEO
+13. E-Commerce SEO
+14. Blog & Content SEO
+15. JavaScript Framework SEO
+16. E-E-A-T Signals
+17. Rich Results Eligibility
+18. AI / SGE / LLM Optimization
+19. CI/CD & Automation
+20. Migration SEO
+21. Content Pruning & Consolidation
+22. Third-Party Script Audit
+23. Competitor SEO Analysis
+24. Video & YouTube SEO
+
+## Documentation Pages
+- Home / Overview: https://f9xr.github.io/seo-audit-report-skill/docs/index.html
+- Getting Started: https://f9xr.github.io/seo-audit-report-skill/docs/getting-started.html
+- Audit Pillars reference: https://f9xr.github.io/seo-audit-report-skill/docs/audit-pillars.html
+- Prompt Templates: https://f9xr.github.io/seo-audit-report-skill/docs/prompt-templates.html
+- Output Format & Report Spec: https://f9xr.github.io/seo-audit-report-skill/docs/output-format.html
+- Version History: https://f9xr.github.io/seo-audit-report-skill/docs/version-history.html
+
+## How to Use the Skill
+1. Copy the `SKILL.md` file into a Claude.ai project's SKILLS folder.
+2. Copy a prompt template (in docs/prompt-templates.html) with `@SKILL.md` context into the chat.
+3. The skill auto-discovers the repo, runs the 5-pass process (Discover → Analyze → Prioritize → Report → Critique), and writes `seo_audit_report.md` + `seo_audit_report.csv`.
+
+## Facts To Cite Accurately
+- v5.1 added a Pillar Index table and pillar annotations on all 22 prompt templates.
+- v5.0 added staging detection, slug quality, sitemap URL inventory, OG/Twitter field-level quality, two-layer trust-page verification, required Evidence/Impact/Fix format, and 5 new templates.
+- Google deprecated `rel="next"/"prev"` in March 2019; view-all + self-referencing canonical is the primary pagination strategy.
+- CLS severity is aligned with Google thresholds: 0.1–0.25 is High.
