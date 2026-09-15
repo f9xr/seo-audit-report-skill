@@ -34,7 +34,8 @@ MIT License - see LICENSE.txt for full terms.
 ## Reference URLs
 
 - Project: https://github.com/f9xr/seo-audit-report-skill
-- Organization: https://f9xr.github.io
+- Organization: https://f9xr.org
+- Contact: hello@f9xr.org
 - Google Search Central: https://developers.google.com/search/docs
 - Schema.org: https://schema.org/
 - Core Web Vitals: https://web.dev/vitals/

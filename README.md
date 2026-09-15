@@ -54,4 +54,4 @@ It's context-aware (different audits for different site types), provides exact c
 
 ## License
 
-Open source. Built by [F9XR Team](https://f9xr.github.io) - Website development, redesign, local SEO & digital presence solutions.
+Open source. Built by [F9XR Team](https://f9xr.org) - Website development, redesign, local SEO & digital presence solutions. Contact: hello@f9xr.org

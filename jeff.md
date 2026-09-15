@@ -6,6 +6,7 @@ description: >-
   review modules when available.
 metadata:
   author: Jeff
+  contact: hello@f9xr.org
   version: "2.1"
 ---
 

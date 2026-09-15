@@ -72,4 +72,4 @@ F9XR's SEO CodeBase Auditor SKILL is an enterprise-grade SEO auditing tool desig
 ## Credits
 
 Built by F9XR Team - Website development, redesign, local SEO & digital presence solutions.
-https://f9xr.github.io
+https://f9xr.org · hello@f9xr.org
