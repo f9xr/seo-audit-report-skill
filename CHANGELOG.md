@@ -2,6 +2,34 @@
 
 All notable changes to `SKILL.md` are documented in this file.
 
+## [v5.3] - 2026-09-17
+
+### Added
+- Google Spam Policy Compliance block to Pillar 2 (site reputation abuse / parasite SEO, scaled content abuse, expired domain abuse, cloaking)
+- People-First Content Self-Assessment and Google Discover Eligibility bullets to Pillar 7
+- AI Crawler Governance (robots.txt) for GPTBot, Google-Extended, ClaudeBot, PerplexityBot, CCBot with reference directives block, plus News Sitemap extension to Pillar 9
+- International SEO Deep Checks (hreflang correctness matrix) and Local SEO Map Pack Audit (Place schema, NAP across surfaces, local landing pages, GBP completeness, first-party review signals, embedded Maps CLS-safety) to Pillar 10
+- Merchant Center / Google Shopping Feed Readiness section to Pillar 13
+- 3 new prompt templates (Google Spam Policies & AI Crawler Governance, International & Local SEO, Merchant Center Feed Readiness) — total 26
+- F9XR YMYL business-guide reference (https://f9xr.org/articles/2026/09/14/what-is-ymyl-in-seo.html) to the YMYL block and Output Blueprint Resources
+
+### Fixed
+- FAQ rich results guidance updated for Aug 2023 deprecation (gov/health sites only)
+- How-to rich results guidance updated for Sept 2023 desktop deprecation (mobile how-to video only)
+- Review snippet guidance updated for May 2023 first-party review restriction
+- Pillar 18 llms.txt bullet now cross-references the Pillar 9 AI crawler governance block
+
+## [v5.2] - 2026-09-16
+
+### Added
+- Dedicated YMYL Audit Process block to Pillar 16 (E-E-A-T Signals)
+- YMYL Classification Matrix (health, finance, legal, news, shopping, education, civic/government) with detection heuristics
+- Per-class hardening standards (credentials/license verification, citation quality, disclaimers, freshness windows)
+- Site Reputation Assessment per Google's Aug 2022 "unverified claims" update
+- Website Owner & Maintainer Transparency checks
+- Harm-Tier Calibration (directly harmful / casually harmful / informational)
+- YMYL Readiness Audit prompt template
+
 ## [v5.1] - 2026-08-26
 
 ### Added

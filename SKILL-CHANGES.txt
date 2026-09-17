@@ -1,0 +1,191 @@
+=================================================================
+SKILL.md — CHANGES RECORD (v5.2 and v5.3)
+Generated: 2026-09-17
+=================================================================
+
+This file documents every change made to SKILL.md in this session,
+grouped by the two version bumps they produced.
+
+
+-----------------------------------------------------------------
+CHANGE GROUP 1  ->  SKILL.md v5.2  (YMYL Audit Process)
+-----------------------------------------------------------------
+
+1. ADDED: "YMYL Audit Process (Your Money or Your Life)" block
+   inside Pillar 16 (E-E-A-T Signals), located after the
+   "Content Review Process" bullet. Contains:
+
+   - YMYL Classification Matrix
+     Table of 7 classes with detection signals and example topics:
+       * Health & Medical
+       * Financial
+       * Legal
+       * News & Current Events
+       * Shopping & E-Commerce
+       * Education & Career
+       * Civic, Government & Safety
+     Plus a "Classification rule" (any page whose wrong content could
+     affect health, financial stability, safety, or life choices is
+     YMYL regardless of intent) and a YMYL page inventory requirement.
+
+   - Per-class hardening standards (each a full bullet):
+       * Health & Medical Standards  (credentials/NPI, medical
+         review board, PubMed/CDC/WHO citations, disclaimer, 12-month
+         freshness)
+       * Financial Standards         (CFP/CPA/CFA, IRS/SEC/FINRA
+         sources, fee/risk disclosure, no guaranteed-returns)
+       * Legal Standards             (attorney + jurisdiction,
+         statute/case-law citations, not-legal-advice disclaimer)
+       * News & Current Events       (named author, primary-source
+         citations, corrections policy, opinion v fact)
+       * Shopping & E-Commerce       (review methodology disclosure,
+         verified Review schema, moderation, no manipulated pricing)
+       * Education & Career          (accreditation/expertise,
+         BLS/IPEDS data, affiliate disclosure)
+       * Civic, Government & Safety  (official-source citations,
+         heightened recency, correction of outdated info)
+
+   - Site Reputation Assessment
+     Website-level (not just author-level) reputation as the YMYL
+     quality bar, per Google's Aug 2022 "unverified claims" update.
+
+   - Website Owner & Maintainer Transparency
+     Named owner/operator, editorial responsibility, funding/ad
+     disclosure, update cadence.
+
+   - Harm-Tier Calibration
+     Directly harmful / Casually harmful / Informational (support/
+     charity) tiers with scaled expertise + source requirements and
+     tier-based severity.
+
+2. UPDATED: Existing "Medical / Financial / Legal / YMYL Content"
+   bullet in Pillar 16 to cross-reference the new YMYL block.
+
+3. ADDED: "YMYL Readiness Audit" prompt template under Prompt
+   Templates (Pillars: 16). Prompt template count went 22 -> 23.
+
+4. ADDED: usage example "@SKILL.md run a YMYL readiness audit" in
+   the "How a User Employs This Skill File" section.
+
+5. ADDED: Version History v5.2 entry.
+
+6. ADDED: CHANGELOG.md v5.2 entry (retro-synced).
+
+
+-----------------------------------------------------------------
+CHANGE GROUP 2  ->  SKILL.md v5.3  (gap-filling batch)
+-----------------------------------------------------------------
+
+6. CORRECTED Pillar 17 (Rich Results Eligibility) - 2023+ deprecations:
+   - FAQ Rich Results: deprecated Aug 2023; only highly authoritative
+     government / health sites display them. FAQ markup no longer a
+     general opportunity (still useful for AI/voice extraction).
+   - How-To Rich Results: deprecated on desktop Sept 2023; now only
+     mobile long-form how-to VIDEO pages. Not a standalone rich-result
+     play.
+   - Review Snippet: May 2023 change - only first-party reviews
+     (products sold on-site, local businesses) qualify. Flag Review
+     schema that cannot meet the first-party bar as wasted markup.
+
+7. ADDED Pillar 2 (Technical SEO) - "Google Spam Policy Compliance
+   (March 2024)" sub-block:
+   - Site Reputation Abuse (parasite SEO) - sponsored/partner-content
+     sections, embedded third-party widgets; flagged High.
+   - Scaled Content Abuse - mass-generated template pages with
+     near-zero information gain.
+   - Expired Domain Abuse - fresh domains claiming old editorial
+     history / purchase-driven repurposing; flagged High.
+   - Cloaking & Sneaky Redirects - UA/device-based content swaps;
+     flagged Critical.
+
+8. ADDED Pillar 7 (Semantic SEO & Content):
+   - People-First Content Self-Assessment - Google people-first vs
+     search-first framework (4 questions + search-first flag signals).
+   - Google Discover Eligibility - click-worthy-but-accurate titles,
+     high-quality >=1200px 16:9 images, people-first fresh content,
+     publishing cadence, content policy compliance.
+
+9. ADDED Pillar 9 (XML Sitemap & Robots.txt):
+   - AI Crawler Governance (robots.txt) - GPTBot / OAI-SearchBot /
+     ChatGPT-User, Google-Extended (independent of indexing),
+     anthropic-ai / ClaudeBot, PerplexityBot / perplexity-user,
+     CCBot, meta-externalagent. Decision framework + ready-to-use
+     robots.txt directives block + compliance-monitoring caveat.
+   - News Sitemap - <news:news> extension, 1000-URL limit note.
+
+10. ADDED Pillar 10 (Social & Regional SEO):
+   - International SEO Deep Checks - full hreflang correctness matrix:
+     self-referencing required, reciprocal pairs, x-default, ISO
+     639-1 + ISO 3166-1 format, <head>-only placement, no canonical
+     conflicts, sitemap alternates consistency, structure choice.
+   - Local SEO (Map Pack) Audit sub-block - Place/LocalBusiness schema
+     with geo, NAP consistency across surfaces, local landing page
+     quality (doorway-page flag = Critical), Google Business Profile
+     completeness, first-party review signals (May 2023 policy),
+     embedded Google Maps CLS-safety, Map Pack rating triggers.
+
+11. ADDED Pillar 13 (E-Commerce SEO) - "Merchant Center / Google
+    Shopping Feed Readiness":
+    - Product identifiers (gtin, mpn, brand)
+    - Feed attribute completeness
+    - Price & availability freshness (schema vs feed vs live page)
+    - Free listings / Surfaces across Google
+    - Schema-feed alignment (single source of truth)
+    - Disapproval risk review (shipping, images, prohibited claims)
+
+12. UPDATED Pillar 18 (AI/SGE/LLM/Voice):
+    - llms.txt bullet now cross-references the Pillar 9 AI crawler
+      governance block (llms.txt = opt-in, robots.txt = gating).
+
+13. ADDED 3 prompt templates (total 23 -> 26):
+    - Google Spam Policies & AI Crawler Governance Audit (02, 09, 07)
+    - International & Local SEO Audit (10)
+    - Merchant Center Feed Readiness Audit (13)
+
+14. ADDED usage examples:
+    - "@SKILL.md run a Google spam policies & AI crawler governance audit"
+    - "@SKILL.md run an international & local SEO audit"
+    - "@SKILL.md run a Merchant Center feed readiness audit"
+
+15. UPDATED front-matter description to include: YMYL compliance,
+    Google spam-policy checks, AI crawler governance.
+
+16. ADDED Version History v5.3 entry.
+
+17. ADDED CHANGELOG.md v5.3 entry.
+
+18. NOTE ON STRUCTURE: pillar count remains 24 (README.md "24 SEO
+    pillars" claim stays accurate). New checks were folded into
+    existing pillars; YMYL is a block inside Pillar 16.
+
+
+-----------------------------------------------------------------
+CHANGE GROUP 3  ->  F9XR YMYL business-guide reference
+-----------------------------------------------------------------
+
+19. ADDED F9XR article reference:
+    "What Is YMYL in SEO? A Guide for Business Owners"
+    https://f9xr.org/articles/2026/09/14/what-is-ymyl-in-seo.html
+
+    Two locations:
+    - End of the YMYL Audit Process block (instructs citing the guide
+      in the report's Resources & References whenever the site has
+      YMYL content).
+    - Output Blueprint "Resources & References" list (always present
+      in generated seo_audit_report.md, noted for YMYL audits).
+
+
+=================================================================
+FILES TOUCHED IN THIS SESSION
+=================================================================
+  SKILL.md         - all changes above (now shows v5.2 and v5.3 in
+                     Version History)
+  CHANGELOG.md     - v5.2 and v5.3 entries added
+  SKILL-CHANGES.txt - this file
+
+READY TO RUN WHEN USING THE SKILL:
+  @SKILL.md run a YMYL readiness audit
+  @SKILL.md run a Google spam policies & AI crawler governance audit
+  @SKILL.md run an international & local SEO audit
+  @SKILL.md run a Merchant Center feed readiness audit
+=================================================================

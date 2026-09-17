@@ -1,6 +1,6 @@
 ---
 name: seo-codebase-audit
-description: Enterprise-grade, evidence-driven SEO auditing of static code repositories. Evaluates HTML, Markdown, JS, CSS, JSON, and config files across 24 audit pillars — including competitor analysis, semantic SEO, video/YouTube SEO, voice search optimization, IndexNow protocol, and crawl orchestration — to surface production-ready fixes. Generates comprehensive seo_audit_report.md with prioritized remediation and CSV export.
+description: Enterprise-grade, evidence-driven SEO auditing of static code repositories. Evaluates HTML, Markdown, JS, CSS, JSON, and config files across 24 audit pillars — including YMYL compliance, Google spam-policy checks, AI crawler governance, competitor analysis, semantic SEO, video/YouTube SEO, voice search optimization, IndexNow protocol, and crawl orchestration — to surface production-ready fixes. Generates comprehensive seo_audit_report.md with prioritized remediation and CSV export.
 license: Complete terms in LICENSE.txt
 ---
 
@@ -125,6 +125,11 @@ Consider removing one finding before delivering. If you have 15 findings, ask wh
 - **Canonical Routing:** Verify `<link rel="canonical">` exists on each page. Check that it points to the correct preferred URL (no trailing slash mismatch, no protocol mismatch, no www vs non-www mismatch, no redirect chains in canonical target).
 - **Robots Meta Tags:** Scan for `<meta name="robots">` directives. Flag unintentional `noindex` or `nofollow` on important pages. Recommend `nosnippet` or `max-snippet` for SERP control when appropriate.
 - **Staging / Dev Subdomain Detection:** Scan the codebase for references to staging, dev, or pre-production subdomains (e.g., `staging.example.com`, `dev.example.com`, `uat.example.com`). Flag staging URLs that are publicly accessible, not behind auth, and not blocked by robots.txt. Flag canonical tags, sitemap entries, or internal links pointing to staging domains. Recommend `noindex` or auth-gating for all staging environments. Check for staging subdomains leaked via `<link rel="canonical">`, OG URLs, or JSON-LD `@id` references.
+- **Google Spam Policy Compliance (March 2024):** Audit the codebase against Google's [spam policies](https://developers.google.com/search/docs/essentials/spam-policies):
+  - **Site Reputation Abuse (parasite SEO):** Detect sections, subdirectories, or widget zones hosting third-party or sponsor content that is unrelated to the site's core purpose (`/sponsored/`, `/partner-content/`, `/advertorial/`, embedded third-party review widgets, guest-section content that passes no editorial oversight). Flag as High — Google treats this as link/site-reputation manipulation and acts on it via manual action or core algorithm.
+  - **Scaled Content Abuse:** Detect mass-produced template pages with near-zero information gain — identical H2 nets, boilerplate intro/outro with token swaps, no original research or first-hand knowledge. Flag bulk-generated pages regardless of whether AI or humans produced them; cross-reference Pillar 21 (Content Pruning) for removal/consolidation.
+  - **Expired Domain Abuse:** Detect recent domain rebranding where the acquired domain's prior editorial history is absent (copyright/footer dates younger than claimed reputation, "since 1990" claims on a freshly registered domain, purchase-driven repurposing). Flag as High — repurposing an expired domain solely to rank carries no ranking benefit and triggers spam classification.
+  - **Cloaking & Sneaky Redirects:** Scan for device/UA-based content swaps or scripted redirects (e.g., `301` returning different HTML to Googlebot than users). Flag as Critical — cloaking is a spam-policy violation that can get every page on the domain deindexed.
 - **Robots.txt Deep Audit:** Validate `User-agent`, `Disallow`, `Allow`, `Sitemap`, `Crawl-delay`. Flag overly broad `Disallow: /` on production sites. Test critical paths against robots.txt rules. Check for crawl-delay directives that may slow Googlebot. (Canonical definition in Pillar 9 — this check is technical-level; Pillar 9 covers full robots.txt + sitemap ecosystem.)
 - **JavaScript SEO:** Detect client-side rendered content. Assess crawlability — flag content that requires JS execution to be indexed. Recommend SSR, SSG, or static fallback strategies.
 - **CSS/JS Render-Blocking:** Identify render-blocking external resources in `<head>`. Recommend `defer`, `async`, or inlining critical CSS.
@@ -217,6 +222,13 @@ Consider removing one finding before delivering. If you have 15 findings, ask wh
 - **Content Completeness Score:** Based on search intent and topic, estimate a completeness score (0-100%) using this rubric: covers all subtopics (0-25%), answers likely follow-up questions (0-25%), includes necessary entities and keywords (0-25%), provides satisfying user experience with scannable formatting (0-25%). A complete page covers all subtopics, answers likely follow-up questions, includes necessary entities, and provides a satisfying user experience. Flag pages scoring below 60%.
 - **Content Freshness:** Check if content pages have date indicators. Recommend `datePublished` and `dateModified` in structured data. Flag content making time-sensitive claims without recency signals.
 - **Internal Anchor Text Diversity:** Check that internal links to a given page don't all use identical anchor text. If >80% of internal links to a page use the same anchor text, flag as over-optimized. Recommend varying anchor text with natural language variations and related keywords.
+- **People-First Content Self-Assessment:** Evaluate whether each page exists for the audience or for search engines, using Google's people-first vs search-first framework ([creating helpful, reliable, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content)):
+  1. Would a user be satisfied arriving at this page from a search result for the target query?
+  2. Does the content exist primarily to help the audience achieve a goal, answer a question, or learn — or primarily to rank for keywords?
+  3. Does it demonstrate first-hand, original expertise (original research, personal experience, actual usage) rather than aggregating others' work without adding value?
+  4. Is the page built for clicks/engagement metrics (titled to be sensational, thin on substance) or for user outcomes?
+  Flag search-first signals: keyword-stuffed filler, aggregation with no value-add, content generated to target niche keywords without editorial value, and mass AI-generated text lacking E-E-A-T backing. Consolidate flagged pages into one finding tied to Google's helpful content system (now part of the core ranking system) rather than "Google penalties."
+- **Google Discover Eligibility:** For content sites, evaluate eligibility for [Google Discover](https://developers.google.com/search/docs/appearance/discover) (no signup needed; algorithmically eligible): click-worthy but accurate headlines (sensational/clickbait titles suppress visibility), high-quality large images (≥1200px, 16:9 preferred, with `og:image`), people-first evergreen content with freshness signals, consistent publishing cadence, and compliance with content policies (medical, dangerous content, and misinformation rules excluding pages from Discover). Flag pages with unappealing or misleading titles, low-quality images, or thin recency signals as missing Discover opportunity. For news sites, cross-reference the News Sitemap bullet in Pillar 9 and `NewsArticle` schema in Pillar 17.
 
 ### 8. Internal Linking & Link Equity
 - **Orphan Pages:** Detect HTML files not reachable via any internal link from the home page or navigation.
@@ -255,6 +267,22 @@ Consider removing one finding before delivering. If you have 15 findings, ask wh
   - Response codes: `200 OK` (submitted successfully), `400 Bad Request` (invalid format), `403 Forbidden` (key invalid/not found), `422 Unprocessable Entity` (URLs don't belong to host or key schema mismatch), `429 Too Many Requests`.
   - Provide the exact `curl` or HTTP request for the user to test: `curl -X POST https://api.indexnow.org/IndexNow -H "Content-Type: application/json" -d '{"host":"www.example.com","key":"<key>","keyLocation":"https://www.example.com/<key>.txt","urlList":["https://www.example.com/"]}'`
   - Explain benefits: near-immediate indexing of new and updated pages, reduced reliance on crawl discovery, especially valuable during site launches, content updates, and page migrations.
+- **AI Crawler Governance (robots.txt):** Audit robots.txt for explicit handling of AI/LLM crawlers — distinct from standard search bots. Googlebot handles indexing; **Google-Extended** separately controls whether content trains Google's generative AI models (you can block Google-Extended without impacting Google Search ranking). Key user agents to govern: `GPTBot` / `OAI-SearchBot` / `ChatGPT-User` (OpenAI), `Google-Extended` (Gemini/AI Overviews training), `anthropic-ai` / `ClaudeBot` (Anthropic), `PerplexityBot` / `perplexity-user` (Perplexity), `CCBot` (Common Crawl), `meta-externalagent` (Meta AI). Provide the decision framework: sites that want LLM training/discovery keep them allowed; sites that fear content appropriation or want to meter AI traffic add `Disallow: /` per bot; Google-Extended can be blocked independently of ranking. Provide the exact block:
+  ```
+  # AI crawlers — allow/disallow as policy dictates
+  User-agent: GPTBot
+  Disallow: /        # or remove to allow
+  User-agent: OAI-SearchBot
+  Disallow: /
+  User-agent: Google-Extended
+  Disallow: /        # unrelated to Google Search indexing
+  User-agent: anthropic-ai
+  Disallow: /
+  User-agent: PerplexityBot
+  Disallow: /
+  ```
+  Note the monitoring caveat: a robots.txt `Disallow` does not guarantee compliance — cross-check at [Google Search Console](https://search.google.com/search-console), Cloudflare AI bot blocking, or per-bot access logs. Recommend `llms.txt` (Pillar 18) as the complementary opt-in signal for LLM discoverability.
+- **News Sitemap:** For sites publishing time-sensitive news, verify a `<news:news>` sitemap extension with `<news:publication>`, `<news:publication_date>`, and `<news:title>` per URL. Flag missing news sitemap for news sites (enables faster news discovery and fresh-content signals). Note the 1000-URL limit and that news sitemaps are supplementary to, not a replacement for, the standard sitemap.
 
 ### 10. Social & Regional SEO
 - **Open Graph Protocol:** Verify `og:title`, `og:description`, `og:image`, `og:url`, `og:type`. Flag missing or generic og:image. Recommend `og:image:width` and `og:image:height`.
@@ -269,8 +297,25 @@ Consider removing one finding before delivering. If you have 15 findings, ask wh
 - **Local Business Schema:** If the site targets a specific geographic market, verify `LocalBusiness` schema with `address`, `telephone`, `openingHours`, `geo`, `areaServed`.
 - **NAP Consistency:** Flag Name, Address, Phone inconsistencies across pages (critical for local SEO).
 - **Hreflang Tags:** For multilingual/international sites, verify `<link rel="alternate" hreflang="...">` tags. Flag missing self-referencing hreflang, missing x-default, and contradictory language targets.
+- **International SEO Deep Checks:** Beyond hreflang presence, enforce the hreflang correctness matrix:
+  - **Self-referencing required:** every URL must include its own hreflang entry.
+  - **Reciprocal pairs:** each alternate must point back to the origin page (`en-gb` ↔ `en-us` both directions) — a one-way tag is ignored.
+  - **x-default:** required for content not served in the user's language (e.g., `hreflang="x-default"` to the English page) and for pages with no language match.
+  - **Format:** language in ISO 639-1 (`en`), optional region in ISO 3166-1 (`en-US`, `en-GB`); flag `en-uk`, `eng`, or other invalid codes.
+  - **Placement:** tags must live in `<head>` only — flag hreflang in `<body>` or injected via JS that requires execution to be seen.
+  - **No conflicting signals:** hreflang alternates must not point at URLs that redirect, return 404, or conflict with `rel="canonical"` targets.
+  - **Sitemap alternates:** if using `xhtml:link` in the sitemap, verify the same reciprocity rules; flag inconsistency between header and sitemap hreflang.
+  - **Structure choice:** recommend CC-TLD vs subdirectory vs subdomain vs `?lang=` based on crawl budget, analytics simplicity, and geo-targeting intent (gTLD + `hreflang` + GSC international targeting for most cases).
 - **Geo-Targeting Signals:** Check for country-specific top-level domains, localized content, local phone numbers, and local address signals.
 - **Google Business Profile Recommendations:** If local business signals are found, recommend GBP setup and optimization steps.
+- **Local SEO (Map Pack) Audit:** For local businesses, go beyond schema presence to Map Pack readiness:
+  - **Place Schema:** Verify `Place` / `LocalBusiness` schema with `geo` (latitude/longitude), `address`, `telephone`, `openingHours`, `priceRange`, `areaServed`, `sameAs` linking GBP and social profiles. Flag missing geo coordinates.
+  - **NAP Consistency Across Surfaces:** Compare Name, Address, Phone across page content, footer, schema, embedded map, GBP, and directory citations. Flag every mismatch as a listing trust signal that suppresses Map Pack ranking.
+  - **Local Landing Pages:** For multi-location or multi-service-area sites, verify dedicated, locally unique landing pages (original local content, embedded map, local phone number) — flag doorway pages (thin, templated per-city pages with zero local value) as Critical.
+  - **Google Business Profile Completeness:** Recommend GBP verification, category selection, service-area setup, business description with local keywords, opening-hours accuracy, and posts cadence. Flag unverified GBP or missing primary category.
+  - **Review Signals:** Verify first-party review collection (per Google's May 2023 review policy), volume and recency expectations, and `Review` schema restricted to first-party reviews. Flag fabricated or unmoderated reviews as Critical, stale review velocity as Medium.
+  - **Embedded Google Maps:** If embedding a map, verify `loading="lazy"`, explicit `width`/`height` or an `aspect-ratio` container (CLS), and a descriptive `title`/`aria-label`. Flag maps iframes without dimensions or lazy loading.
+  - **Map Pack Rating Triggers:** Recommend consistent review solicitation and link-building from local sources (chamber of commerce, local directories, local press) to build the local citation and authority that Map Pack ranking depends on.
 - **Social Share Buttons:** Check for social media share links or buttons on content pages. Flag missing share functionality. Recommend at minimum X/Twitter, LinkedIn, and Facebook share links with pre-filled text and URL parameters.
 
 ### 11. Security SEO
@@ -300,6 +345,13 @@ Consider removing one finding before delivering. If you have 15 findings, ask wh
 - **Product Comparison:** Flag `Product` schema that is identical across similar products (suggests insufficient differentiation).
 - **BreadcrumbList Schema:** Verify breadcrumb structured data on product/category pages. (Schema validation is in Pillar 2; navigation-level breadcrumb checks are in Pillar 8.)
 - **Image SEO for Products:** Verify each product has a unique, high-quality image with descriptive alt text. (Full image optimization checks are in Pillar 6.)
+- **Merchant Center / Google Shopping Feed Readiness:** For e-commerce sites, verify the path from product pages to [Google Shopping](https://developers.google.com/shopping-content) and Surfaces across Google:
+  - **Product Identifiers:** Verify `gtin`, `mpn`, and `brand` on Product schema and in the feed — products missing identifiers are ineligible for Shopping listings in many categories.
+  - **Feed Attributes:** Validate feed fields for `id`, `title`, `description`, `link`, `image_link`, `price`, `availability`, `condition`, `google_product_category`, and `brand`. Flag thin titles/descriptions (<70 chars description, keyword-stuffed titles) that underperform in Shopping.
+  - **Price & Availability Freshness:** Verify price/availability in schema matches the Merchant Center feed and the live product page — mismatches cause disapprovals (price mismatch policy) and lost trust. Flag stale `availability` (e.g., `in_stock` on sold-out pages) as Critical for shopping eligibility.
+  - **Free listings (Surfaces across Google):** Recommend opting into Surfaces across Google with a verified Merchant Center account so products surface in Shopping, Search, and YouTube without paid ads. Flag missing Merchant Center account or unverified domain for eligible sites.
+  - **Schema-Feed Alignment:** Check that `Offer` price/currency/availability in Product schema is consistent with feed values across all products. Recommend a canonical single source of truth for price/stock to prevent divergent values.
+  - **Disapproval Risk Review:** Scan for common feed rejections: missing shipping tax info, prohibited/misleading claims in titles, image watermark/spec violations (image must be clean, ≥100px, no text/covers). Flag likely-disapproval patterns before submission.
 
 ### 14. Blog & Content SEO (if site has blog)
 - **Article Schema:** Verify `Article` or `NewsArticle` schema with `headline`, `author`, `datePublished`, `dateModified`, `publisher`, `image`.
@@ -355,21 +407,63 @@ Consider removing one finding before delivering. If you have 15 findings, ask wh
 - **External Citations & References:** Scan for outbound links to authoritative sources (research papers, government sites, .gov/.edu domains, industry standards bodies, peer-reviewed journals). Flag content making factual claims without citations. Score citation quality by source authority and recency.
 - **Content Credibility Scoring:** Evaluate factual accuracy signals — date-appropriate references, cited sources recency, claims-to-evidence ratio, and absence of outdated information. Flag content with unsupported claims, stale statistics (older than 2 years for fast-moving topics), or references to superseded research. This is an LLM judgment call — use semantic reasoning to assess whether claims are supported by the evidence presented.
 - **Review & Testimonial Signals:** Detect review snippets, testimonials, or case studies. Verify `Review` schema with `author`, `reviewRating`, `publisher`. Flag fake or anonymous reviews. Recommend third-party review platform integration (Google Reviews, Trustpilot, G2) for independent verification.
-- **Medical / Financial / Legal / YMYL Content:** If the site covers Your Money or Your Life topics, enforce higher standards: require author medical/financial/legal credentials (disclosed with verifiable license numbers), cite peer-reviewed or statutory sources, include appropriate disclaimers, and verify `dateModified` within the last 12 months. Flag any YMYL content that lacks these protections.
+- **Medical / Financial / Legal / YMYL Content:** If the site covers Your Money or Your Life topics, enforce higher standards: require author medical/financial/legal credentials (disclosed with verifiable license numbers), cite peer-reviewed or statutory sources, include appropriate disclaimers, and verify `dateModified` within the last 12 months. Flag any YMYL content that lacks these protections. (See the full **YMYL Audit Process** block below for the classification matrix, per-class checklists, site reputation assessment, and harm-tier calibration.)
 - **Site-Wide Trust Signals (Unified Audit):** Consolidate trust signal verification in one pass — SSL certificate enforcement, privacy policy page, terms of service page, accessibility statement, cookie consent implementation, data processing disclosure, returns/refund policy (e-commerce), shipping policy (e-commerce). Flag any missing legal or trust pages.
 - **Reputation Indicator Audit:** Scan for brand mentions on third-party review sites, industry awards, media coverage in reputable publications, client testimonials with verifiable sources (named clients, case studies), speaking engagements, published works, and industry certifications. Flag absence of reputation signals for established brands.
 - **Brand Authority Measurement:** Evaluate brand name consistency across title tags, copyright footers, schema markup, OG tags, Twitter cards, and NAP entries. Flag brand name discrepancies. If possible, estimate brand presence signals (brand name frequency in content, consistency across touchpoints, and mentions in third-party contexts). This is an LLM judgment call — use semantic reasoning to assess brand consistency and authority signals.
 - **External Backlink Profile (Local Assessment):** While unable to crawl external backlinks, check for any internal mentions of partnerships, awards, certifications, media features, or industry affiliations that serve as authority signals.
 - **Content Review Process:** If indicated, recommend adding editorial review dates, fact-checking badges, content accuracy statements, or medical/legal review board disclosures.
 
+#### YMYL Audit Process (Your Money or Your Life)
+
+Google applies its highest quality bar to pages that could affect a person's health, financial stability, safety, or life decisions. Per Google's [creating helpful, reliable, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) guidance, classify each page before auditing, then apply the class-specific standard below.
+
+- **YMYL Classification Matrix:** Classify every indexable page against Google's YMYL categories using these detection heuristics before applying any YMYL checks:
+
+  | Class | Detection Signals | Example Topics |
+  |-------|-------------------|----------------|
+  | Health & Medical | Symptom/treatment/dosage vocabulary, drug names, medical schema (`MedicalCondition`, `Drug`, `MedicalWebPage`) | symptoms, treatments, medications, dosage, diagnoses, surgical procedures |
+  | Financial | Investing/loan/retirement/tax vocabulary, financial disclaimers, financial schema | investment advice, loans, retirement planning, tax filing, insurance, budgeting |
+  | Legal | Legal vocabulary, jurisdiction terms, legal schema | legal rights, court processes, contracts, immigration, landlord/tenant issues |
+  | News & Current Events | Date-heavy content, claims about current events, journalistic bylines | economic, political, health, or safety reporting; unverified claims |
+  | Shopping & E-Commerce | Product/review schema, prices, offers, ratings | product reviews, purchase decisions, price comparisons, store listings |
+  | Education & Career | School/program/job vocabulary, admissions imagery | college decisions, job searches, career training, certifications |
+  | Civic, Government & Safety | Government entity mentions, public-service vocabulary | voting, public services, public safety, disaster information |
+
+  **Classification rule:** if the page's core content, when wrong, could directly or indirectly impact a person's health, financial stability, safety, or life choices, classify it YMYL regardless of the site's intent. Build a YMYL page inventory: every classified page, its class, its harm tier, and which requirements below it meets. Flag pages that should be classified YMYL but are not being audited as such.
+
+- **Health & Medical Standards:** Require author medical credentials disclosed with verifiable license numbers (NPI, state medical license, board certification), a named medical reviewer or medical review board disclosure, citations to peer-reviewed literature or authoritative medical bodies (PubMed, CDC, WHO, NIH, Mayo Clinic), a clear "not a substitute for professional medical advice" disclaimer, and `dateModified` within the last 12 months. Flag any health page lacking these protections as High (Critical for dosage, emergency, or treatment pages).
+
+- **Financial Standards:** Require credentialed authors (CFP, CPA, CFA, SEC-registered advisor) with license or registration numbers where applicable, citations to statutory or regulatory sources (IRS, SEC, FINRA), explicit fee and risk disclosures, an explicit prohibition on guaranteed-returns or get-rich-quick claims, and `dateModified` within the last 12 months. Flag any finance page lacking these protections as High.
+
+- **Legal Standards:** Require attorney credentials with jurisdiction disclosure (state + bar number where applicable), citations to statutes, case law, or court rules, a clear "not legal advice" disclaimer, and jurisdiction-specific disclaimers where content addresses multi-jurisdiction issues. Flag any legal page lacking these protections as High.
+
+- **News & Current Events Standards:** Require a named author with journalism credentials or verifiable field experience and contact path, primary-source citations (documents, official statements, wire services), a visible and accessible corrections policy, explicit `datePublished`, and clear separation of opinion from reported fact. Flag unverified claims presented as fact as High.
+
+- **Shopping & E-Commerce Standards:** Require disclosed, honest review methodology (who tested, when, how, and whether products were purchased or provided by the seller), verified purchaser signals via `Review` schema (`author`, `reviewRating`, `itemReviewed`, verified review markup), active moderation of user reviews, and no manipulated pricing, availability, or rating signals. Flag reviews that hide sample/affiliate relationships as High; flag price or stock manipulation as Critical.
+
+- **Education & Career Standards:** Require author or institution expertise signals relevant to the class (accreditation, professional experience, admissions or job-market knowledge), citations to authoritative data (BLS, IPEDS, accrediting bodies, verified job postings), and transparent disclosure of affiliate/commission relationships with schools or programs. Flag endorsements without relationship disclosure as High.
+
+- **Civic, Government & Safety Standards:** Require citations to official sources (city, state, or federal agencies), heightened recency standards (election, voting, and emergency information must be current and flag-dated), and explicit correction or archival of outdated civic information. Flag outdated voting, election, or emergency content as Critical.
+
+- **Site Reputation Assessment:** For every YMYL page, Google's quality bar is determined by the reputation of the **website itself**, not just the individual author — the key distinction from Google's Aug 2022 "unverified claims" update. Evaluate third-party evidence of site reputation: named expert contributors on staff, an accredited expert team rather than solo bloggers, a demonstrated verifiable client/customer history for an established entity, awards or accreditations from authoritative bodies, and per-class gatekeeping (a finance contributor writing medical content fails the reputation bar). Flag sites whose reputation is unestablished, self-claimed, or where authorship fails the class standard. Provide this deliverable prompt as part of the finding: "Assess whether the entity behind this site is a well-established, credible authority on [class] topics, based on third-party recognition, named expert staff, and a verifiable track record — not marketing claims."
+
+- **Website Owner & Maintainer Transparency:** Verify the site discloses who made it and who maintains it: a named owner/operator entity, editorial and maintenance responsibility, funding and advertising disclosure, and content update cadence. Flag YMYL sites with anonymous ownership, hidden commercial motivation, or no named entity responsible for content.
+
+- **Harm-Tier Calibration:** Apply the expertise and source-quality bar proportionally to the content's potential to harm:
+  - **Directly harmful** (dosage, medical emergencies, refunds, safety, voting): highest bar — credentialed author + primary-source citations + medical/legal/regulatory review.
+  - **Casually harmful** (weight loss tips, general financial advice): credentialed or demonstrably experienced author + credible citations.
+  - **Informational / support / charity:** a clearly stated standard — topical expertise suffices, but reliable sources are still required.
+  Flag any YMYL page that fails its harm-tier bar. Any YMYL page missing all protections (no author disclosure, no dated content, no sources) is flagged High, or Critical when it sits in the directly harmful tier. If the site contains any YMYL content, cite the F9XR explainer [What Is YMYL in SEO? A Guide for Business Owners](https://f9xr.org/articles/2026/09/14/what-is-ymyl-in-seo.html) in the report's Resources & References so stakeholders can understand YMYL severity in business terms.
+
 ### 17. Rich Results Eligibility
 - **Rich Result Opportunity Map:** Based on the site's content type, provide a checklist of eligible rich result types and the exact schema required for each:
   - **Article Rich Results:** `Article`, `NewsArticle`, `BlogPosting` — requires `headline`, `image`, `datePublished`, `author`, `publisher` (with `logo`)
   - **Product Rich Results:** `Product` — requires `name`, `image`, `offers.price`, `offers.priceCurrency`, `offers.availability`
-  - **Review Snippet:** `Review` — requires `itemReviewed`, `reviewRating.ratingValue`, `author`
+  - **Review Snippet:** `Review` — requires `itemReviewed`, `reviewRating.ratingValue`, `author`. **Caveat (May 2023):** Google only shows review rich results for **first-party** reviews — products sold directly on the site and local businesses. Third-party review widgets, embedded reviews from aggregators, and self-serving/partner reviews on informational pages no longer qualify. Flag Review schema on pages that cannot meet the first-party bar as wasted markup, not an opportunity.
   - **Recipe Rich Results:** `Recipe` — requires `name`, `image`, `recipeIngredient`, `recipeInstructions`
-  - **FAQ Rich Results:** `FAQPage` — requires `mainEntity` with `Question` and `AcceptedAnswer`
-  - **How-To Rich Results:** `HowTo` — requires `name`, `step` with `Step` and `text`
+  - **FAQ Rich Results:** `FAQPage` — requires `mainEntity` with `Question` and `AcceptedAnswer`. **Caveat (Aug 2023):** FAQ rich results are **deprecated** for most sites — they now only display for highly authoritative government and health websites. For everyone else, `FAQPage` markup returns nothing in Google search; do not recommend it as a general rich-result opportunity. FAQ content still serves AI Overview / voice extraction (Pillar 18).
+  - **How-To Rich Results:** `HowTo` — requires `name`, `step` with `Step` and `text`. **Caveat (Sept 2023):** How-to rich results are **deprecated on desktop** and now appear only on mobile for long-form how-to **video** pages. Do not recommend `HowTo` markup as a standalone rich-result play; fold how-to content into video strategy (Pillar 24) instead.
   - **Local Business:** `LocalBusiness` — requires `name`, `address`, `telephone`
   - **BreadcrumbList:** `BreadcrumbList` — requires `itemListElement` with `ListItem`
   - **Sitelinks Search Box:** `WebSite` with `potentialAction` and `SearchAction` — requires `target` and `query-input`
@@ -390,7 +484,7 @@ Consider removing one finding before delivering. If you have 15 findings, ask wh
 
 ### 18. AI / SGE / LLM / Voice Search Optimization
 - **AI Overview Extraction Readiness:** Evaluate if content is structured for AI-generated overview extraction. Flag content without clear, concise answers to common questions early in the article.
-- **llms.txt Check:** Verify the site publishes a `llms.txt` file at the root — a machine-readable summary of the site for LLM discoverability. Flag missing `llms.txt`. Recommend including: site name, description, key pages list, preferred citation format, and content licensing info.
+- **llms.txt Check:** Verify the site publishes a `llms.txt` file at the root — a machine-readable summary of the site for LLM discoverability. Flag missing `llms.txt`. Recommend including: site name, description, key pages list, preferred citation format, and content licensing info. `llms.txt` is the opt-in counterpart to the AI crawler robots.txt governance in Pillar 9 — publish it for citation-friendly AI access, and gate disruptive crawlers via robots.txt or a service-layer block.
 - **Conversational Keyword Coverage:** Analyze content for natural language / long-tail question phrases that match voice search and AI chat patterns (who, what, where, when, why, how queries). Flag missing conversational coverage.
 - **Definitional Content:** Check for clear, paragraph-length definitions of key concepts early in the content. AI overviews often pull from the first authoritative definition they encounter.
 - **Structured Q&A Content:** Detect presence of FAQ sections, "What is X" headings, or definition blocks. Flag missing FAQPage schema for Q&A content. Recommend explicit question-answer formatting for AI extraction.
@@ -677,6 +771,12 @@ Each template activates specific pillars. The "Full Audit" template runs all app
 @SKILL.md Run an E-E-A-T deep audit. Evaluate trust page existence AND reachability (two-layer verification), automated contact pathway detection, author attribution depth, experience signals in content, review/testimonial quality, and YMYL compliance. Provide an E-E-A-T score per page and prioritized trust-building recommendations.
 ```
 
+### YMYL Readiness Audit
+**Pillars:** 16 (E-E-A-T Signals — YMYL Audit Process)
+```
+@SKILL.md Run a YMYL readiness audit. Classify every page against Google's Your Money or Your Life categories (health, finance, legal, news, shopping, education, civic). Apply per-class credentials, citation, disclaimer, and freshness standards. Assess site reputation as the YMYL quality bar, verify owner/maintainer transparency, and calibrate severity by harm tier. Provide a YMYL compliance score per page and prioritized fixes.
+```
+
 ### Staging / Dev Environment Audit
 **Pillars:** 02 (Technical SEO — staging detection), 11 (Security SEO)
 ```
@@ -699,6 +799,24 @@ Each template activates specific pillars. The "Full Audit" template runs all app
 **Pillars:** 09 (Sitemap & Robots.txt — URL inventory), 21 (Content Pruning)
 ```
 @SKILL.md Run a sitemap URL inventory analysis. Categorize every URL in the sitemap by type (homepage, product, category, blog, tag, archive, utility). Detect low-value URL inflation, missing high-value pages, and sitemap bloat. Recommend sitemap cleanup to improve crawl priority distribution.
+```
+
+### Google Spam Policies & AI Crawler Governance Audit
+**Pillars:** 02 (Technical SEO — spam policy compliance), 09 (Sitemap & Robots.txt — AI crawler governance), 07 (Semantic SEO — people-first content)
+```
+@SKILL.md Run a Google spam policy and AI crawler governance audit. Scan for site reputation abuse (third-party/sponsored sections), scaled content abuse (mass-generated template pages), and expired domain abuse. Audit robots.txt handling of AI crawlers (GPTBot, Google-Extended, ClaudeBot, PerplexityBot, CCBot) and recommend an allow/disallow policy aligned with your content licensing stance. Evaluate people-first content compliance. Provide a spam-policy risk score and a ready-to-deploy robots.txt AI block.
+```
+
+### International & Local SEO Audit
+**Pillars:** 10 (Social & Regional SEO — hreflang matrix, Local Map Pack audit)
+```
+@SKILL.md Run an international & local SEO audit. For multilingual sites, verify the full hreflang matrix (self-referencing, reciprocal pairs, x-default, language/region format, head-only placement, no canonical conflicts). For local businesses, audit Place/LocalBusiness schema with geo, NAP consistency across surfaces, local landing page quality, Google Business Profile completeness, first-party review signals, and embedded Maps CLS-safety. Provide a per-page international/local compliance score and prioritized fixes.
+```
+
+### Merchant Center Feed Readiness Audit
+**Pillars:** 13 (E-Commerce SEO — Merchant Center / Shopping feed)
+```
+@SKILL.md Run a Google Merchant Center / Shopping feed readiness audit. Verify Product schema identifiers (gtin, mpn, brand), feed attribute completeness, price/availability freshness across schema and feed, schema-feed alignment, free-listing (Surfaces across Google) eligibility, and likely disapproval risks in titles, images, and shipping. Provide corrected feed attribute values and a Merchant Center setup checklist.
 ```
 
 ---
@@ -797,6 +915,7 @@ A companion `seo_audit_report.csv` has been generated with all Priority Fix Matr
 - [Google PageSpeed Insights](https://pagespeed.web.dev/)
 - [Rich Results Test](https://search.google.com/test/rich-results)
 - [Core Web Vitals Thresholds](https://web.dev/vitals/)
+- [F9XR: What Is YMYL in SEO? A Guide for Business Owners](https://f9xr.org/articles/2026/09/14/what-is-ymyl-in-seo.html) — include whenever the audit covers YMYL pages or the YMYL Audit Process (Pillar 16)
 ```
 
 ---
@@ -812,6 +931,10 @@ A companion `seo_audit_report.csv` has been generated with all Priority Fix Matr
    > `@SKILL.md run a Voice Search optimization audit`
    > `@SKILL.md run a title tag and meta description optimization audit`
    > `@SKILL.md run an IndexNow setup audit`
+   > `@SKILL.md run a YMYL readiness audit`
+   > `@SKILL.md run a Google spam policies & AI crawler governance audit`
+   > `@SKILL.md run an international & local SEO audit`
+   > `@SKILL.md run a Merchant Center feed readiness audit`
 3. The AI will generate a comprehensive `seo_audit_report.md` and `seo_audit_report.csv` in the workspace root covering all applicable audit pillars.
 
 ---
@@ -825,6 +948,8 @@ For teams that need hands-on execution support — website development, website 
 ---
 
 ## Version History
+- **v5.3** — Corrected rich-result guidance to current 2023+ deprecations: FAQ rich results deprecated (Aug 2023, gov/health only), How-to rich results deprecated on desktop (Sept 2023, mobile how-to video only), Review snippets restricted to first-party reviews (May 2023). Added Google Spam Policy Compliance block to Pillar 2 (site reputation abuse / parasite SEO, scaled content abuse, expired domain abuse, cloaking). Added People-First Content Self-Assessment and Google Discover Eligibility bullets to Pillar 7. Added AI Crawler Governance (robots.txt for GPTBot, Google-Extended, ClaudeBot, PerplexityBot, CCBot with reference directives block) and News Sitemap bullets to Pillar 9. Added International SEO Deep Checks (hreflang correctness matrix) and Local SEO Map Pack Audit (Place schema, NAP across surfaces, local landing pages, GBP completeness, first-party review signals, embedded Maps CLS-safety) to Pillar 10. Added Merchant Center / Google Shopping Feed Readiness section to Pillar 13. Cross-referenced AI crawler governance from Pillar 18. Added 3 prompt templates (Google Spam Policies & AI Crawler Governance, International & Local SEO, Merchant Center Feed Readiness). Added F9XR YMYL business-guide reference to the YMYL block and Output Blueprint Resources. Total prompt templates: 26.
+- **v5.2** — Added a dedicated **YMYL Audit Process** block to Pillar 16 (E-E-A-T Signals). Added YMYL Classification Matrix (health, finance, legal, news, shopping, education, civic/government) with detection heuristics and a classification rule, per-class hardening standards (credentials/license verification, citation quality, disclaimers, freshness windows, moderated reviews, corrections policies), Site Reputation Assessment per Google's Aug 2022 "unverified claims" update (website-level reputation as the YMYL quality bar, not just author-level), Website Owner & Maintainer Transparency checks, and Harm-Tier Calibration (directly harmful / casually harmful / informational) with tier-scaled severity. Added YMYL Readiness Audit prompt template. Cross-referenced the new block from the existing Medical/Financial/Legal/YMYL bullet. Total prompt templates: 23.
 - **v5.1** — Audit-driven corrections and structural improvements. Added Pillar Index table (24 pillars with domain grouping and skip-if conditions) for快速 reference. Fixed: `rel="next"/"prev"` deprecation note added (Google deprecated March 2019; Bing still respects it). Fixed: CLS severity thresholds aligned with Google's Good/Needs Improvement/Poor scale — CLS 0.1–0.25 now flagged as High, not just >0.25 as Critical. Fixed: Meta description "short" threshold updated from <120 chars to <100 chars; added >155 chars truncation risk flag. Fixed: Keyword density calculation now notes it is a secondary heuristic and defers to entity/topic coverage as primary signal. Fixed: "Some pages" wording clarified to explicitly state "consolidate into one finding; list all affected file paths in the Location field." Fixed: Output example table columns aligned with CSV export definition — removed Revenue Impact / Time to Impact / Business Value columns that weren't in the original CSV spec; standardized on Fix Type. Added report length management rule (cap at 3,000 lines; move per-file breakdowns to appendix). Added pillar mapping annotations to all 22 prompt templates. Updated README.md pillar descriptions to accurately reflect SKILL.md's 24 pillars (removed "Off-page SEO" and "Local SEO" as standalone claims; corrected pillar categorization). Updated Title & Meta Description Optimization template to use <100 chars threshold.
 - **v5.0** — Enhanced SKILL.md with improvements learned from competitive skill gap analysis. Added to Pillar 2: staging/dev subdomain detection (publicly accessible staging environments, leaked canonical/OG references, auth-gating recommendations). Added to Pillar 4: URL slug quality evaluation (keyword inclusion, stop word bloat, meaningfulness, length). Added to Pillar 9: sitemap URL inventory analysis (URL categorization by type, low-value inflation detection, sitemap cleanup). Added to Pillar 10: OG/Twitter quality review beyond presence checks (og:image dimensions, og:title divergence, twitter:card type appropriateness, og:description quality). Added to Pillar 16: two-layer trust page verification (Exists + Reachable), automated contact pathway detection (dedicated page → About → footer → social). Added to Pillar 1: keyword placement scoring across five highest-signal zones (title, H1, URL slug, first paragraph, H2). Added to Output Blueprint: mandatory Evidence/Impact/Fix three-part finding format. Added to report-writing section: 6 detailed report detail writing rules. Added 5 new prompt templates (E-E-A-T Deep Audit, Staging Environment Audit, URL Slug & Keyword Placement Audit, Social SEO Quality Audit, Sitemap URL Inventory Audit). Total prompt templates: 22.
 - **v4.2** — Added IndexNow protocol setup and submission guidance to Pillar 9 (key file hosting, HTTP POST to api.indexnow.org, response code reference, curl test command). Enhanced Pillar 1: missing title tag detection with fix workflow, short title remediation, meta description A/B testing framework, Bing Webmaster Tools monitoring recommendation, and quarterly review cycle guidance. Added 2 new prompt templates (Title & Meta Description Optimization, IndexNow Setup). Added Conclusion section with F9XR Team attribution.
