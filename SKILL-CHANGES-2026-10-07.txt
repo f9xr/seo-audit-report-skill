@@ -1,0 +1,74 @@
+=================================================================
+SKILL.md — CHANGES RECORD (v5.4)
+Generated: 2026-10-07
+Trigger: Recent 2026 Google Search updates (core + spam + Discover +
+AI Overviews/AI Mode changes)
+=================================================================
+
+This file documents every change made to SKILL.md in this session.
+
+-----------------------------------------------------------------
+1. Pillar 17 — FAQ Rich Results caveat updated
+-----------------------------------------------------------------
+OLD: Caveat (Aug 2023): FAQ rich results deprecated for most sites,
+only authoritative government/health sites remain.
+NEW: Caveat (May 2026): FAQ rich results FULLY REMOVED — as of
+May 7, 2026 they no longer appear for any site, including the former
+government/health exception. FAQ content still valuable for AI
+Overviews / AI Mode / voice extraction (Pillar 18).
+
+-----------------------------------------------------------------
+2. Pillar 2 — AI Search Citation Manipulation added
+-----------------------------------------------------------------
+Added new bullet after "Cloaking & Sneaky Redirects":
+"AI Search Citation Manipulation (2026)" — detect paid/fake
+citation networks, fabricated third-party mentions, citation pods
+aimed at influencing AI Overviews / AI Mode. Severity: High.
+
+-----------------------------------------------------------------
+3. Pillar 7 — Helpful-content (Oct 2026) checks added
+-----------------------------------------------------------------
+Added inside "Google's helpful content self-assessment" block,
+before "Google Discover Eligibility":
+- Main Content Placement: primary answer/tool/product must be front
+  and center, not buried under intro fluff.
+- Originality & Effort Test: "could an AI summary fully rehash this
+  content?" -> commodity content flag; require first-party data,
+  original research, case studies; strict fact-check of AI drafts.
+
+-----------------------------------------------------------------
+4. Pillar 14 — Discover core update note + freshness strengthened
+-----------------------------------------------------------------
+- Discover bullet now: post-Feb 2026 Discover core update, weight
+  local relevance, originality, and non-sensational headlines heavily.
+- "Content Upgrades / Freshness" bullet now also flags outdated
+  examples/statistics and warns against mass date-bumping without
+  real content changes.
+
+-----------------------------------------------------------------
+5. Pillar 16 — E-E-A-T additions
+-----------------------------------------------------------------
+Added after "Author Transparency Depth":
+- Deceptive Authorship Check (Oct 2026): flag fabricated personas,
+  fake bios/credentials, misleading bylines, stock-photo "experts".
+- Tabbed / Expandable Content Accessibility: tabs/accordions must
+  be crawlable and visible without JS; hidden main content flagged.
+
+-----------------------------------------------------------------
+6. Pillar 18 — renamed + AI Mode / agents
+-----------------------------------------------------------------
+- Heading changed from "AI / SGE / LLM / Voice Search Optimization"
+  to "AI / AI Overviews / AI Mode / Voice Search Optimization".
+- Added bullet: "AI Mode & Search Agent Readiness (2026)" — note
+  persistent search agents re-scanning pages; reward stable,
+  structured, machine-readable content; track via GSC's dedicated
+  AI Overviews / AI Mode report.
+- Pillar Index table row 18 updated to match the new name.
+
+=================================================================
+SUMMARY
+=================================================================
+- 6 sections touched, all aligned to 2026 Google update reality.
+- No pillar count change (still 24); one pillar renamed.
+- SKILL-CHANGES.txt (v5.2/v5.3) left intact as prior record.
+=================================================================
