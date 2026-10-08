@@ -1,4 +1,4 @@
-# Changelog — SKILL.md
+# Changelog - SKILL.md
 
 All notable changes to `SKILL.md` are documented in this file.
 
@@ -10,7 +10,7 @@ All notable changes to `SKILL.md` are documented in this file.
 - AI Crawler Governance (robots.txt) for GPTBot, Google-Extended, ClaudeBot, PerplexityBot, CCBot with reference directives block, plus News Sitemap extension to Pillar 9
 - International SEO Deep Checks (hreflang correctness matrix) and Local SEO Map Pack Audit (Place schema, NAP across surfaces, local landing pages, GBP completeness, first-party review signals, embedded Maps CLS-safety) to Pillar 10
 - Merchant Center / Google Shopping Feed Readiness section to Pillar 13
-- 3 new prompt templates (Google Spam Policies & AI Crawler Governance, International & Local SEO, Merchant Center Feed Readiness) — total 26
+- 3 new prompt templates (Google Spam Policies & AI Crawler Governance, International & Local SEO, Merchant Center Feed Readiness) - total 26
 - F9XR YMYL business-guide reference (https://f9xr.org/articles/2026/09/14/what-is-ymyl-in-seo.html) to the YMYL block and Output Blueprint Resources
 
 ### Fixed
@@ -39,11 +39,11 @@ All notable changes to `SKILL.md` are documented in this file.
 
 ### Fixed
 - `rel="next"/"prev"` deprecation note added to Pagination Handling (Google deprecated March 2019; Bing still respects it; primary strategy is view-all + self-referencing canonical)
-- CLS severity thresholds aligned with Google's Good / Needs Improvement / Poor scale — CLS 0.1–0.25 now flagged High, not just >0.25 as Critical
+- CLS severity thresholds aligned with Google's Good / Needs Improvement / Poor scale - CLS 0.1-0.25 now flagged High, not just >0.25 as Critical
 - Meta description "short" threshold updated from <120 chars to <100 chars; added >155 chars mobile truncation risk flag
 - Keyword density calculation now noted as a secondary heuristic that defers to entity/topic coverage as the primary signal
 - "Some pages" wording clarified to "consolidate into one finding; list all affected file paths in the Location field"
-- Priority Fix Matrix example columns aligned with CSV export definition — removed Revenue Impact / Time to Impact / Business Value columns; standardized on Fix Type
+- Priority Fix Matrix example columns aligned with CSV export definition - removed Revenue Impact / Time to Impact / Business Value columns; standardized on Fix Type
 - Title & Meta Description Optimization template updated to use the <100 chars threshold
 
 ## [v5.0] - 2026-07-15
@@ -57,7 +57,7 @@ All notable changes to `SKILL.md` are documented in this file.
 - Two-layer trust page verification (Exists + Reachable) and automated contact pathway detection in Pillar 16
 - Mandatory Evidence / Impact / Fix three-part finding format to the Output Blueprint
 - 6 detailed report detail writing rules to the report-writing section
-- 5 new prompt templates (E-E-A-T Deep Audit, Staging Environment Audit, URL Slug & Keyword Placement Audit, Social SEO Quality Audit, Sitemap URL Inventory Audit) — total 22
+- 5 new prompt templates (E-E-A-T Deep Audit, Staging Environment Audit, URL Slug & Keyword Placement Audit, Social SEO Quality Audit, Sitemap URL Inventory Audit) - total 22
 
 ### Fixed
 - Audit-and-fix pass resolving 38 issues: consolidated duplicate sections, resolved contradictions, added thresholds, and corrected counts across the skill
@@ -75,7 +75,7 @@ All notable changes to `SKILL.md` are documented in this file.
 ## [v4.1] - 2026-07-10
 
 ### Added
-- Video & YouTube SEO pillar — extended from 23 to 24 pillars
+- Video & YouTube SEO pillar - extended from 23 to 24 pillars
 - Expanded Process first pass with detailed workspace exploration
 - Voice Search Optimization as an explicit sub-discipline within Pillar 18
 - Keyword density calculation methodology to Pillar 7
@@ -86,7 +86,7 @@ All notable changes to `SKILL.md` are documented in this file.
 ### Added
 - Enterprise task-force persona
 - Crawl orchestration & discovery phase (URL discovery from sitemap/internal links/canonicals/pagination/hreflang, orphan detection, indexability matrix, click-depth mapping)
-- Competitor SEO Analysis pillar — extended from 22 to 23 pillars
+- Competitor SEO Analysis pillar - extended from 22 to 23 pillars
 - Advanced Semantic SEO depth
 - Closed all remaining prompt gaps: FCP/TTFB in CWV pillar, mobile/desktop performance split, redirect loop detection, soft 404s, broken external links, parameterized URLs, infinite crawl traps, crawl budget analysis, CDN/compression/caching/server-response audits, duplicate page/metadata detection, CTR/SERP optimization checks, structured content layout, table optimization, Organization/Service/Person schema, E-E-A-T Experience signal, reputation audit, content credibility scoring, unified trust signal audit
 - 4 new prompt templates
@@ -96,13 +96,13 @@ All notable changes to `SKILL.md` are documented in this file.
 
 ### Added
 - Auditor persona, core principles, 5-pass process workflow, restraint-and-critique section, and report-writing guidance
-- JavaScript Framework SEO (Next.js/Nuxt/Astro/SPA), EEAT Signals, Rich Results Eligibility map, AI/SGE/LLM Optimization, CI/CD & Automation pipeline, Migration SEO, Content Pruning & Consolidation, and Third-Party Script Audit pillars — extended from 14 to 22 pillars
+- JavaScript Framework SEO (Next.js/Nuxt/Astro/SPA), EEAT Signals, Rich Results Eligibility map, AI/SGE/LLM Optimization, CI/CD & Automation pipeline, Migration SEO, Content Pruning & Consolidation, and Third-Party Script Audit pillars - extended from 14 to 22 pillars
 - 7 new prompt templates
 
 ## [v2.0] - 2026-07-10
 
 ### Added
-- Performance SEO (CWV), Mobile SEO, URL Architecture, Internal Linking, XML Sitemaps & Robots.txt, Security SEO, Accessibility SEO, E-Commerce SEO, Blog SEO, and enhanced cross-file analysis — extended from 5 to 14 pillars
+- Performance SEO (CWV), Mobile SEO, URL Architecture, Internal Linking, XML Sitemaps & Robots.txt, Security SEO, Accessibility SEO, E-Commerce SEO, Blog SEO, and enhanced cross-file analysis - extended from 5 to 14 pillars
 - Prompt templates and Quick Wins section to the output
 
 ## [v1.0] - 2026-07-10

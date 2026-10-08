@@ -1,6 +1,6 @@
-# F9XR's SEO CodeBase Auditor — Documentation for LLMs
+# F9XR's SEO CodeBase Auditor - Documentation for LLMs
 
-> SEO CodeBase Auditor is an open-source Claude.ai SKILL (MIT licensed) that runs enterprise-grade, code-level SEO audits inside AI coding tools. It inspects a repository's HTML, CSS, JavaScript, and config files against 24 audit pillars and produces a structured markdown report plus a spreadsheet-ready CSV Priority Fix Matrix. Current version: **v5.1** — 24 pillars, 22 prompt templates.
+> SEO CodeBase Auditor is an open-source Claude.ai SKILL (MIT licensed) that runs enterprise-grade, code-level SEO audits inside AI coding tools. It inspects a repository's HTML, CSS, JavaScript, and config files against 24 audit pillars and produces a structured markdown report plus a spreadsheet-ready CSV Priority Fix Matrix. Current version: **v5.1** - 24 pillars, 22 prompt templates.
 
 ## Citation / Attribution
 - Name: F9XR's SEO CodeBase Auditor
@@ -62,4 +62,4 @@
 - v5.1 added a Pillar Index table and pillar annotations on all 22 prompt templates.
 - v5.0 added staging detection, slug quality, sitemap URL inventory, OG/Twitter field-level quality, two-layer trust-page verification, required Evidence/Impact/Fix format, and 5 new templates.
 - Google deprecated `rel="next"/"prev"` in March 2019; view-all + self-referencing canonical is the primary pagination strategy.
-- CLS severity is aligned with Google thresholds: 0.1–0.25 is High.
+- CLS severity is aligned with Google thresholds: 0.1-0.25 is High.

@@ -10,7 +10,7 @@ metadata:
   version: "2.1"
 ---
 
-# seo-audit-full — Advanced Full SEO Audit
+# seo-audit-full - Advanced Full SEO Audit
 
 This skill runs a full single-page SEO audit from the `seo-audit-full` directory.
 It does not route to `seo-audit` when only a URL is provided.
@@ -98,7 +98,7 @@ with missing PageSpeed data.
 
 Produce an **Advanced Full SEO Audit Report** by filling the template at
 [assets/report-template.html](assets/report-template.html),
-then **save it to a file — never print raw HTML to the terminal**.
+then **save it to a file - never print raw HTML to the terminal**.
 
 **File naming:** `reports/<hostname>-<slug>-full-audit.html`
 ```
@@ -113,7 +113,7 @@ https://example.com/                → reports/example-com-full-audit.html
 ```
 If yes → run: `open reports/example-com-full-audit.html`
 
-**Template placeholders** — fill each independently:
+**Template placeholders** - fill each independently:
 
 | Placeholder | Content |
 |---|---|
@@ -132,7 +132,7 @@ If yes → run: `open reports/example-com-full-audit.html`
 
 ## Scripts
 
-Run full scripts from this directory. All output is structured JSON — use it
+Run full scripts from this directory. All output is structured JSON - use it
 directly as evidence.
 
 **Dependencies:** `pip install requests`
@@ -178,7 +178,7 @@ this instruction:
 
 ---
 
-## Scope — Full Audit Check Whitelist
+## Scope - Full Audit Check Whitelist
 
 Full runs its own core checks plus the full-only items marked ★ below.
 
@@ -221,17 +221,17 @@ Contact logic (Contact row only):
 - **Fail** only when no contact pathway exists anywhere on the site
 - Missing `/contact` alone is **not** a fail when About or footer/nav already expose contact info
 
-E-E-A-T infrastructure rules — two layers per trust page:
-- **Layer 1 — Exists:** HTTP 200 for the trust page URL (Contact uses Contact-specific rules above)
-- **Layer 2 — Reachable:** linked from footer or main nav
+E-E-A-T infrastructure rules - two layers per trust page:
+- **Layer 1 - Exists:** HTTP 200 for the trust page URL (Contact uses Contact-specific rules above)
+- **Layer 2 - Reachable:** linked from footer or main nav
 
 | Page | Required |
 |---|---|
 | About Us | Yes |
-| Contact | Yes — dedicated page optional; About or footer/nav contact details satisfy this |
+| Contact | Yes - dedicated page optional; About or footer/nav contact details satisfy this |
 | Privacy Policy | Yes |
 | Terms of Service | Yes |
-| Media / Partners | No — include only if present |
+| Media / Partners | No - include only if present |
 
 Status rules (About, Privacy, Terms, Media/Partners):
 - Page missing (non-200) → **Fail**
@@ -240,7 +240,7 @@ Status rules (About, Privacy, Terms, Media/Partners):
 - Optional page missing → skip, do not include row
 
 **Contact-specific rules:**
-1. Try common paths (`/contact`, `/contact-us`) — HTTP 200 counts as Exists
+1. Try common paths (`/contact`, `/contact-us`) - HTTP 200 counts as Exists
 2. If no contact page, check the About page body for email, social, or contact details
 3. Also scan homepage footer and nav for `mailto:`, visible email, social links, or a contact form
 4. **Exists Pass** if any contact pathway is found
@@ -264,14 +264,14 @@ Word Count · Keyword Placement · Heading Structure · Internal Links · Schema
 - For multilingual pages, each language version should have its own schema with matching `inLanguage`, language-specific headline/description where present, and `url` / `mainEntityOfPage` pointing to the current localized canonical URL.
 
 ★ Full-only additions:
-- **OG Tags** — og:title, og:description, og:image, og:type, og:url presence and validity
-- **Twitter Card** — twitter:card type, title/description/image (with OG fallback detection)
+- **OG Tags** - og:title, og:description, og:image, og:type, og:url presence and validity
+- **Twitter Card** - twitter:card type, title/description/image (with OG fallback detection)
 
 ---
 
 ## How to Use Script JSON Output
 
-Same rules across full audit modules — map each field's `status` directly to the report check table:
+Same rules across full audit modules - map each field's `status` directly to the report check table:
 - `status` → `pass` / `warn` / `fail` / `error` → badge in report
 - `detail` → starting point for Evidence line
 - Do not contradict script output unless you have additional observable evidence
@@ -319,13 +319,13 @@ Same rules across full audit modules — map each field's `status` directly to t
 - `screenshot` truthy → Screenshot available
 
 Do not use overall `status` for the Lighthouse Scores badge. Category scores use
-Lighthouse thresholds: 90–100 pass, 50–89 warn, 0–49 fail. Example: Performance
+Lighthouse thresholds: 90-100 pass, 50-89 warn, 0-49 fail. Example: Performance
 60, Accessibility 84, Best Practices 100, SEO 100 means `category_status` is
 `warn`. If LCP or Speed Index fails, `metric_status` and overall `status` may be
 `fail` while the Lighthouse Scores panel remains `warn`.
 
 Inside `{{pagespeed_checks_html}}`, include a short `Priority Actions` list after
-the score/metric cards. Keep it to 2–4 concise items based on failing or warning
+the score/metric cards. Keep it to 2-4 concise items based on failing or warning
 PageSpeed fields:
 - LCP slow → optimize hero media, preload critical image, reduce render-blocking CSS
 - Speed Index slow → defer non-critical scripts and reduce above-the-fold JS/CSS
@@ -364,16 +364,16 @@ at least 300x157px. Flag if the image URL looks like a small icon or favicon.
 
 ## Recommended Workflow
 
-1. **Acknowledge full scope** — confirm this is a full audit
-2. **Infer primary keyword** — read the page H1, title, and first paragraph unless the user provided one
-3. **Phase 1: Run core scripts** — check-site → check-page → fetch-page → check-schema
-4. **Phase 2: Run full-only scripts** — verify PageSpeed API key exists, then run check-pagespeed → check-social
-5. **Core checks** — 404 handling, URL canonicalization, E-E-A-T trust pages, i18n/hreflang
-6. **PageSpeed checks** — summarize Lighthouse category scores and lab metrics
-7. **LLM-only advanced checks** — E-E-A-T content quality, duplicate content signals, anchor text quality
-8. **Summarize findings** — Evidence / Impact / Fix format
-9. **Priority actions** — top 5 highest-impact fixes with effort/impact tags
-10. **Render report** — save to `reports/<hostname>-<slug>-full-audit.html`
+1. **Acknowledge full scope** - confirm this is a full audit
+2. **Infer primary keyword** - read the page H1, title, and first paragraph unless the user provided one
+3. **Phase 1: Run core scripts** - check-site → check-page → fetch-page → check-schema
+4. **Phase 2: Run full-only scripts** - verify PageSpeed API key exists, then run check-pagespeed → check-social
+5. **Core checks** - 404 handling, URL canonicalization, E-E-A-T trust pages, i18n/hreflang
+6. **PageSpeed checks** - summarize Lighthouse category scores and lab metrics
+7. **LLM-only advanced checks** - E-E-A-T content quality, duplicate content signals, anchor text quality
+8. **Summarize findings** - Evidence / Impact / Fix format
+9. **Priority actions** - top 5 highest-impact fixes with effort/impact tags
+10. **Render report** - save to `reports/<hostname>-<slug>-full-audit.html`
 
 ---
 
@@ -401,7 +401,7 @@ Use strict formatting:
 
 For Priority Actions, add effort/impact tags:
 ```
-1. [High Impact / Low Effort] Fix og:image — social shares currently show no preview.
+1. [High Impact / Low Effort] Fix og:image - social shares currently show no preview.
 ```
 
 ---
